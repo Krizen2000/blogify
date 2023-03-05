@@ -1,0 +1,11 @@
+# dependencies
+/api/node_modules
+/website/node_modules
+
+# production
+/website/build/
+
+# misc
+/api/.env
+/website/.env
+/website/stats.json
