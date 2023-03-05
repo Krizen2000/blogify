@@ -7,7 +7,6 @@ export const CacheContext = createContext();
 
 const initialCache = {
   token: null,
-  userName: null,
 };
 function loadCache() {
   const cache = localStorage.getItem("data");

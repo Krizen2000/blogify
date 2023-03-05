@@ -1,6 +1,7 @@
 import React from "react";
 import LogoIcon from "../logo.svg";
 import styled from "styled-components";
+import { NavLink } from "react-router-dom";
 
 const NavBar = styled.nav`
   display: flex;
@@ -20,8 +21,8 @@ const NavBrand = styled.a`
   }
 `;
 const Logo = styled.img`
-  height: 4rem;
-  width: 4rem;
+  height: 3.5rem;
+  width: 3.5rem;
 `;
 const NavCollapse = styled.div`
   display: grid;
@@ -50,35 +51,42 @@ const NavItem = styled.li`
 
 export default function NavigationBar() {
   return (
-    <NavBar className="navbar navbar-expand-lg ">
+    <NavBar className="navbar navbar-expand-lg">
       <NavBrand className="navbar-brand">
-        <Logo src={LogoIcon} color="blue" /> Blogify
+        <NavLink className="nav-link" to="/">
+          <Logo src={LogoIcon} color="blue" /> Blogify
+        </NavLink>
       </NavBrand>
       <button
-        class="navbar-toggler"
+        className="navbar-toggler"
         type="button"
         data-bs-toggle="collapse"
         data-bs-target="#navbarContent"
       >
-        <span class="navbar-toggler-icon" />
+        <span className="navbar-toggler-icon" />
       </button>
       <NavCollapse className="collapse navbar-collapse" id="navbarContent">
-        <div class="input-group">
-          <span class="input-group-text">
-            <i class="bi-search" />
+        <div className="input-group">
+          <span className="input-group-text">
+            <i className="bi-search" />
           </span>
-          <input class="form-control" />
+          <input className="form-control" />
         </div>
         <Nav className="navbar-nav">
           <NavItem className="nav-item">
-            <a class="nav-link" href="">
-              Signup
-            </a>
+            <NavLink className="nav-link" to="/">
+              Home
+            </NavLink>
           </NavItem>
           <NavItem className="nav-item">
-            <a class="nav-link" href="">
+            <NavLink className="nav-link" to="/signup">
+              Signup
+            </NavLink>
+          </NavItem>
+          <NavItem className="nav-item">
+            <NavLink className="nav-link" to="/login">
               Login
-            </a>
+            </NavLink>
           </NavItem>
         </Nav>
       </NavCollapse>
