@@ -66,7 +66,7 @@ export default function Login() {
   return (
     <Container>
       <div style={{ display: "flex", alignItems: "center" }}>
-        <Button className="btn">
+        <Button className="btn" onClick={() => navigate(-1)}>
           <Icon className="bi-arrow-left" />
         </Button>
         <h1>Login</h1>
