@@ -4,8 +4,14 @@ import { NavLink, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CacheContext } from "../components/cacheProvider";
 
-async function requestUserSignup(firstName, lastName, phoneNumber, email) {
-  const dataPacket = { firstName, lastName, phoneNumber, email };
+async function requestUserSignup(
+  username,
+  firstName,
+  lastName,
+  phoneNumber,
+  email
+) {
+  const dataPacket = { username, firstName, lastName, phoneNumber, email };
   const axiosInstance = axios.create({ baseURL: process.env.API_URL });
 
   let res = null;
@@ -51,6 +57,7 @@ const ButtonWrapper = styled.div`
 
 export default function SignUp() {
   const cacheContext = useContext(CacheContext);
+  const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
@@ -66,6 +73,13 @@ export default function SignUp() {
         <h1>Sign Up</h1>
       </div>
       <CredentialForm>
+        <label className="form-label">UserName</label>
+        <input
+          className="form-control"
+          type="text"
+          value={username}
+          onChange={(e) => setUsername(e.target.value)}
+        />
         <label className="form-label">First Name</label>
         <input
           className="form-control"
@@ -116,6 +130,7 @@ export default function SignUp() {
           className="btn btn-primary"
           onSubmit={() => {
             const [token, name] = requestUserSignup(
+              username,
               firstName,
               lastName,
               phoneNumber,
