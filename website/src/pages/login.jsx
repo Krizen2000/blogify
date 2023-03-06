@@ -14,7 +14,9 @@ async function requestUserLogin(loginId, password) {
     : "username";
   let dataPacket = { password };
   dataPacket[idTag] = loginId;
-  const axiosInstance = axios.create({ baseURL: process.env.API_URL });
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
 
   let res = null;
   try {
@@ -104,8 +106,8 @@ export default function Login() {
         <button
           type="submit"
           className="btn btn-primary"
-          onSubmit={() => {
-            const [token, name] = requestUserLogin(loginId, password);
+          onClick={async () => {
+            const [token, name] = await requestUserLogin(loginId, password);
             if (!token) return;
             cacheContext.setCache({ ...cacheContext.cache, token, name });
             navigate(-1);

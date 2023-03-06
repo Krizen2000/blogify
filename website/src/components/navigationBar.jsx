@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import LogoIcon from "../logo.svg";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import { CacheContext } from "./cacheProvider";
 
 const NavBar = styled.nav`
   display: flex;
@@ -40,8 +41,11 @@ const Nav = styled.ul`
   margin: 0;
 `;
 const NavItem = styled.li`
+  display: grid;
+  justify-content: center;
   list-style-type: none;
   a {
+    white-space: nowrap;
     :hover {
       transition: 250ms ease;
       color: var(--bs-white);
@@ -50,6 +54,8 @@ const NavItem = styled.li`
 `;
 
 export default function NavigationBar() {
+  const cacheContext = useContext(CacheContext);
+  const isLoggedIn = cacheContext.cache["name"] ? true : false;
   return (
     <NavBar className="navbar navbar-expand-lg">
       <NavBrand className="navbar-brand">
@@ -78,16 +84,39 @@ export default function NavigationBar() {
               Home
             </NavLink>
           </NavItem>
-          <NavItem className="nav-item">
-            <NavLink className="nav-link" to="/signup">
-              Signup
-            </NavLink>
-          </NavItem>
-          <NavItem className="nav-item">
-            <NavLink className="nav-link" to="/login">
-              Login
-            </NavLink>
-          </NavItem>
+
+          {isLoggedIn ? (
+            <>
+              <NavItem className="nav-item">
+                <NavLink className="nav-link" to="/profile">
+                  Profile
+                </NavLink>
+              </NavItem>
+              <NavItem className="nav-item">
+                <NavLink className="nav-link" to="/blogs">
+                  Manage Blogs
+                </NavLink>
+              </NavItem>
+              <NavItem className="nav-item">
+                <NavLink className="nav-link" to="/blogs/create">
+                  Create Blogs
+                </NavLink>
+              </NavItem>
+            </>
+          ) : (
+            <>
+              <NavItem className="nav-item">
+                <NavLink className="nav-link" to="/signup">
+                  Signup
+                </NavLink>
+              </NavItem>
+              <NavItem className="nav-item">
+                <NavLink className="nav-link" to="/login">
+                  Login
+                </NavLink>
+              </NavItem>
+            </>
+          )}
         </Nav>
       </NavCollapse>
     </NavBar>

@@ -9,14 +9,25 @@ async function requestUserSignup(
   firstName,
   lastName,
   phoneNumber,
-  email
+  email,
+  password
 ) {
-  const dataPacket = { username, firstName, lastName, phoneNumber, email };
-  const axiosInstance = axios.create({ baseURL: process.env.API_URL });
+  const dataPacket = {
+    username,
+    firstName,
+    lastName,
+    phoneNumber,
+    email,
+    password,
+  };
+  const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_API_URL,
+  });
+  console.log();
 
   let res = null;
   try {
-    res = await axiosInstance.post(`/api/signup`, dataPacket);
+    res = await axiosInstance.post(`/api/register`, dataPacket);
   } catch (err) {
     console.error(err);
     return null;
@@ -48,10 +59,15 @@ const CredentialForm = styled.form`
   border: 0.00625rem solid var(--bs-gray-500);
   border-radius: 0.5rem;
 `;
+const Text = styled.text`
+  display: grid;
+  justify-content: center;
+  color: var(--bs-danger);
+`;
 const ButtonWrapper = styled.div`
   display: grid;
   gap: 1rem;
-  margin: 0rem 1rem;
+  margin: 0.5rem 1rem;
   grid-template-columns: repeat(2, 1fr);
 `;
 
@@ -62,6 +78,8 @@ export default function SignUp() {
   const [lastName, setLastName] = useState("");
   const [phoneNumber, setPhoneNumber] = useState("");
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
 
   const navigate = useNavigate();
   return (
@@ -108,6 +126,25 @@ export default function SignUp() {
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
+        <label className="form-label">Password</label>
+        <input
+          className="form-control"
+          type="password"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+        />
+        <label className="form-label">Confirm Password</label>
+        <input
+          className="form-control"
+          type="password"
+          value={confirmPassword}
+          onChange={(e) => setConfirmPassword(e.target.value)}
+        />
+        {password !== confirmPassword ? (
+          <Text className="form-text">
+            Password is not matching with Confirm Password
+          </Text>
+        ) : null}
       </CredentialForm>
       <NavLink style={{ justifySelf: "center" }} to="/login">
         Already a user? Login
@@ -128,13 +165,15 @@ export default function SignUp() {
         <button
           type="submit"
           className="btn btn-primary"
-          onSubmit={() => {
-            const [token, name] = requestUserSignup(
+          onClick={async () => {
+            if (password !== confirmPassword) return;
+            const [token, name] = await requestUserSignup(
               username,
               firstName,
               lastName,
               phoneNumber,
-              email
+              email,
+              password
             );
             if (!token) return;
             cacheContext.setCache({ ...cacheContext.cache, token, name });
