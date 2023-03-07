@@ -6,6 +6,7 @@ const JWT_KEY = process.env.JWT_KEY || "juan";
 const verifyToken = (req, res, next) => {
   const bearerToken = req.headers.authorization;
   const token = bearerToken.split(" ")[1];
+  console.log("bearerToken:", bearerToken);
 
   if (!token) {
     res.status(403).json({ msg: "NOT AUTHENTICATED!" });

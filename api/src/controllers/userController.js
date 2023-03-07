@@ -1,7 +1,7 @@
 const User = require("../models/User");
 const CryptoJS = require("crypto-js");
 
-async function getUserInfoHandler() {
+async function getUserInfoHandler(req, res, next) {
   let user = null;
   try {
     user = await User.findOne({ username: req.user.username });
@@ -15,10 +15,11 @@ async function getUserInfoHandler() {
     return;
   }
   let { password, ...userData } = user.toObject();
+  console.log("getUserInfoHandler: ", userData);
   res.status(200).json(userData);
 }
 
-async function updateUserInfoHandler() {
+async function updateUserInfoHandler(req, res, next) {
   // Check if new username already exists
   if (req.body.username) {
     try {
@@ -58,7 +59,7 @@ async function updateUserInfoHandler() {
   res.status(200).json(updatedUser);
 }
 
-async function deleteUserInfoHandler() {
+async function deleteUserInfoHandler(req, res, next) {
   try {
     await User.findOneAndDelete({ username: req.user.username });
   } catch (err) {

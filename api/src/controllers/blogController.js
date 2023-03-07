@@ -1,6 +1,6 @@
 const Blog = require("../models/Blog");
 
-async function getRecentBlogsHandler() {
+async function getRecentBlogsHandler(req, res, next) {
   let blogs = null;
   try {
     blogs = await Blog.find().sort({ modifiedAt: "descending" }).limit(6);
@@ -16,7 +16,7 @@ async function getRecentBlogsHandler() {
   res.status(200).json({ blogs });
 }
 
-async function getAllBlogsHandler() {
+async function getAllBlogsHandler(req, res, next) {
   let blogs = null;
   try {
     blogs = await Blog.find().sort({ modifiedAt: "descending" });
@@ -32,7 +32,7 @@ async function getAllBlogsHandler() {
   res.status(200).json({ blogs });
 }
 
-async function getUserCreatedBlogsHandler() {
+async function getUserCreatedBlogsHandler(req, res, next) {
   let blogs = null;
   try {
     blogs = await Blog.find({ publisher: req.user.userId });
@@ -47,7 +47,7 @@ async function getUserCreatedBlogsHandler() {
   res.status(200).json({ blogs });
 }
 
-async function getBlogHandler() {
+async function getBlogHandler(req, res, next) {
   let blog = null;
   try {
     blog = await Blog.findOne({ blogId: req.params.blogId });
@@ -63,7 +63,7 @@ async function getBlogHandler() {
   res.status(200).json(blog);
 }
 
-async function createBlogHandler() {
+async function createBlogHandler(req, res, next) {
   const newBlog = new Blog({
     ...req.body,
     publisher: req.user.username,
@@ -84,7 +84,7 @@ async function createBlogHandler() {
   res.status(200).json(savedBlog);
 }
 
-async function updateBlogHandler() {
+async function updateBlogHandler(req, res, next) {
   try {
     const blog = await Blog.findOne({ blogId: req.params.blogId });
     if (!blog) {
@@ -110,7 +110,7 @@ async function updateBlogHandler() {
   }
 }
 
-async function deleteBlogHandler() {
+async function deleteBlogHandler(req, res, next) {
   try {
     const blog = await Blog.findOne({ blogId: req.params.blogId });
     if (!blog) {
