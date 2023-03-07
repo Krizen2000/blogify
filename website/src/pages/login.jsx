@@ -15,7 +15,7 @@ async function requestUserLogin(loginId, password) {
   let dataPacket = { password };
   dataPacket[idTag] = loginId;
   const axiosInstance = axios.create({
-    baseURL: process.env.REACT_APP_API_URL,
+    baseURL: process.env.REACT_APP_API_URI,
   });
 
   let res = null;
