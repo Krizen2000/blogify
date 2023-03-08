@@ -20,6 +20,7 @@ async function getUserInfoHandler(req, res, next) {
 }
 
 async function updateUserInfoHandler(req, res, next) {
+  console.log("updateUserInfoHandler:", req.body);
   // Check if new username already exists
   if (req.body.username) {
     try {
