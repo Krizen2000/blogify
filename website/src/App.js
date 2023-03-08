@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import NavigationBar from "./components/navigationBar";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
+import Profile from "./pages/profile";
 
 export default function App() {
   return (
@@ -16,6 +17,7 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/signup" element={<SignUp />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/profile" element={<Profile />} />
       </Routes>
     </div>
   );
