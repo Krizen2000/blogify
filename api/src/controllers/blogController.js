@@ -35,7 +35,7 @@ async function getAllBlogsHandler(req, res, next) {
 async function getUserCreatedBlogsHandler(req, res, next) {
   let blogs = null;
   try {
-    blogs = await Blog.find({ publisher: req.user.userId });
+    blogs = await Blog.find({ publisher: req.user.username });
   } catch (err) {
     res.status(500).json(err);
     return;
@@ -64,6 +64,7 @@ async function getBlogHandler(req, res, next) {
 }
 
 async function createBlogHandler(req, res, next) {
+  console.log("createBlogHandler: ", req.body);
   const newBlog = new Blog({
     ...req.body,
     publisher: req.user.username,

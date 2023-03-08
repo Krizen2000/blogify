@@ -7,7 +7,7 @@ const BlogSchema = new mongoose.Schema(
     imageUrl: { type: String, required: false },
     description: { type: String, required: true },
     publisher: { type: String, required: true },
-    tags: { type: [String], required: true },
+    tags: { type: [String], required: false },
   },
   { timestamps: true }
 );
