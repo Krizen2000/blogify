@@ -8,6 +8,8 @@ import NavigationBar from "./components/navigationBar";
 import SignUp from "./pages/signup";
 import Login from "./pages/login";
 import Profile from "./pages/profile";
+import YourBlogs from "./pages/yourBlogs";
+import CreateBlog from "./pages/createBlog";
 
 export default function App() {
   return (
@@ -15,9 +17,14 @@ export default function App() {
       <NavigationBar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/signup" element={<SignUp />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/profile" element={<Profile />} />
+        <Route path="signup" element={<SignUp />} />
+        <Route path="login" element={<Login />} />
+        <Route path="profile" element={<Profile />} />
+        <Route path="blogs">
+          <Route index element={<YourBlogs />} />
+          <Route path="create" element={<CreateBlog />} />
+        </Route>
+        {/* <Route path="manageblogs" element={<CreateBlog />} /> */}
       </Routes>
     </div>
   );

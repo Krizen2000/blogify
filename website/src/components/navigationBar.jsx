@@ -94,6 +94,11 @@ export default function NavigationBar() {
               </NavItem>
               <NavItem className="nav-item">
                 <NavLink className="nav-link" to="/blogs">
+                  Your Blogs
+                </NavLink>
+              </NavItem>
+              <NavItem className="nav-item">
+                <NavLink className="nav-link" to="/manageblogs">
                   Manage Blogs
                 </NavLink>
               </NavItem>
