@@ -10,6 +10,9 @@ import Login from "./pages/login";
 import Profile from "./pages/profile";
 import YourBlogs from "./pages/yourBlogs";
 import CreateBlog from "./pages/createBlog";
+import ManageBlogs from "./pages/manageBlogs";
+import BlogDetailing from "./pages/blogDetailing";
+import EditBlog from "./pages/editBlog";
 
 export default function App() {
   return (
@@ -23,8 +26,10 @@ export default function App() {
         <Route path="blogs">
           <Route index element={<YourBlogs />} />
           <Route path="create" element={<CreateBlog />} />
+          <Route path="edit/:selectedBlogId" element={<EditBlog />} />
+          <Route path=":selectedBlogId" element={<BlogDetailing />} />
         </Route>
-        {/* <Route path="manageblogs" element={<CreateBlog />} /> */}
+        <Route path="manageblogs" element={<ManageBlogs />} />
       </Routes>
     </div>
   );

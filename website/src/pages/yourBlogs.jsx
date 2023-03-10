@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { CacheContext } from "../components/cacheProvider";
 import Blog from "../components/home/blog";
@@ -72,6 +72,7 @@ export default function YourBlogs() {
           <input
             className="form-control"
             type="text"
+            placeholder="Type a title to search (eg. Great night)"
             value={searchText}
             onChange={(e) => setSearchText(e.target.value)}
           />
@@ -79,13 +80,14 @@ export default function YourBlogs() {
       </Wrapper>
       <BlogDisplay>
         {filteredBlogList.map((blog) => (
-          <Blog
-            key={blog.blogId}
-            title={blog.title}
-            imageUrl={blog.imageUrl}
-            description={blog.description}
-            tags={blog.tags}
-          />
+          <Link style={{ all: "unset" }} to={blog.blogId} key={blog.blogId}>
+            <Blog
+              title={blog.title}
+              imageUrl={blog.imageUrl}
+              description={blog.description}
+              tags={blog.tags}
+            />
+          </Link>
         ))}
       </BlogDisplay>
     </Container>

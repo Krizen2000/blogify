@@ -4,8 +4,16 @@ const Container = styled.article`
   display: grid;
   margin: 1rem 2rem;
   background-color: var(--bs-gray-100);
-  border: 0.00625rem solid var(--bs-gray-500);
+  border: 0.25rem solid var(--bs-gray-500);
   border-radius: 0.5rem;
+  transition: 500ms;
+  transform: scale(10/11);
+
+  :hover {
+    transition: 500ms;
+    transform: scale(1.1);
+    border: 0.25rem solid var(--bs-primary);
+  }
 `;
 
 const Image = styled.img`
