@@ -23,7 +23,7 @@ const registerHandler = async (req, res, next) => {
         username: savedUser.username,
       },
       JWT_KEY,
-      { expiresIn: "1d" }
+      { expiresIn: "1y" }
     );
 
     const { password, ...userInfo } = savedUser.toObject();
