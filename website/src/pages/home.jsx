@@ -13,6 +13,9 @@ const Container = styled.div`
   display: grid;
   gap: 1rem;
 `;
+const Title = styled.h3`
+  margin: 2rem;
+`;
 const RecentBlogs = styled.div`
   display: grid;
 `;
@@ -31,15 +34,19 @@ const responsive = {
     items: 7,
   },
   desktop: {
-    breakpoint: { max: 3000, min: 1024 },
+    breakpoint: { max: 3000, min: 1600 },
     items: 5,
   },
+  laptop: {
+    breakpoint: { max: 1600, min: 1224 },
+    items: 4,
+  },
   tablet: {
-    breakpoint: { max: 1024, min: 464 },
-    items: 3,
+    breakpoint: { max: 1224, min: 768 },
+    items: 2,
   },
   mobile: {
-    breakpoint: { max: 464, min: 0 },
+    breakpoint: { max: 768, min: 0 },
     items: 1,
   },
 };
@@ -55,7 +62,7 @@ export default function Home() {
   return (
     <Container>
       <RecentBlogs>
-        <h3>Recent Blogs</h3>
+        <Title>Recent Blogs</Title>
         {recentBlogList ? (
           <Carousel responsive={responsive}>
             {recentBlogList.map((blog) => (
@@ -76,7 +83,7 @@ export default function Home() {
         ) : null}
       </RecentBlogs>
       <AllBlogs>
-        <h3>All Blogs</h3>
+        <Title>All Blogs</Title>
         <BlogDisplay>
           {allBlogList.map((blog) => (
             <Link

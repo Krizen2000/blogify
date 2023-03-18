@@ -18,6 +18,8 @@ const Container = styled.article`
 
 const Image = styled.img`
   object-fit: cover;
+  width: 100%;
+  aspect-ratio: 16 / 9;
 `;
 
 export default function Blog({ title, imageUrl, description, tags }) {
