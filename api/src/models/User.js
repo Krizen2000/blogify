@@ -5,7 +5,7 @@ const UserSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   profession: { type: String, required: false },
-  phoneNumber: { type: String, required: true },
+  phoneNumber: { type: String, required: false },
   email: { type: String, required: true },
   password: { type: String, required: true },
   discord: { type: String, required: false },
@@ -13,7 +13,7 @@ const UserSchema = new mongoose.Schema({
   facebook: { type: String, required: false },
   instagram: { type: String, required: false },
   commute: {
-    type: String,
+    type: [String],
     required: true,
     enum: ["None", "Email", "Discord", "LinkedIn", "Facebook", "Instagram"],
     default: "None",
