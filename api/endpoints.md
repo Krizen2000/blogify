@@ -85,4 +85,4 @@ The endpoints start with root route as `/api`.
 
 ### [ DELETE Method ]
 
-- `/api/comments/:productId` - [Delete existing product]
+- `/api/comments/:commentId` - [Delete existing product]
