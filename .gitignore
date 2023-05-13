@@ -9,3 +9,4 @@
 /api/.env
 /website/.env
 /website/stats.json
+/website/.next
