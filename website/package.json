@@ -21,7 +21,8 @@
   "scripts": {
     "start": "next start",
     "build": "next build",
-    "dev": "next dev"
+    "dev": "next dev",
+    "analyze": "ANALYZE=true next dev"
   },
   "eslintConfig": {
     "extends": [
@@ -40,5 +41,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@next/bundle-analyzer": "^13.4.2"
   }
 }

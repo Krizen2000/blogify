@@ -43,3 +43,11 @@ CORS_URL = "http://localhost:3000"
 # API URL [if running locally use "http://localhost:3120"]
 NEXT_PUBLIC_API_URL="<your-backend-url>"
 ```
+
+# Perform Analysis
+
+To do a quick view of the size of the website while testing, run the following command:
+
+```
+npm run analyze
+```
