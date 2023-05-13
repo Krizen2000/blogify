@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap/dist/js/bootstrap";
+import "./globals.css";
 import CacheProvider from "@context/cacheProvider";
 import NavigationBar from "./navigationBar";
 
