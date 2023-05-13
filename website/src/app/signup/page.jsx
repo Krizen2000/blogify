@@ -1,11 +1,11 @@
 "use client";
 
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 
 async function requestUserSignup(
   username,
@@ -75,7 +75,7 @@ const ButtonWrapper = styled.div`
 `;
 
 export default function SignUp() {
-  const cacheContext = useContext(CacheContext);
+  const cacheContext = useCacheContext();
   const [username, setUsername] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");

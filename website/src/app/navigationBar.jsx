@@ -1,11 +1,11 @@
 "use client";
 
-import React, { useContext } from "react";
+import React, { useEffect, useState } from "react";
 import LogoIcon from "./logo.svg";
 import Image from "next/image";
 import styled from "styled-components";
 import Link from "next/link";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 
 const NavBar = styled.nav`
   display: flex;
@@ -52,9 +52,17 @@ const NavItem = styled.li`
   }
 `;
 
+function useCheckLoggedIn() {
+  let [isLoggedIn, setIsLoggedIn] = useState(false);
+  const cacheContext = useCacheContext();
+  useEffect(() => {
+    setIsLoggedIn(cacheContext.cache["name"] ? true : false);
+  }, [cacheContext]);
+  return isLoggedIn;
+}
+
 export default function NavigationBar() {
-  const cacheContext = useContext(CacheContext);
-  const isLoggedIn = cacheContext.cache["name"] ? true : false;
+  const isLoggedIn = useCheckLoggedIn();
   return (
     <NavBar className="navbar navbar-expand-lg">
       <NavBrand className="navbar-brand">

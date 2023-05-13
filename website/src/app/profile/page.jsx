@@ -1,9 +1,9 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 import { requestUserInfo, requestUserInfoUpdate } from "./profileHelper";
 
 const Container = styled.div`
@@ -51,7 +51,7 @@ const initialUserInfo = {
   twitter: "",
 };
 export default function Profile() {
-  const cacheContext = useContext(CacheContext);
+  const cacheContext = useCacheContext();
   const [userInfo, setUserInfo] = useState(initialUserInfo);
   const [newUserInfo, setNewUserInfo] = useState(initialUserInfo);
   const [commute, setCommute] = useState("None");

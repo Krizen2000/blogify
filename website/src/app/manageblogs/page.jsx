@@ -1,10 +1,10 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 import { requestBlogDeletion, requestUserBlogs } from "./manageBlogsHelper";
 
 const Container = styled.div`
@@ -25,7 +25,7 @@ const Table = styled.table`
   border-radius: 0.5rem;
 `;
 export default function ManageBlogs() {
-  const cacheContext = useContext(CacheContext);
+  const cacheContext = useCacheContext();
   const [blogList, setBlogList] = useState([]);
   const [selectedBlogID, setSelectedBlogId] = useState("");
   const router = useRouter();

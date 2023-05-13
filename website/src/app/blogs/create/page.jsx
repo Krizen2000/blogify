@@ -1,10 +1,10 @@
 "use client";
 
 import axios from "axios";
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 
 async function requestBlogCreation(token, data) {
   console.log("requestBlogCreation", data);
@@ -46,7 +46,7 @@ const ButtonWrapper = styled.div`
 `;
 
 export default function CreateBlog() {
-  const cacheContext = useContext(CacheContext);
+  const cacheContext = useCacheContext();
   const [blogId, setBlogId] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");

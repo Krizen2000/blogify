@@ -1,11 +1,11 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
 import { requestBlogDetails } from "./blogDetailingHelper";
 import BlogDetails from "./blogDetails";
 import RecommandedBlogs from "./recommandedBlogs";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 
 const Container = styled.div`
   margin: 3rem;
@@ -17,16 +17,22 @@ const Container = styled.div`
 `;
 
 const initialBlog = { title: "", image: "", description: "", publisher: "" };
-export default function BlogDetailing(props) {
-  const cacheContext = useContext(CacheContext);
-  const { selectedBlogId } = props.params;
+function useRequestBlogDetails(blogId) {
+  const cacheContext = useCacheContext();
   const [blog, setBlog] = useState(initialBlog);
 
   useEffect(() => {
-    requestBlogDetails(cacheContext.cache["token"], selectedBlogId).then(
-      (blogData) => setBlog(blogData)
+    requestBlogDetails(cacheContext.cache["token"], blogId).then((blog) =>
+      setBlog(blog)
     );
-  }, []);
+  }, [cacheContext, blogId]);
+
+  return blog;
+}
+
+export default function BlogDetailing(props) {
+  const { selectedBlogId } = props.params;
+  const blog = useRequestBlogDetails(selectedBlogId);
 
   return (
     <Container>

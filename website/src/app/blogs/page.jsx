@@ -1,10 +1,10 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 import Blog from "../blog";
 import { requestUserBlogs } from "./yourBlogsHelper";
 
@@ -34,32 +34,35 @@ const BlogDisplay = styled.div`
   grid-template-columns: repeat(auto-fit, 25rem);
 `;
 
+function useRequestBlogs() {
+  const [blogs, setBlogs] = useState([]);
+  const cacheContext = useCacheContext();
+  useEffect(() => {
+    requestUserBlogs(cacheContext.cache["token"]).then((blogs) => {
+      setBlogs(blogs);
+    });
+  }, [cacheContext]);
+  return blogs;
+}
+
+function useSearchBlogs(blogs, searchText, setResultBlogs) {
+  useEffect(() => {
+    const resultBlogs = searchText
+      ? blogs.filter((blog) =>
+          blog.title.toLowerCase().includes(searchText.toLowerCase())
+        )
+      : blogs;
+    setResultBlogs(resultBlogs);
+  }, []);
+}
+
 export default function YourBlogs() {
-  const cacheContext = useContext(CacheContext);
-  const [blogList, setBlogList] = useState([]);
-  const [filteredBlogList, setFilteredBlogList] = useState([]);
+  const blogList = useRequestBlogs();
+  const [ResultBlogList, setResultBlogList] = useState(blogList);
   const [searchText, setSearchText] = useState("");
   const router = useRouter();
 
-  const getfilteredBlogs = () =>
-    searchText
-      ? blogList.filter((blog) =>
-          blog.title.toLowerCase().includes(searchText.toLowerCase())
-        )
-      : blogList;
-
-  useEffect(() => {
-    requestUserBlogs(cacheContext.cache["token"]).then((blogs) => {
-      setBlogList(blogs);
-      setFilteredBlogList(blogs);
-    });
-  }, []);
-
-  useEffect(() => {
-    const blogs = getfilteredBlogs();
-    setFilteredBlogList(blogs);
-    console.log("New FilteredBlogs:", filteredBlogList);
-  }, [searchText]);
+  useSearchBlogs(blogList, searchText, setResultBlogList);
 
   return (
     <Container>
@@ -82,7 +85,7 @@ export default function YourBlogs() {
         </div>
       </Wrapper>
       <BlogDisplay>
-        {filteredBlogList.map((blog) => (
+        {ResultBlogList.map((blog) => (
           <Link
             style={{ all: "unset" }}
             href={`blogs/${blog.blogId}`}

@@ -1,9 +1,9 @@
 "use client";
 
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import styled from "styled-components";
-import { CacheContext } from "@context/cacheProvider";
+import { useCacheContext } from "@context/cacheProvider";
 import { requestBlogDetails, requestBlogUpdation } from "./editBlogHelper";
 
 const Container = styled.div`
@@ -32,7 +32,7 @@ const ButtonWrapper = styled.div`
 `;
 
 export default function EditBlog(props) {
-  const cacheContext = useContext(CacheContext);
+  const cacheContext = useCacheContext();
   const { selectedBlogId } = props.params;
   const [blogId, setBlogId] = useState("");
   const [title, setTitle] = useState("");

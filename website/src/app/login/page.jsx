@@ -4,8 +4,8 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
 import styled from "styled-components";
-import { useContext, useState } from "react";
-import { CacheContext } from "@context/cacheProvider";
+import { useState } from "react";
+import { useCacheContext } from "@context/cacheProvider";
 
 const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g;
 const isValidPhoneNumber = /^[0-9]|[\+]/g;
@@ -63,7 +63,7 @@ const ButtonWrapper = styled.div`
 `;
 
 export default function Login() {
-  const cacheContext = useContext(CacheContext);
+  const cacheContext = useCacheContext();
   const [loginId, setLoginId] = useState("");
   const [password, setPassword] = useState("");
 
