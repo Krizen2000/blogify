@@ -8,4 +8,5 @@
 # misc
 /api/.env
 /website/.env
-/website/stats.json
+/website/analyze
+/website/.next

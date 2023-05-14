@@ -4,7 +4,7 @@
 - The site is built with react, bootstrap, webpack
 - The api is built with node, express, mongodb with JWT Auth
 
-#### Minimum Requirements:
+#### Minimum Requirements
 
 1. CPU: 2core
 2. RAM: 4GB
@@ -41,5 +41,13 @@ CORS_URL = "http://localhost:3000"
 
 ```
 # API URL [if running locally use "http://localhost:3120"]
-REACT_APP_API_URL="<your-backend-url>"
+NEXT_PUBLIC_API_URL="<your-backend-url>"
+```
+
+# Perform Analysis
+
+To do a quick view of the size of the website while testing, run the following command:
+
+```
+npm run analyze
 ```
