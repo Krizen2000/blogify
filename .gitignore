@@ -4,9 +4,9 @@
 
 # production
 /website/build/
+/website/.next
 
 # misc
 /api/.env
 /website/.env
 /website/analyze
-/website/.next
