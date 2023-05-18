@@ -1,3 +1,46 @@
+@import "bootstrap-icons/font/bootstrap-icons.css";
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --clr-txt: #e9dfe0;
+  --clr-bg: #0e0a18;
+  --clr-primary: #4717f7;
+  --clr-secondary: #241f31;
+  --clr-accent: #a43acb;
+
+  --size-100: 0.25rem;
+  --size-200: 0.5rem;
+  --size-300: 0.75rem;
+  --size-400: 1rem;
+  --size-500: 1.25rem;
+  --size-600: 1.5rem;
+  --size-700: 1.75rem;
+  --size-800: 2rem;
+  --size-900: 2.25rem;
+  --size-1000: 2.5rem;
+  --size-1100: 2.75rem;
+  --size-1200: 3rem;
+  --size-1300: 3.25rem;
+  --size-1400: 3.5rem;
+  --size-1500: 3.75rem;
+  --size-1600: 4rem;
+
+  --border-100: 0.0625rem;
+  --border-200: 0.125rem;
+  --border-300: 0.1875rem;
+  --border-400: 0.25rem;
+  /* --border-500: 0.
+  --border-600: 0.
+  --border-700: 0.
+  --border-800: 0.
+  --border-900: 0. */
+}
+
 body {
-    background-color: var(--bs-gray-300);
+  color: var(--clr-txt);
+  background-color: var(--clr-bg);
 }

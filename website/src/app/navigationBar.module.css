@@ -1,0 +1,101 @@
+div.navigation-container {
+  margin: var(--size-1600);
+  display: flex;
+  gap: var(--size-600);
+  justify-content: space-between;
+  align-items: center;
+}
+
+div.logo-container {
+  display: flex;
+  gap: 1rem;
+  max-height: 6rem;
+  align-items: center;
+  justify-content: center;
+}
+
+img.logo-icon {
+  max-height: 4rem;
+  max-width: 4rem;
+}
+
+p.logo-name {
+  margin: 0;
+}
+
+button.nav-toggle {
+  cursor: pointer;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  height: 3rem;
+  aspect-ratio: 1;
+  padding: var(--size-200);
+  background-color: transparent;
+  border: var(--border-100) solid var(--clr-txt);
+}
+
+i.icon-hamburger {
+  font-size: 2rem;
+  color: var(--clr-txt);
+}
+
+i.icon-close {
+  display: none;
+  font-size: 2rem;
+  color: var(--clr-txt);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+nav.navigation-wrapper {
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+}
+
+.navigation-list {
+  margin: 0;
+  list-style-type: none;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  gap: var(--size-600);
+}
+
+li.navigation-item {
+  color: var(--clr-txt);
+}
+
+.navigation-item:nth-child(1) {
+  margin-left: auto;
+}
+
+.navigation-item:nth-child(4) {
+  flex-grow: 1;
+}
+
+@media (max-width: 56.25rem) {
+  div.navigation-container {
+    margin: var(--size-800);
+  }
+
+  button.nav-toggle {
+    /* * NOTE: flex and align-items-center is needed to place bootstrap icon bcoz of bug */
+    display: flex;
+  }
+
+  nav.navigation-wrapper {
+    display: none;
+  }
+}
