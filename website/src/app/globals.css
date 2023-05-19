@@ -6,11 +6,17 @@
 }
 
 :root {
-  --clr-txt: #e9dfe0;
-  --clr-bg: #0e0a18;
-  --clr-primary: #4717f7;
-  --clr-secondary: #241f31;
-  --clr-accent: #a43acb;
+  --clr-txt: 233, 223, 224;
+  --clr-bg: 14, 10, 24;
+  --clr-primary: 71, 23, 247;
+  --clr-secondary: 36, 31, 49;
+  --clr-accent: 164, 58, 203;
+
+  --clr-txt-rgb: #e9dfe0;
+  --clr-bg-rgb: #0e0a18;
+  --clr-primary-rgb: #4717f7;
+  --clr-secondary-rgb: #241f31;
+  --clr-accent-rgb: #a43acb;
 
   --size-100: 0.25rem;
   --size-200: 0.5rem;
@@ -28,6 +34,12 @@
   --size-1400: 3.5rem;
   --size-1500: 3.75rem;
   --size-1600: 4rem;
+  --size-1700: 4.25rem
+  --size-1800: 4.5rem
+  --size-1900: 4.75rem
+  --size-2000: 5rem
+  --size-2100: 5.25rem
+  --size-2200: 5.5rem
 
   --border-100: 0.0625rem;
   --border-200: 0.125rem;
@@ -41,6 +53,6 @@
 }
 
 body {
-  color: var(--clr-txt);
-  background-color: var(--clr-bg);
+  color: var(--clr-txt-rgb);
+  background-color: var(--clr-bg-rgb);
 }

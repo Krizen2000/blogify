@@ -5,9 +5,20 @@ import LogoIcon from "@image/logo.svg";
 import Image from "next/image";
 import Link from "next/link";
 import useCheckLoggedIn from "./useCheckLoggedIn";
+import { useRef } from "react";
 
 const NavigationBar: React.FC = () => {
   const isLoggedIn = useCheckLoggedIn();
+  const hamburgerIcon = useRef<HTMLElement>(null);
+  const closeIcon = useRef<HTMLElement>(null);
+  const navWrapper = useRef<HTMLElement>(null);
+
+  const toggleNavVisibility = () => {
+    navWrapper.current?.toggleAttribute("data-visible");
+    hamburgerIcon.current?.toggleAttribute("icon-visible");
+    closeIcon.current?.toggleAttribute("icon-visible");
+  };
+
   return (
     <div className={styles["navigation-container"]}>
       <div className={styles["logo-container"]}>
@@ -18,45 +29,58 @@ const NavigationBar: React.FC = () => {
         />
         <p className={styles["logo-name"]}>Blogify</p>
       </div>
-      <button
-        className={styles["nav-toggle"]}
-        aria-controls="primary-navigation"
-      >
-        <i className={`bi-list ${styles["icon-hamburger"]}`} />
-        <i className={`bi-x ${styles["icon-close"]}`} />
-        <span className={styles["visually-hidden"]}>Menu</span>
+      <button className={styles["nav-toggle"]} onClick={toggleNavVisibility}>
+        <i
+          ref={hamburgerIcon}
+          className={`bi-list ${styles["icon-hamburger"]}`}
+        />
+        <i ref={closeIcon} className={`bi-x ${styles["icon-close"]}`} />
       </button>
-      <nav className={styles["navigation-wrapper"]}>
-        <ul className={styles["navigation-list"]} id="primary-navigation">
+      <nav ref={navWrapper} className={styles["navigation-wrapper"]}>
+        <ul className={styles["navigation-list"]}>
           <li className={styles["navigation-item"]}>
-            <Link href="/" />
-            Home
+            <Link className={styles["link"]} href="/">
+              Home
+            </Link>
           </li>
           <li className={styles["navigation-item"]}>
-            <Link href="/blogs" />
-            Blogs
+            <Link className={styles["link"]} href="/blogs">
+              Blogs
+            </Link>
           </li>
           <li className={styles["navigation-item"]}>
-            <Link href="/pricing" />
-            Pricing
+            <Link className={styles["link"]} href="/pricing">
+              Pricing{" "}
+            </Link>
           </li>
           <li className={styles["navigation-item"]}>
-            <Link href="/communities" />
-            Communities
+            <Link className={styles["link"]} href="/communities">
+              Communities{" "}
+            </Link>
           </li>
 
-          <li className={styles["navigation-item"]}>
-            <Link href="/signup" />
-            Signup
-          </li>
-          <li className={styles["navigation-item"]}>
-            <Link href="/login" />
-            Login
-          </li>
-          <li className={styles["navigation-item"]}>
-            <Link href="/profile" />
-            Profile
-          </li>
+          {!isLoggedIn ? (
+            <>
+              <li className={styles["navigation-item"]}>
+                <Link className={styles["link"]} href="/signup">
+                  Signup{" "}
+                </Link>
+              </li>
+              <li className={styles["navigation-item"]}>
+                <Link className={styles["link"]} href="/login">
+                  Login{" "}
+                </Link>
+              </li>
+            </>
+          ) : (
+            <>
+              <li className={styles["navigation-item"]}>
+                <Link className={styles["link"]} href="/profile">
+                  Profile
+                </Link>
+              </li>
+            </>
+          )}
         </ul>
       </nav>
     </div>
