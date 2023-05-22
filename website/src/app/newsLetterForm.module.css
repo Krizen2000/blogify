@@ -1,0 +1,23 @@
+form.form {
+  display: flex;
+  gap: 0.5rem;
+}
+input.newsletter-box {
+  padding-inline: 1rem;
+  background-color: var(--clr-secondary-rgb);
+  border: var(--border-200) solid var(--clr-secondary-rgb);
+  border-radius: 1rem;
+}
+
+input.newsletter-box:focus {
+  outline: none;
+  border: var(--border-200) solid var(--clr-primary-rgb);
+}
+
+button.cta-btn {
+  font-size: 0.85rem;
+  padding: 0.25rem 0.5rem;
+  background-color: var(--clr-primary-rgb);
+  border: 0.125rem solid var(--clr-primary-rgb);
+  border-radius: 1rem;
+}

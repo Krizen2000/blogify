@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./globals.css";
 import CacheProvider from "@context/cacheProvider";
 import NavigationBar from "./navigationBar";
+import Footer from "./footer";
 
 export const metadata = {
   title: "Next.js",
@@ -23,6 +24,7 @@ export default function RootLayout({
         <CacheProvider>
           <NavigationBar />
           {children}
+          <Footer />
         </CacheProvider>
       </body>
     </html>

@@ -1,0 +1,56 @@
+footer.footer {
+  margin-inline: var(--size-1600);
+  margin-block: var(--size-800);
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+h2.website-name {
+  font-size: 2rem;
+  font-weight: 500;
+}
+
+div.footer-container {
+  display: flex;
+  gap: 5rem;
+}
+
+p.footer-element-title,
+p.newsletter-text {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 400;
+}
+p.newsletter-text {
+  text-align: center;
+}
+
+nav.secondary-navigation,
+address.contact-links {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+
+div.page-navigation,
+div.contacts-container {
+  display: grid;
+  gap: 1rem;
+  align-content: start;
+}
+
+div.newsletter-container {
+  display: grid;
+  align-content: center;
+  gap: 2rem;
+}
+
+a.link {
+  text-decoration: none;
+  color: var(--clr-txt-rgb);
+  transition: 250ms color;
+}
+a.link:hover {
+  color: var(--clr-primary-rgb);
+}
