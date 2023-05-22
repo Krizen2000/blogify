@@ -1,6 +1,7 @@
 footer.footer {
   margin-inline: var(--size-1600);
   margin-block: var(--size-800);
+  padding-inline: var(--size-800);
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -21,6 +22,9 @@ p.newsletter-text {
   margin: 0;
   font-size: 1.25rem;
   font-weight: 400;
+}
+p.footer-element-title {
+  margin-left: -1rem;
 }
 p.newsletter-text {
   text-align: center;
