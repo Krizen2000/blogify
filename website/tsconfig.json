@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "strict": true,
@@ -24,18 +20,10 @@
       }
     ],
     "paths": {
-      "@image/*": [
-        "./image/*"
-      ],
-      "@context/*": [
-        "./src/context/*"
-      ],
-      "@app/*": [
-        "./src/app/*"
-      ],
-      "@/*": [
-        "./src/*"
-      ]
+      "@image/*": ["./image/*"],
+      "@context/*": ["./src/context/*"],
+      "@app/*": ["./src/app/*"],
+      "@/*": ["./src/*"]
     }
   },
   "include": [
@@ -43,10 +31,8 @@
     "**/*.ts",
     "**/*.tsx",
     ".next/types/**/*.ts",
-    "src/app/page.jsx",
+    "src/app/page.tsx",
     "build/types/**/*.ts"
   ],
-  "exclude": [
-    "node_modules"
-  ]
+  "exclude": ["node_modules"]
 }

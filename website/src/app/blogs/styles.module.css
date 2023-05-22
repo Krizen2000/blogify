@@ -1,0 +1,15 @@
+div.input-group {
+  display: inline-flex;
+  position: relative;
+}
+
+input.search-bar {
+  padding: 0 var(--size-700) 0 0;
+}
+
+i.icon {
+  color: var(--clr-txt-rgb);
+  position: absolute;
+  right: 0.5rem;
+  z-index: 5;
+}

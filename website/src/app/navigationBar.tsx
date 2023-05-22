@@ -21,14 +21,14 @@ const NavigationBar: React.FC = () => {
 
   return (
     <div className={styles["navigation-container"]}>
-      <div className={styles["logo-container"]}>
+      <Link href="/" className={styles["logo-container"]}>
         <Image
           className={styles["logo-icon"]}
           src={LogoIcon}
           alt="blogify-logo"
         />
         <p className={styles["logo-name"]}>Blogify</p>
-      </div>
+      </Link>
       <button className={styles["nav-toggle"]} onClick={toggleNavVisibility}>
         <i
           ref={hamburgerIcon}
