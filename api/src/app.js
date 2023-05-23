@@ -5,6 +5,7 @@ const authRouter = require("./routes/authRoute");
 const blogRouter = require("./routes/blogRoute");
 const communitiesRouter = require("./routes/communityRoute");
 const commentRouter = require("./routes/commentRoute");
+const newsSubscriberRouter = require("./routes/newsSubscriber");
 
 const app = express();
 
@@ -16,5 +17,6 @@ app.use("/api/users", userRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/communities", communitiesRouter);
 app.use("/api/comment", commentRouter);
+app.use("/api/newsletter", newsSubscriberRouter);
 
 module.exports = app;
