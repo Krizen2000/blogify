@@ -21,3 +21,10 @@ button.cta-btn {
   border: 0.125rem solid var(--clr-primary-rgb);
   border-radius: 1rem;
 }
+
+i.completed-icon {
+  display: inline-flex;
+  justify-self: center;
+  font-size: 3rem;
+  color: var(--clr-primary-rgb);
+}

@@ -18,7 +18,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <meta name="color-scheme" content="dark light" />
+        <meta name="color-scheme" content="dark" />
       </head>
       <body>
         <CacheProvider>

@@ -11,6 +11,7 @@ export const useCacheContext = () => useContext(CacheContext);
 const initialCache = {
   token: null,
   name: null,
+  isSubscribed: false,
 };
 
 function useLoadCache() {
