@@ -1,19 +1,19 @@
 "use client";
-import { FormEvent, useRef } from "react";
+import { FormEvent, SetStateAction, useRef } from "react";
 import styles from "./newsLetterForm.module.css";
 import axios, { AxiosResponse } from "axios";
 import { useCacheContext } from "@context/cacheProvider";
 import { useEffect, useState } from "react";
 
-function useCheckSubscribed(): boolean {
+function useCheckSubscribed() {
   let [isSubscribed, setIsSubscribed] = useState<boolean>(false);
   const cacheContext = useCacheContext();
 
   useEffect(() => {
     setIsSubscribed(cacheContext.cache["isSubscribed"] ? true : false);
-  }, [cacheContext]);
+  }, [cacheContext.cache["isSubscribed"]]);
 
-  return isSubscribed;
+  return { isSubscribed, setIsSubscribed };
 }
 
 const uploadCredentials = async (email: string): Promise<boolean> => {
@@ -31,7 +31,7 @@ const uploadCredentials = async (email: string): Promise<boolean> => {
 
 const NewsLetterForm: React.FC = () => {
   const cacheContext = useCacheContext();
-  const isSubscribed = useCheckSubscribed();
+  let { isSubscribed, setIsSubscribed } = useCheckSubscribed();
   const newsLetterBox = useRef<HTMLInputElement>(null);
   const submitAction = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -40,6 +40,7 @@ const NewsLetterForm: React.FC = () => {
     if (!email) return;
     uploadCredentials(email).then(() => {
       cacheContext.setCache((cache: {}) => ({ ...cache, isSubscribed: true }));
+      setIsSubscribed(true);
     });
   };
   return (
