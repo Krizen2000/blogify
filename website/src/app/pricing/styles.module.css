@@ -1,0 +1,83 @@
+main.pricing-component {
+  margin-inline: var(--size-1600);
+  margin-bottom: 6rem;
+  display: grid;
+  justify-content: center;
+  gap: 15rem;
+}
+
+section.pricing-card-section {
+  display: grid;
+  gap: 3.5rem;
+  justify-content: center;
+  justify-items: center;
+}
+
+/* h1.main-header-text {
+  font-size: 5rem;
+  font-weight: 900;
+  font-family: Maitree;
+  display: grid;
+  justify-items: center;
+  text-align: center;
+  letter-spacing: 0.15rem;
+} */
+
+h1.header-text {
+  font-size: 3rem;
+  font-weight: 700;
+  font-family: Maitree;
+  display: grid;
+  justify-items: center;
+}
+
+p.description-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  font-family: Cairo;
+  text-align: center;
+}
+
+p.title-text {
+  font-size: 1.125rem;
+  font-weight: 500;
+  font-family: Cairo;
+  text-align: center;
+}
+
+div.card-holder {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-auto-rows: 1fr;
+  gap: 2rem;
+}
+
+article.card {
+  padding: 1.2rem 1.75rem;
+  display: grid;
+  gap: 1.25rem;
+  justify-items: center;
+  align-content: start;
+  border: var(--border-300) solid var(--clr-secondary-rgb);
+}
+
+header.header {
+  display: grid;
+  justify-self: start;
+}
+
+p.feature-text {
+  font-size: 1.25rem;
+  font-weight: 700;
+  text-align: start;
+}
+
+p.feature-title,
+li.feature-item {
+  font-size: 1rem;
+  font-weight: 300;
+}
+p.feature-title {
+  justify-self: start;
+  text-align: start;
+}

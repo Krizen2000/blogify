@@ -1,110 +1,103 @@
+import styles from "./styles.module.css";
+
 const Pricing: React.FC = () => {
   return (
-    <>
-      <p>PRICING</p>
-      <h1>Get Started Now! Pick A Plan Later</h1>
-      <p>Try The Free Plan And Get Access To Our Products</p>\
-      <button>
-        <div>Bill Yearly</div>
-        <div>Bill Monthly</div>
-      </button>
-      <div>
-        <article>
-          <header>
-            <p>Free</p>
-            <p>₹ 0 per annum</p>
-          </header>
-          <ul>
-            <li>Creation of blogs and content</li>
-            <li>Access to other communities</li>
-            <li>Forum Tech Support</li>
-          </ul>
-          <button>Try for Free</button>
-        </article>
-        <article>
-          <header>
-            <p>Starter</p>
-            <p>₹ 100 per annum</p>
-          </header>
-          <ul>
-            <li>Creation of blogs and content</li>
-            <li>Access to other communities</li>
-            <li>Forum Tech Support</li>
-            <li>Email Tech Support</li>
-            <li>Limited Access to Premium</li>
-          </ul>
-          <button>Subscribe</button>
-        </article>
-        <article>
-          <header>
-            <p>Pro</p>
-            <p>₹ 1000 per annum</p>
-          </header>
-          <ul>
-            <li>Creation of blogs and content</li>
-            <li>Access to other communities</li>
-            <li>Forum Tech Support</li>
-            <li>Email Tech Support</li>
-            <li>Call Tech Support</li>
-            <li>Full Access to Premium</li>
-            <li>Full Access to Beta</li>
-          </ul>
-          <button>Subscribe</button>
-        </article>
-        <article>
-          <header>
-            <p>Enterprise</p>
-            <p>Custom</p>
-          </header>
-          <ul>
-            <li>Creation of blogs and content</li>
-            <li>Access to other communities</li>
-            <li>Forum Tech Support</li>
-            <li>Email Tech Support</li>
-            <li>Call Tech Support</li>
-            <li>24/7 Live Support</li>
-            <li>Full Access to Premium</li>
-            <li>Full Access to Beta</li>
-            <li>Custom Payment Cycle</li>
-            <li></li>
-          </ul>
-          <button>Subscribe</button>
-        </article>
-      </div>
-      {/* CLIENT COMPONENT */}
+    <main className={styles["pricing-component"]}>
+      <section className={styles["pricing-card-section"]}>
+        <p className={styles["title-text"]}>PRICING</p>
+        <h1 className={styles["header-text"]}>
+          Get Started Now! Pick A Plan Later
+        </h1>
+        <p className={styles["description-text"]}>
+          Try The Free Plan And Get Access To Our Products
+        </p>
+        <button>
+          <div>Bill Yearly</div>
+          <div>Bill Monthly</div>
+        </button>
+        <div className={styles["card-holder"]}>
+          <article className={styles["card"]}>
+            <header className={styles["header"]}>
+              <p className={styles["feature-title"]}>Free</p>
+              <p className={styles["feature-text"]}>₹ 0 per annum</p>
+            </header>
+            <ul>
+              <li className={styles["feature-item"]}>
+                Creation of blogs and content
+              </li>
+              <li className={styles["feature-item"]}>
+                Access to other communities
+              </li>
+              <li className={styles["feature-item"]}>Forum Tech Support</li>
+            </ul>
+            <button>Try for Free</button>
+          </article>
+          <article className={styles["card"]}>
+            <header className={styles["header"]}>
+              <p className={styles["feature-title"]}>Starter</p>
+              <p className={styles["feature-text"]}>₹ 100 per annum</p>
+            </header>
+            <ul>
+              <li className={styles["feature-item"]}>
+                Creation of blogs and content
+              </li>
+              <li className={styles["feature-item"]}>
+                Access to other communities
+              </li>
+              <li className={styles["feature-item"]}>Forum Tech Support</li>
+              <li className={styles["feature-item"]}>Email Tech Support</li>
+              <li className={styles["feature-item"]}>
+                Limited Access to Premium
+              </li>
+            </ul>
+            <button>Subscribe</button>
+          </article>
+          <article className={styles["card"]}>
+            <header className={styles["header"]}>
+              <p className={styles["feature-title"]}>Pro</p>
+              <p className={styles["feature-text"]}>₹ 1000 per annum</p>
+            </header>
+            <ul>
+              <li className={styles["feature-item"]}>
+                Creation of blogs and content
+              </li>
+              <li className={styles["feature-item"]}>
+                Access to other communities
+              </li>
+              <li className={styles["feature-item"]}>Email Tech Support</li>
+              <li className={styles["feature-item"]}>Call Tech Support</li>
+              <li className={styles["feature-item"]}>Full Access to Premium</li>
+              <li className={styles["feature-item"]}>Full Access to Beta</li>
+            </ul>
+            <button>Subscribe</button>
+          </article>
+          <article className={styles["card"]}>
+            <header className={styles["header"]}>
+              <p className={styles["feature-title"]}>Enterprise</p>
+              <p className={styles["feature-text"]}>Custom</p>
+            </header>
+            <ul>
+              <li className={styles["feature-item"]}>
+                Creation of blogs and content
+              </li>
+              <li className={styles["feature-item"]}>
+                Access to other communities
+              </li>
+              <li className={styles["feature-item"]}>Email Tech Support</li>
+              <li className={styles["feature-item"]}>Call Tech Support</li>
+              <li className={styles["feature-item"]}>24/7 Live Support</li>
+              <li className={styles["feature-item"]}>Full Access to Premium</li>
+              <li className={styles["feature-item"]}>Full Access to Beta</li>
+              <li className={styles["feature-item"]}>Custom Payment Cycle</li>
+            </ul>
+            <button>Subscribe</button>
+          </article>
+        </div>
+      </section>
       <aside>
         <p>Compare all the features</p>
-        <table>
-          <thead>
-            <th>Plans</th>
-            <th>Creation of blogs and content</th>
-            <th>Access to other communities</th>
-            <th>Forum Tech Support</th>
-            <th>Email Tech Support</th>
-            <th>Call Tech Support</th>
-            <th>24/7 Live Support</th>
-            <th>Full Access to Premium</th>
-            <th>Full Access to Beta</th>
-            <th>Custom Payment Cycle</th>
-          </thead>
-          <tbody>
-            <tr>
-              <th>Free</th>
-            </tr>
-            <tr>
-              <th>Starter</th>
-            </tr>
-            <tr>
-              <th>Pro</th>
-            </tr>
-            <tr>
-              <th>Enterprise</th>
-            </tr>
-          </tbody>
-        </table>
       </aside>
-      {/* END */}
-    </>
+    </main>
   );
 };
 
