@@ -1,113 +1,52 @@
+import FeaturedBlogs from "@app/featuredBlogs";
 import styles from "./styles.module.css";
 
 const Blogs: React.FC = () => {
   return (
-    <>
-      <h1>Content Search</h1>
-      <p>
-        Search for blogs using Creator's name, Blog title, Categories or Tags
-      </p>
-      <div className={styles["input-group"]}>
-        <input type="text" className={styles["search-bar"]} />
-        <i className={`bi-search ${styles["icon"]}`} />
-      </div>
-      <h2>Today's Featured Blogs</h2>
-      <p>Look at these exciting blogs for the day</p>
-      <div style={{ display: "flex" }}>
-        <svg height="6rem" width="6rem">
-          <rect
-            x="10"
-            y="10"
-            height="5rem"
-            width="5rem"
-            style={{
-              stroke: "var(--clr-txt-rgb)",
-              strokeWidth: "var(--size-200)",
-            }}
-          />
-        </svg>
-        <svg height="6rem" width="6rem">
-          <rect
-            x="10"
-            y="10"
-            height="5rem"
-            width="5rem"
-            style={{
-              stroke: "var(--clr-txt-rgb)",
-              strokeWidth: "var(--size-200)",
-            }}
-          />
-        </svg>
-        <svg height="6rem" width="6rem">
-          <rect
-            x="10"
-            y="10"
-            height="5rem"
-            width="5rem"
-            style={{
-              stroke: "var(--clr-txt-rgb)",
-              strokeWidth: "var(--size-200)",
-            }}
-          />
-        </svg>
-      </div>
-      <button>
-        See More
-        <i className="bi-arrow-down" />
-      </button>
+    <main className={styles["blogs-component"]}>
+      <section className={styles["search-section"]}>
+        <h1 className={styles["main-header-text"]}>Content Search</h1>
+        <p className={styles["description-text"]}>
+          Search for blogs using Creator's name, Blog title, Categories or Tags
+        </p>
+        <div className={styles["input-group"]}>
+          <input type="text" className={styles["search-bar"]} />
+          <i className={`bi-search ${styles["icon"]}`} />
+        </div>
+      </section>
+      <section className={styles["featured-blogs"]}>
+        <h2 className={styles["header-text"]}>Today's Featured Blogs</h2>
+        <p className={styles["description-text"]}>
+          Look at these exciting blogs for the day
+        </p>
+        <FeaturedBlogs />
+        <button>
+          See More
+          <i className="bi-arrow-down" />
+        </button>
+      </section>
 
-      <h2>Popular Reads</h2>
-      <p>These are chosen based on multiple reviews by our communities.</p>
-      <div style={{ display: "flex" }}>
-        <svg height="6rem" width="6rem">
-          <rect
-            x="10"
-            y="10"
-            height="5rem"
-            width="5rem"
-            style={{
-              stroke: "var(--clr-txt-rgb)",
-              strokeWidth: "var(--size-200)",
-            }}
-          />
-        </svg>
-        <svg height="6rem" width="6rem">
-          <rect
-            x="10"
-            y="10"
-            height="5rem"
-            width="5rem"
-            style={{
-              stroke: "var(--clr-txt-rgb)",
-              strokeWidth: "var(--size-200)",
-            }}
-          />
-        </svg>
-        <svg height="6rem" width="6rem">
-          <rect
-            x="10"
-            y="10"
-            height="5rem"
-            width="5rem"
-            style={{
-              stroke: "var(--clr-txt-rgb)",
-              strokeWidth: "var(--size-200)",
-            }}
-          />
-        </svg>
-      </div>
-      <button>
-        See More
-        <i className="bi-arrow-down" />
-      </button>
+      <section className={styles["popular-blogs"]}>
+        <h2 className={styles["header-text"]}>Popular Reads</h2>
+        <p className={styles["description-text"]}>
+          These are chosen based on multiple reviews by our communities.
+        </p>
+        <FeaturedBlogs />
+        <button>
+          See More
+          <i className="bi-arrow-down" />
+        </button>
+      </section>
 
-      <h2>Historical Archive</h2>
-      <p>
-        Past Trends and Contents are stored for future references and archival
-        purposes.
-      </p>
-      {/* Image rotating here */}
-    </>
+      <section className={styles["historical-section"]}>
+        <h2 className={styles["header-text"]}>Historical Archive</h2>
+        <p className={styles["description-text"]}>
+          Past Trends and Contents are stored for future references and archival
+          purposes.
+        </p>
+        {/* Image rotating here */}
+      </section>
+    </main>
   );
 };
 
