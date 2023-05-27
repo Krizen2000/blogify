@@ -1,32 +1,10 @@
 "use client";
 
+import styles from "./style.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import styled from "styled-components";
 import { useCacheContext } from "@context/cacheProvider";
 import { requestUserInfo, requestUserInfoUpdate } from "./profileHelper";
-
-const Container = styled.div`
-  display: grid;
-  gap: 1rem;
-`;
-const BackButton = styled.button`
-  min-height: 5rem;
-  min-width: 5rem;
-`;
-const Icon = styled.i`
-  font-size: ${({ iconSize }) => iconSize || "2rem"};
-`;
-const CredentialSection = styled.section``;
-const CredentialForm = styled.form`
-  display: grid;
-  margin: 0rem 1rem;
-  padding: 2rem;
-  gap: 0.5rem;
-  background-color: var(--bs-gray-100);
-  border: 0.00625rem solid var(--bs-gray-500);
-  border-radius: 0.5rem;
-`;
 
 const initialIsDisabled = {
   firstName: true,
@@ -59,6 +37,7 @@ export default function Profile() {
   const [updateUserInfo, setUpdateUserInfo] = useState(false);
   const [isDisabled, setIsDisabled] = useState(initialIsDisabled);
 
+  // @ts-ignore
   const isUserInfoChanged = (entry) => userInfo[entry] !== newUserInfo[entry];
   const router = useRouter();
 
@@ -75,6 +54,7 @@ export default function Profile() {
     setUpdateUserInfo(false);
 
     let userData = { ...newUserInfo };
+    // @ts-ignore
     if (shareCommute) userData["commute"] = commute;
 
     requestUserInfoUpdate(cacheContext.cache["token"], userData).then(() =>
@@ -83,23 +63,17 @@ export default function Profile() {
   }, [updateUserInfo]);
 
   return (
-    <Container>
-      <div className="d-flex align-items-center gap-1">
-        <BackButton className="btn" onClick={() => router.back()}>
-          <Icon className="bi-arrow-left" />
-        </BackButton>
-        <h1>Profile</h1>
-      </div>
-      <CredentialSection>
-        <div className="d-flex align-items-center gap-3">
-          <Icon className="bi-person-circle" iconSize="4rem" />
+    <main className={styles["profile-container"]}>
+      <h1>Profile</h1>
+      <section>
+        <div>
+          <i className={`bi-person-circle ${styles["person-icon"]}`} />
           <h3>Personal Information:</h3>
         </div>
-        <CredentialForm>
-          <label className="form-label m-0">First Name</label>
-          <div className="d-flex align-items-center">
+        <form className={styles["credentials"]}>
+          <label>First Name</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.firstName}
               onChange={(e) =>
@@ -109,7 +83,6 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -118,18 +91,16 @@ export default function Profile() {
                 if (isUserInfoChanged("firstName")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={
+              <i
+                className={`icon ${
                   isDisabled.firstName ? "bi-pencil-square" : "bi-save"
-                }
-                iconSize="2rem"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Last Name</label>
-          <div className="d-flex align-items-center">
+          <label>Last Name</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.lastName}
               onChange={(e) =>
@@ -139,7 +110,6 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -148,16 +118,16 @@ export default function Profile() {
                 if (isUserInfoChanged("lastName")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={isDisabled.lastName ? "bi-pencil-square" : "bi-save"}
-                iconSize="2rem"
+              <i
+                className={`icon ${
+                  isDisabled.lastName ? "bi-pencil-square" : "bi-save"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Profession</label>
-          <div className="d-flex align-items-center">
+          <label>Profession</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.profession}
               onChange={(e) =>
@@ -167,7 +137,6 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -176,18 +145,16 @@ export default function Profile() {
                 if (isUserInfoChanged("profession")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={
+              <i
+                className={`icon ${
                   isDisabled.profession ? "bi-pencil-square" : "bi-save"
-                }
-                iconSize="2rem"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Phone Number</label>
-          <div className="d-flex align-items-center">
+          <label>Phone Number</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.phoneNumber}
               onChange={(e) =>
@@ -197,7 +164,6 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -206,18 +172,16 @@ export default function Profile() {
                 if (isUserInfoChanged("phoneNumber")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={
+              <i
+                className={`icon ${
                   isDisabled.phoneNumber ? "bi-pencil-square" : "bi-save"
-                }
-                iconSize="2rem"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Email</label>
-          <div className="d-flex align-items-center">
+          <label>Email</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.email}
               onChange={(e) =>
@@ -227,30 +191,29 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({ ...isDisabled, email: !isDisabled.email });
                 if (isUserInfoChanged("email")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={isDisabled.email ? "bi-pencil-square" : "bi-save"}
-                iconSize="2rem"
+              <i
+                className={`icon ${
+                  isDisabled.email ? "bi-pencil-square" : "bi-save"
+                }`}
               />
             </button>
           </div>
-        </CredentialForm>
-      </CredentialSection>
-      <CredentialSection>
+        </form>
+      </section>
+      <section>
         <div className="d-flex align-items-center gap-3">
-          <Icon className="bi-telephone-fill" iconSize="4rem" />
+          <i className={`bi-telephone-fill ${styles["icon"]}`} />
           <h3>Communication Channel:</h3>
         </div>
-        <CredentialForm>
-          <label className="form-label m-0">Discord</label>
-          <div className="d-flex align-items-center">
+        <form className={styles["credentials"]}>
+          <label>Discord</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.discord}
               onChange={(e) =>
@@ -260,22 +223,21 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({ ...isDisabled, discord: !isDisabled.discord });
                 if (isUserInfoChanged("discord")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={isDisabled.discord ? "bi-pencil-square" : "bi-save"}
-                iconSize="2rem"
+              <i
+                className={`icon ${
+                  isDisabled.discord ? "bi-pencil-square" : "bi-save"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Instagram</label>
-          <div className="d-flex align-items-center">
+          <label>Instagram</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.instagram}
               onChange={(e) =>
@@ -285,7 +247,6 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -294,18 +255,16 @@ export default function Profile() {
                 if (isUserInfoChanged("instagram")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={
+              <i
+                className={`icon ${
                   isDisabled.instagram ? "bi-pencil-square" : "bi-save"
-                }
-                iconSize="2rem"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Facebook</label>
-          <div className="d-flex align-items-center">
+          <label>Facebook</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.facebook}
               onChange={(e) =>
@@ -315,7 +274,6 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -324,16 +282,16 @@ export default function Profile() {
                 if (isUserInfoChanged("facebook")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={isDisabled.facebook ? "bi-pencil-square" : "bi-save"}
-                iconSize="2rem"
+              <i
+                className={`icon ${
+                  isDisabled.facebook ? "bi-pencil-square" : "bi-save"
+                }`}
               />
             </button>
           </div>
-          <label className="form-label m-0">Twitter</label>
-          <div className="d-flex align-items-center">
+          <label>Twitter</label>
+          <div>
             <input
-              className="form-control"
               type="text"
               value={newUserInfo.twitter}
               onChange={(e) =>
@@ -343,27 +301,26 @@ export default function Profile() {
             />
             <button
               type="button"
-              className="btn"
               onClick={(e) => {
                 setIsDisabled({ ...isDisabled, twitter: !isDisabled.twitter });
                 if (isUserInfoChanged("twitter")) setUpdateUserInfo(true);
               }}
             >
-              <Icon
-                className={isDisabled.twitter ? "bi-pencil-square" : "bi-save"}
-                iconSize="2rem"
+              <i
+                className={`icon ${
+                  isDisabled.twitter ? "bi-pencil-square" : "bi-save"
+                }`}
               />
             </button>
           </div>
-        </CredentialForm>
-      </CredentialSection>
-      <CredentialSection>
+        </form>
+      </section>
+      <section>
         <h3>Blog Peference</h3>
-        <CredentialForm>
-          <div className="d-flex gap-2 align-items-center ">
-            <p className="m-0 text-nowrap">{"Communicate via:"}</p>
+        <form className={styles["credentials"]}>
+          <div>
+            <p>{"Communicate via:"}</p>
             <select
-              className="form-select"
               disabled={!shareCommute}
               value={commute}
               onChange={(e) => setCommute(e.target.value)}
@@ -380,17 +337,16 @@ export default function Profile() {
               ))}
             </select>
           </div>
-          <div className="d-flex gap-2">
+          <div>
             <input
-              className="form-check-input"
               type="checkbox"
               value={shareCommute}
               onChange={(e) => setShareCommute(!shareCommute)}
             />
             <p>{"Share commmute details with Blog readers"}</p>
           </div>
-        </CredentialForm>
-      </CredentialSection>
-    </Container>
+        </form>
+      </section>
+    </main>
   );
 }
