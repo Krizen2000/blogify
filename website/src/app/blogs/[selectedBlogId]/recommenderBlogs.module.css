@@ -1,0 +1,41 @@
+section.recommended-blogs {
+  display: grid;
+  gap: 2rem;
+}
+
+article.blog {
+  background-color: var(--clr-secondary-rgb);
+  border: 0.125rem solid var(--bs-gray-400);
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: 500ms border, 500ms transform;
+  display: grid;
+  justify-items: center;
+  gap: 1rem;
+}
+
+article.blog:hover {
+  border: 0.125rem solid var(--bs-secondary);
+  transform: scale(1.1);
+}
+
+img.image {
+  border-radius: 0.5rem 0.5rem 0 0;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+div.empty-blog-list {
+  display: grid;
+  background-color: var(--bs-light-100);
+}
+
+i.icon {
+  font-size: 5rem;
+}
+
+a.no-link {
+  text-decoration: none;
+  color: inherit;
+}

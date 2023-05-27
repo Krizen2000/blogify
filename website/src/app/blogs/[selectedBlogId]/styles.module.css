@@ -1,0 +1,12 @@
+div.blog-detailing {
+  margin: 3rem;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: 3fr 1fr;
+}
+
+@media (max-width: 56.25rem) {
+  div.blog-detailing {
+    grid-template-columns: auto;
+  }
+}

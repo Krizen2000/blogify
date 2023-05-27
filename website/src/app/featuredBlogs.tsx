@@ -1,5 +1,6 @@
 import axios from "axios";
 import styles from "./featuredBlogs.module.css";
+import Link from "next/link";
 
 type Blog = {
   blogId: string;
@@ -39,22 +40,27 @@ const FeaturedBlogs: React.FC = async () => {
         <ul id="blogs" className={styles["carousel-container"]}>
           {topBlogs.map((blog) => (
             <li id={blog.blogId} className={styles["carousel-item"]}>
-              <article className={styles["card"]}>
-                <img
-                  className={styles["card-image"]}
-                  src={blog.image}
-                  alt="Blog Image"
-                />
-                <div className={styles["author-details"]}>
-                  <header className={styles["article-title"]}>
-                    {blog.title}
-                  </header>
-                  <p className={styles["author-title"]}>Author</p>
-                  <span className={styles["article-author"]}>
-                    {blog.publisher}
-                  </span>
-                </div>
-              </article>
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                href={`/blogs/${blog.blogId}`}
+              >
+                <article className={styles["card"]}>
+                  <img
+                    className={styles["card-image"]}
+                    src={blog.image}
+                    alt="Blog Image"
+                  />
+                  <div className={styles["author-details"]}>
+                    <header className={styles["article-title"]}>
+                      {blog.title}
+                    </header>
+                    <p className={styles["author-title"]}>Author</p>
+                    <span className={styles["article-author"]}>
+                      {blog.publisher}
+                    </span>
+                  </div>
+                </article>
+              </Link>
             </li>
           ))}
         </ul>

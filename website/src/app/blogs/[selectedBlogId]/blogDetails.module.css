@@ -1,0 +1,29 @@
+section.blog-detailing {
+  background-color: var(--clr-secondary-rgb);
+  display: grid;
+  align-content: flex-start;
+  gap: 2rem;
+}
+
+article.blog {
+  margin: 3rem;
+  display: grid;
+  gap: 2rem;
+}
+
+h1.title {
+  font-size: 64;
+  justify-self: center;
+}
+
+img.image {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+cite.attribution {
+  margin: 2rem;
+  display: grid;
+  justify-self: end;
+}

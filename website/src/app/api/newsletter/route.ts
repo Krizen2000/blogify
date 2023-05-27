@@ -6,7 +6,7 @@ export async function POST(request: NextRequest) {
   const axiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
   });
-  console.log("(api/newletter) API Router: ", data);
+  console.log("(api/newsletter) API Router: ", data);
   let res: AxiosResponse;
   try {
     res = await axiosInstance.post("/api/newsletter", data);
@@ -14,6 +14,6 @@ export async function POST(request: NextRequest) {
     console.error(err);
     return NextResponse.error();
   }
-  console.log("(api/newletter) PUB_API res:", res.data);
+  console.log("(api/newsletter) PUB_API res:", res.data);
   return NextResponse.json(res.data);
 }
