@@ -60,6 +60,10 @@ async function getBlogHandler(req, res, next) {
     res.status(404).json({ msg: "BLOG DOES NOT EXIST!" });
     return;
   }
+  Blog.findOneAndUpdate(
+    { blogId: req.params.blogId },
+    { $inc: { viewCount: 1 } }
+  );
   res.status(200).json(blog);
 }
 
@@ -83,6 +87,20 @@ async function createBlogHandler(req, res, next) {
     return;
   }
   res.status(200).json(savedBlog);
+}
+
+async function likeBlogHandler(req, res, next) {
+  try {
+    const blog = await Blog.findOneAndUpdate(
+      { blogId: req.params.blogId },
+      { $push: { likedBy: req.user.username } }
+    );
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "BLOG CANNOT BE LIKED" });
+    return;
+  }
+  res.status(200);
 }
 
 async function updateBlogHandler(req, res, next) {
@@ -136,6 +154,7 @@ module.exports = {
   getPublisherCreatedBlogsHandler,
   getBlogHandler,
   createBlogHandler,
+  likeBlogHandler,
   updateBlogHandler,
   deleteBlogHandler,
 };

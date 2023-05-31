@@ -9,6 +9,8 @@ const BlogSchema = new mongoose.Schema(
     publisher: { type: String, required: true },
     tags: { type: [String], required: false },
     communities: { type: [String], required: false },
+    viewCount: { type: Number, required: true, default: 0 },
+    likedBy: { type: [String], required: true, default: Array() },
   },
   { timestamps: true }
 );
