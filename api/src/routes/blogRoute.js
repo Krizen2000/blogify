@@ -4,11 +4,7 @@ const verifyToken = require("../middleware/verifyToken");
 
 router.get("/recent", blogController.getRecentBlogsHandler);
 router.get("/all", blogController.getAllBlogsHandler);
-router.get(
-  "/publishedBy",
-  verifyToken,
-  blogController.getUserCreatedBlogsHandler
-);
+router.get("/publishedBy", blogController.getPublisherCreatedBlogsHandler);
 router.get("/find/:blogId", blogController.getBlogHandler);
 
 router.post("/", verifyToken, blogController.createBlogHandler);

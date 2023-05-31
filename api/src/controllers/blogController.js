@@ -32,10 +32,10 @@ async function getAllBlogsHandler(req, res, next) {
   res.status(200).json({ blogs });
 }
 
-async function getUserCreatedBlogsHandler(req, res, next) {
+async function getPublisherCreatedBlogsHandler(req, res, next) {
   let blogs = null;
   try {
-    blogs = await Blog.find({ publisher: req.user.username });
+    blogs = await Blog.find({ publisher: req.query.publisher });
   } catch (err) {
     res.status(500).json(err);
     return;
@@ -133,7 +133,7 @@ async function deleteBlogHandler(req, res, next) {
 module.exports = {
   getRecentBlogsHandler,
   getAllBlogsHandler,
-  getUserCreatedBlogsHandler,
+  getPublisherCreatedBlogsHandler,
   getBlogHandler,
   createBlogHandler,
   updateBlogHandler,
