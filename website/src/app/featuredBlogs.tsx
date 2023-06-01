@@ -4,11 +4,14 @@ import Link from "next/link";
 
 type Blog = {
   blogId: string;
-  title: string;
   image: string;
   description: string;
+  title: string;
+  tags: string[];
   publisher: string;
-  tags: [string];
+  communities: string[];
+  viewCount: number;
+  likedBy: string[];
 };
 
 export const revalidate = 600; // Revalidate cache for every 10min

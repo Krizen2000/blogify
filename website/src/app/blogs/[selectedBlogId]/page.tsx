@@ -8,14 +8,22 @@ type Blog = {
   image: string;
   description: string;
   title: string;
+  tags: string[];
   publisher: string;
+  communities: string[];
+  viewCount: number;
+  likedBy: string[];
 };
 const initialBlog = {
   blogId: "",
   title: "",
   image: "",
   description: "",
+  tags: [],
   publisher: "",
+  communities: [],
+  viewCount: 0,
+  likedBy: [],
 };
 
 async function requestBlogDetails(blogId: string): Promise<Blog> {

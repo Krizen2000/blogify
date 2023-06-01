@@ -6,7 +6,11 @@ type Blog = {
   image: string;
   description: string;
   title: string;
+  tags: string[];
   publisher: string;
+  communities: string[];
+  viewCount: number;
+  likedBy: string[];
 };
 type props = {
   blog: Blog;

@@ -7,7 +7,11 @@ type Blog = {
   image: string;
   description: string;
   title: string;
+  tags: string[];
   publisher: string;
+  communities: string[];
+  viewCount: number;
+  likedBy: string[];
 };
 
 async function requestRecentBlogs(): Promise<Blog[] | null> {

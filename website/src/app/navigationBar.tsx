@@ -50,12 +50,12 @@ const NavigationBar: React.FC = () => {
           </li>
           <li className={styles["navigation-item"]}>
             <Link className={styles["link"]} href="/pricing">
-              Pricing{" "}
+              Pricing
             </Link>
           </li>
           <li className={styles["navigation-item"]}>
             <Link className={styles["link"]} href="/communities">
-              Communities{" "}
+              Communities
             </Link>
           </li>
 
@@ -63,17 +63,22 @@ const NavigationBar: React.FC = () => {
             <>
               <li className={styles["navigation-item"]}>
                 <Link className={styles["link"]} href="/signup">
-                  Signup{" "}
+                  Signup
                 </Link>
               </li>
               <li className={styles["navigation-item"]}>
                 <Link className={styles["link"]} href="/login">
-                  Login{" "}
+                  Login
                 </Link>
               </li>
             </>
           ) : (
             <>
+              <li className={styles["navigation-item"]}>
+                <Link className={styles["link"]} href="/myblogs">
+                  My Blogs
+                </Link>
+              </li>
               <li className={styles["navigation-item"]}>
                 <Link className={styles["link"]} href="/profile">
                   Profile
