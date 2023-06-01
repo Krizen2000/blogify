@@ -1,4 +1,5 @@
 main.myblogs-container {
+  margin-inline: var(--size-1600);
   display: grid;
   gap: 1rem;
 }

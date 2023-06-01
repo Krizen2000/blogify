@@ -6,7 +6,7 @@ export async function GET(request: NextRequest) {
   const axiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
   });
-  console.log("(api/myblogs) API Router: Publisher - ", publisher);
+  console.log("GET(api/myblogs) API Router: Publisher - ", publisher);
   let res: AxiosResponse;
   try {
     res = await axiosInstance.get(
