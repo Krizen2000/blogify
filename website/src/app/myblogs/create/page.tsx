@@ -30,6 +30,7 @@ async function requestBlogCreation(token: string, data: Blog) {
   }
 }
 
+// ! INPUT VALIDATION ON ID
 export default function CreateBlog() {
   const cacheContext = useCacheContext();
   const [blogId, setBlogId] = useState("");

@@ -2,38 +2,39 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-import styled from "styled-components";
 import { useCacheContext } from "@context/cacheProvider";
-import { requestBlogDetails, requestBlogUpdation } from "./editBlogHelper";
+import axios from "axios";
 
-const Container = styled.div`
-  display: grid;
-  gap: 1rem;
-`;
-const BackButton = styled.button`
-  min-height: 5rem;
-  min-width: 5rem;
-`;
-const Icon = styled.i`
-  font-size: ${({ iconSize }) => iconSize || "2rem"};
-`;
-const ArticleDetails = styled.form`
-  display: grid;
-  margin: 0rem 1rem;
-  padding: 2rem;
-  gap: 0.5rem;
-  background-color: var(--bs-gray-100);
-  border: 0.00625rem solid var(--bs-gray-500);
-  border-radius: 0.5rem;
-`;
-const ButtonWrapper = styled.div`
-  display: flex;
-  gap: 1rem;
-`;
+async function requestBlogUpdation(token: string, prevBlogId: string, data) {
+  console.log("requestBlogCreation", data);
+  const axiosInstance = axios.create({
+    headers: { Authorization: `bearer ${token}` },
+  });
+  try {
+    const res = await axiosInstance.put(`/api/myblogs/${prevBlogId}`, data);
+    console.log("requestBlogCreation:", res.data);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
-export default function EditBlog(props) {
+async function requestBlogDetails(blogId: string) {
+  const axiosInstance = axios.create({});
+  let blog = null;
+  try {
+    const res = await axiosInstance.get(`/api/blogs/find/${blogId}`);
+    blog = res.data;
+    console.log("requestBlogDetails:", res.data);
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+  return blog;
+}
+
+const EditBlog: React.FC = (props) => {
   const cacheContext = useCacheContext();
-  const { selectedBlogId } = props.params;
+  const { blogId: selectedBlogId } = props.params;
   const [blogId, setBlogId] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
@@ -60,45 +61,40 @@ export default function EditBlog(props) {
   }, []);
 
   return (
-    <Container>
-      <div className="d-flex align-items-center gap-1">
-        <BackButton className="btn" onClick={() => router.back()}>
-          <Icon className="bi-arrow-left" />
-        </BackButton>
+    <main>
+      <div>
+        <div onClick={() => router.back()}>
+          <i className="bi-arrow-left" />
+        </div>
         <h1>Edit Blog</h1>
       </div>
-      <ArticleDetails>
-        <label className="form-label m-0">BlogId</label>
+      <article>
+        <label>BlogId</label>
         <input
-          className="form-control"
           type="text"
           value={blogId}
           onChange={(e) => setBlogId(e.target.value)}
         />
-        <label className="form-label m-0">Title</label>
+        <label>Title</label>
         <input
-          className="form-control"
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
-        <label className="form-label m-0">Image</label>
+        <label>Image</label>
         <input
-          className="form-control"
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
-        <label className="form-label m-0">Description</label>
+        <label>Description</label>
         <input
-          className="form-control"
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
-        <label className="form-label m-0">Tags</label>
+        <label>Tags</label>
         <input
-          className="form-control"
           type="text"
           defaultValue={tags}
           onChange={(e) => {
@@ -107,19 +103,15 @@ export default function EditBlog(props) {
             setTags(inputedTags);
           }}
         />
-        <ButtonWrapper>
-          <button type="reset" className="btn btn-secondary">
-            Clear
-          </button>
-          <button
-            type="button"
-            className="btn btn-primary"
-            onClick={updateBlog}
-          >
+        <div>
+          <button type="reset">Clear</button>
+          <button type="button" onClick={updateBlog}>
             Save
           </button>
-        </ButtonWrapper>
-      </ArticleDetails>
-    </Container>
+        </div>
+      </article>
+    </main>
   );
-}
+};
+
+export default EditBlog;

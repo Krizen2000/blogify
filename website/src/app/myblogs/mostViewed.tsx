@@ -4,7 +4,7 @@ import styles from "./blogArray.module.css";
 import { useCacheContext } from "@context/cacheProvider";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useEffect, useState } from "react";
+import { useDebugValue, useEffect, useState } from "react";
 
 type Blog = {
   blogId: string;
@@ -30,7 +30,6 @@ async function requestUserBlogs(username: string): Promise<Blog[] | null> {
   }
   return blogs;
 }
-
 async function deleteUserBlog(blogId: string, token: string) {
   try {
     const axiosInstance = axios.create({
@@ -41,11 +40,11 @@ async function deleteUserBlog(blogId: string, token: string) {
     console.error(e);
   }
 }
+
 function useGetToken(): string {
   const cacheContext = useCacheContext();
   return cacheContext.cache["token"];
 }
-
 function useRequestMostViewed(): Blog[] {
   const cacheContext = useCacheContext();
   const [blogs, setblogs] = useState(Array<Blog>());
@@ -69,12 +68,15 @@ const MostViewed: React.FC = () => {
   const token = useGetToken();
   const router = useRouter();
   const [actionName, setActionName] = useState("view");
+  useDebugValue(actionName);
   const actionRunner = (blogId: string, actionName: string) => {
     switch (actionName) {
       case "view":
         router.push(`/blogs/${blogId}`);
+        break;
       case "edit":
-        return;
+        router.push(`/myblogs/edit/${blogId}`);
+        break;
       case "delete":
         const decision = confirm(
           `Are you sure you want to delete '${blogId}'?`
@@ -84,8 +86,9 @@ const MostViewed: React.FC = () => {
           alert(`Deleted Blog with ID '${blogId}'`);
           router.refresh();
         });
+        break;
       default:
-        return;
+        break;
     }
   };
   return (
@@ -98,7 +101,7 @@ const MostViewed: React.FC = () => {
               <article className={styles["card"]}>
                 <img className={styles["card-image"]} src={blog.image} />
                 <div className={styles["author-details"]}>
-                  <p className={styles["title-header"]}>Author</p>
+                  <p className={styles["title-header"]}>Title</p>
                   <header className={styles["article-title"]}>
                     {blog.title}
                   </header>
