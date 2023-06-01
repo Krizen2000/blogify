@@ -1,10 +1,22 @@
 "use client";
 
 import axios from "axios";
-import { useState } from "react";
+import { MouseEvent, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useCacheContext } from "@context/cacheProvider";
+
+type UserInfo = {
+  token: string;
+  name: string;
+  username: string;
+};
+type Cache = {
+  token: string | null;
+  name: string | null;
+  username: string | null;
+  isSubscribed: boolean;
+};
 
 async function requestUserSignup(
   username: string,
@@ -13,7 +25,7 @@ async function requestUserSignup(
   phoneNumber: string,
   email: string,
   password: string
-): Promise<string[] | null> {
+): Promise<UserInfo | null> {
   const dataPacket = {
     username,
     firstName,
@@ -35,7 +47,8 @@ async function requestUserSignup(
     return null;
   }
   const name = [firstName, lastName].join(" ");
-  return [res.data.token, name];
+  const token = res.data.token;
+  return { token, name, username };
 }
 
 export default function SignUp() {
@@ -47,6 +60,35 @@ export default function SignUp() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const submitAction = async (e: MouseEvent<HTMLButtonElement>) => {
+    if (password !== confirmPassword) return;
+    const value = await requestUserSignup(
+      username,
+      firstName,
+      lastName,
+      phoneNumber,
+      email,
+      password
+    );
+    if (!value) return;
+    const { token, name, username: userid } = value;
+
+    if (!token) return;
+    cacheContext.setCache({
+      ...cacheContext.cache,
+      token,
+      name,
+      username: userid,
+    });
+    cacheContext.setCache((storedCache: Cache) => ({
+      ...storedCache,
+      token,
+      name,
+      username: userid,
+    }));
+    router.back();
+  };
 
   const router = useRouter();
   return (
@@ -119,26 +161,7 @@ export default function SignUp() {
         >
           Clear
         </button>
-        <button
-          type="submit"
-          onClick={async () => {
-            if (password !== confirmPassword) return;
-            const value = await requestUserSignup(
-              username,
-              firstName,
-              lastName,
-              phoneNumber,
-              email,
-              password
-            );
-            if (!value) return;
-            const [token, name] = value;
-
-            if (!token) return;
-            cacheContext.setCache({ ...cacheContext.cache, token, name });
-            router.back();
-          }}
-        >
+        <button type="submit" onClick={submitAction}>
           Create an account
         </button>
       </div>

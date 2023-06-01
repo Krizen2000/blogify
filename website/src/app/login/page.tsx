@@ -15,10 +15,22 @@ type DataPacket = {
   phoneNumber: string;
   username: string;
 };
+type UserInfo = {
+  token: string;
+  name: string;
+  username: string;
+};
+type Cache = {
+  token: string | null;
+  name: string | null;
+  username: string | null;
+  isSubscribed: boolean;
+};
+
 async function requestUserLogin(
   loginId: string,
   password: string
-): Promise<string[] | null> {
+): Promise<UserInfo | null> {
   let idTag = loginId.match(isValidEmail)
     ? "email"
     : loginId.match(isValidPhoneNumber)
@@ -40,7 +52,9 @@ async function requestUserLogin(
     return null;
   }
   const name = [res.data.firstName, res.data.lastName].join(" ");
-  return [res.data.token, name];
+  const token = res.data.token;
+  const username = res.data.username;
+  return { token, name, username };
 }
 
 export default function Login() {
@@ -59,10 +73,15 @@ export default function Login() {
     e.preventDefault();
     const data = await requestUserLogin(loginId, password);
     if (!data) return;
-    const [token, name] = data;
+    const { token, name, username } = data;
 
     if (!token) return;
-    cacheContext.setCache({ ...cacheContext.cache, token, name });
+    cacheContext.setCache((storedCache: Cache) => ({
+      ...storedCache,
+      token,
+      name,
+      username,
+    }));
     router.back();
   };
   return (
