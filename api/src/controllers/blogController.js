@@ -63,7 +63,7 @@ async function getBlogHandler(req, res, next) {
   Blog.findOneAndUpdate(
     { blogId: req.params.blogId },
     { $inc: { viewCount: 1 } }
-  );
+  ).exec();
   res.status(200).json(blog);
 }
 
