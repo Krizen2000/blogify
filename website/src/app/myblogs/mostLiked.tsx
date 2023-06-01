@@ -18,11 +18,11 @@ type Blog = {
   likedBy: string[];
 };
 
-async function requestUserBlogs(userName: string): Promise<Blog[] | null> {
+async function requestUserBlogs(username: string): Promise<Blog[] | null> {
   let blogs: Blog[] | null = null;
   try {
     const res = await axios.get("/api/myblogs", {
-      params: { publisher: userName },
+      params: { publisher: username },
     });
     blogs = res.data.blogs;
   } catch (e) {
@@ -33,11 +33,11 @@ async function requestUserBlogs(userName: string): Promise<Blog[] | null> {
 
 function useRequestMostLiked(): Blog[] {
   const cacheContext = useCacheContext();
-  const userName = cacheContext.cache["userName"];
+  const username = cacheContext.cache["username"];
   const [blogs, setblogs] = useState(Array<Blog>());
 
   useEffect(() => {
-    requestUserBlogs(userName).then((requestedBlogs) => {
+    requestUserBlogs(username).then((requestedBlogs) => {
       if (!requestedBlogs) return;
 
       const sortedBlogs = requestedBlogs.sort(

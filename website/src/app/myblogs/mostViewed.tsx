@@ -19,11 +19,11 @@ type Blog = {
 };
 
 // ! NOT WORKING BECAUSE USING NAME IN THE LOCAL STORAGE AND NOT THE USERNAME
-async function requestUserBlogs(userName: string): Promise<Blog[] | null> {
+async function requestUserBlogs(username: string): Promise<Blog[] | null> {
   let blogs: Blog[] | null = null;
   try {
     const res = await axios.get("/api/myblogs", {
-      params: { publisher: userName },
+      params: { publisher: username },
     });
     blogs = res.data.blogs;
   } catch (e) {
@@ -37,7 +37,7 @@ function useRequestMostViewed(): Blog[] {
   const [blogs, setblogs] = useState(Array<Blog>());
 
   useEffect(() => {
-    requestUserBlogs(cacheContext.cache["name"]).then((requestedBlogs) => {
+    requestUserBlogs(cacheContext.cache["username"]).then((requestedBlogs) => {
       if (!requestedBlogs) return;
 
       const sortedBlogs = requestedBlogs.sort(
