@@ -68,7 +68,6 @@ const MostViewed: React.FC = () => {
   const token = useGetToken();
   const router = useRouter();
   const [actionName, setActionName] = useState("view");
-  useDebugValue(actionName);
   const actionRunner = (blogId: string, actionName: string) => {
     switch (actionName) {
       case "view":
