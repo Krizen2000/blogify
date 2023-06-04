@@ -101,7 +101,6 @@ function dislikePublisherBlog(
     .catch((err) => console.log(err));
 }
 
-// ! LIKE FUNCTIONALITY NEEDS TO BE IMPLEMENTED
 const InteractionBox: React.FC<props> = ({ blog }) => {
   const userLoggedIn = useCheckUserLoggedIn();
   const { userLiked, setUserLiked } = useCheckUserLiked(blog);

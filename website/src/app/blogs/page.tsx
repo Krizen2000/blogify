@@ -1,5 +1,6 @@
 import FeaturedBlogs from "@app/featuredBlogs";
 import styles from "./styles.module.css";
+import SearchField from "./searchField";
 
 const Blogs: React.FC = () => {
   return (
@@ -9,10 +10,7 @@ const Blogs: React.FC = () => {
         <p className={styles["description-text"]}>
           Search for blogs using Creator's name, Blog title, Categories or Tags
         </p>
-        <div className={styles["input-group"]}>
-          <input type="text" className={styles["search-bar"]} />
-          <i className={`bi-search ${styles["icon"]}`} />
-        </div>
+        <SearchField />
       </section>
       <section className={styles["featured-blogs"]}>
         <h2 className={styles["header-text"]}>Today's Featured Blogs</h2>
