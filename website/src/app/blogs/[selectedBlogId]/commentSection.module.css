@@ -1,0 +1,43 @@
+div.comment-section {
+  display: grid;
+  gap: 3rem;
+  padding: 2.5rem 4rem;
+  /* justify-items: center; */
+  background-color: var(--clr-secondary-rgb);
+}
+
+h3.comment-title {
+  display: grid;
+  font-size: 2rem;
+  justify-self: left;
+}
+
+div.comment-list {
+  padding-inline: 4rem;
+  display: grid;
+  gap: 1.5rem;
+  justify-self: center;
+  width: 100%;
+  height: 100%;
+}
+
+div.comment {
+  display: grid;
+}
+
+p.username {
+  font-size: 0.9rem;
+  margin-bottom: 0.5rem;
+}
+p.title {
+  font-size: 1.5rem;
+}
+p.message {
+}
+
+hr.seperator {
+  border: 0.0125rem solid var(--clr-txt-rgb);
+  display: grid;
+  justify-self: center;
+  width: min(12rem, 30vw);
+}

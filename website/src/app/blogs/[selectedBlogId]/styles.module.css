@@ -1,5 +1,6 @@
 div.blog-detailing {
   margin: 3rem;
+  margin-inline: var(--size-1600);
   display: grid;
   gap: 2rem;
   grid-template-columns: 3fr 1fr;

@@ -54,7 +54,8 @@ async function getCommentsByCommunityId(req, res, next) {
 }
 
 async function createComment(req, res, next) {
-  const newComment = new Comment(req.body);
+  console.log("CreateComment(req.body): ", req.body);
+  const newComment = new Comment({ ...req.body, username: req.user.username });
 
   newComment
     .save()

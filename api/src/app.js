@@ -16,7 +16,7 @@ app.use("/api", authRouter);
 app.use("/api/users", userRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/communities", communitiesRouter);
-app.use("/api/comment", commentRouter);
+app.use("/api/comments", commentRouter);
 app.use("/api/newsletter", newsSubscriberRouter);
 
 module.exports = app;

@@ -1,4 +1,11 @@
-section.blog-detailing {
+section.blog-group {
+  display: grid;
+  align-content: start;
+  align-items: start;
+  gap: 2rem;
+}
+
+div.blog-detailing {
   background-color: var(--clr-secondary-rgb);
   display: grid;
   align-content: flex-start;

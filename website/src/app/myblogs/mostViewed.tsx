@@ -4,7 +4,7 @@ import styles from "./blogArray.module.css";
 import { useCacheContext } from "@context/cacheProvider";
 import axios from "axios";
 import { useRouter } from "next/navigation";
-import { useDebugValue, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 type Blog = {
   blogId: string;

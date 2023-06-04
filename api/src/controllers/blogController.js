@@ -103,6 +103,20 @@ async function likeBlogHandler(req, res, next) {
   res.status(200);
 }
 
+async function dislikeBlogHandler(req, res, next) {
+  try {
+    const blog = await Blog.findOneAndUpdate(
+      { blogId: req.params.blogId },
+      { $pull: { likedBy: req.user.username } }
+    );
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ msg: "BLOG CANNOT BE DISLIKED" });
+    return;
+  }
+  res.status(200);
+}
+
 async function updateBlogHandler(req, res, next) {
   try {
     const blog = await Blog.findOne({ blogId: req.params.blogId });
@@ -155,6 +169,7 @@ module.exports = {
   getBlogHandler,
   createBlogHandler,
   likeBlogHandler,
+  dislikeBlogHandler,
   updateBlogHandler,
   deleteBlogHandler,
 };

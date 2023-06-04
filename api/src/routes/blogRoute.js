@@ -9,6 +9,7 @@ router.get("/find/:blogId", blogController.getBlogHandler);
 
 router.post("/", verifyToken, blogController.createBlogHandler);
 router.put("/:blogId/like", verifyToken, blogController.likeBlogHandler);
+router.put("/:blogId/dislike", verifyToken, blogController.dislikeBlogHandler);
 router.put("/:blogId", verifyToken, blogController.updateBlogHandler);
 router.delete("/:blogId", verifyToken, blogController.deleteBlogHandler);
 
