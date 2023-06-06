@@ -29,80 +29,10 @@ async function requestAllBlogs(): Promise<Blog[] | null> {
   return blogs;
 }
 
-const tmpBlogs = [
-  {
-    blogId: "rem",
-    image: "rem+",
-    description: "Who is?",
-    title: "REM",
-    tags: [],
-    publisher: "remoru",
-    communities: [],
-    viewCount: 0,
-    likedBy: [],
-  },
-  {
-    blogId: "ram",
-    image: "ram+",
-    description: "Who is?",
-    title: "RAM",
-    tags: [],
-    publisher: "ramoru",
-    communities: [],
-    viewCount: 0,
-    likedBy: [],
-  },
-  {
-    blogId: "rem",
-    image: "rem+",
-    description: "Who is?",
-    title: "REM",
-    tags: [],
-    publisher: "remoru",
-    communities: [],
-    viewCount: 0,
-    likedBy: [],
-  },
-  {
-    blogId: "ram",
-    image: "ram+",
-    description: "Who is?",
-    title: "RAM",
-    tags: [],
-    publisher: "ramoru",
-    communities: [],
-    viewCount: 0,
-    likedBy: [],
-  },
-  {
-    blogId: "ram",
-    image: "ram+",
-    description: "Who is?",
-    title: "RAM",
-    tags: [],
-    publisher: "ramoru",
-    communities: [],
-    viewCount: 0,
-    likedBy: [],
-  },
-  {
-    blogId: "ram",
-    image: "ram+",
-    description: "Who is?",
-    title: "RAM",
-    tags: [],
-    publisher: "remoru",
-    communities: [],
-    viewCount: 0,
-    likedBy: [],
-  },
-];
-
 // ! SEARCH FUNCTIONS WORKS ONLY WITH STARTING LETTERS OF TITLE OF BLOGS
 // ! MORE BUTTON AND NO. OF CONTENT ADJUST NEEDS TO BE IMPLEMENTED
 const SearchField: React.FC = () => {
   const [searchText, setSearchText] = useState("");
-  //   const blogs = tmpBlogs;
   const [blogs, setBlogs] = useState(Array<Blog>());
   useEffect(() => {
     requestAllBlogs().then((requestedBlogs) => {

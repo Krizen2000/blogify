@@ -1,6 +1,7 @@
 import axios from "axios";
 import styles from "./styles.module.css";
 import Link from "next/link";
+import SearchField from "./searchField";
 
 type Community = {
   communityId: string;
@@ -50,10 +51,7 @@ const Communities: React.FC = async () => {
         <p className={styles["description-text"]}>
           Explore wide range of communities you can!
         </p>
-        <div className={styles["input-group"]}>
-          <input type="text" className={styles["search-bar"]} />
-          <i className={`bi-search ${styles["icon"]}`} />
-        </div>
+        <SearchField />
       </section>
 
       <section className={styles["popular-communities"]}>
