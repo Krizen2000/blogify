@@ -1,4 +1,5 @@
 const Blog = require("../models/Blog");
+const Community = require("../models/Community");
 
 async function getRecentBlogsHandler(req, res, next) {
   let blogs = null;
@@ -74,9 +75,38 @@ async function createBlogHandler(req, res, next) {
     publisher: req.user.username,
   });
 
+  let newCommunityNames = await Promise.all(
+    req.body.communities.filter(async (community, inx) => {
+      let exists = await Community.exists({
+        communityId: community.toLowerCase(),
+      }).exec();
+      console.log(`Community inx ${inx}: `, exists);
+      return exists ? false : true;
+    })
+  );
+  let newCommunities = null;
+  if (req.body.communities) {
+    newCommunities = newCommunityNames.map(
+      (communityName) =>
+        new Community({
+          communityId: communityName.toLowerCase(),
+          creator: req.user.username,
+          image: req.body.image,
+        })
+    );
+  }
+  console.log("newCommunityNames:", newCommunityNames);
+  console.log("newCommunities:", newCommunities);
+
   let savedBlog = null;
+  let savedCommunities = null;
   try {
     savedBlog = await newBlog.save();
+    if (newCommunities) {
+      savedCommunities = await Promise.all(
+        newCommunities.map(async (newCommunity) => await newCommunity.save())
+      );
+    }
   } catch (err) {
     console.error(err);
     res.status(500).json(err);
@@ -86,7 +116,12 @@ async function createBlogHandler(req, res, next) {
     res.status(500).json({ msg: "SAVED BLOG NOT RETURNED!" });
     return;
   }
-  res.status(200).json(savedBlog);
+
+  console.log("savedCommunities:", savedCommunities);
+  if (!savedCommunities) {
+    res.status(200).json(savedBlog);
+  }
+  res.status(200).json({ ...savedBlog, communities: savedCommunities });
 }
 
 async function likeBlogHandler(req, res, next) {

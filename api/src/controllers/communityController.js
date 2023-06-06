@@ -14,6 +14,32 @@ async function getAllCommunities(req, res, next) {
     .catch((err) => res.status(500).json(err));
 }
 
+async function getPopularCommunities(req, res, next) {
+  Community.find()
+    .sort({ createdAt: "desc" })
+    .then((communities) => {
+      if (!communities) {
+        res.status(200).json({ communities: [] });
+        return;
+      }
+      res.status(200).json({ communities });
+    })
+    .catch((err) => res.status(500).json(err));
+}
+
+async function getHiddenCommunities(req, res, next) {
+  Community.find()
+    .sort({ createdAt: "asc" })
+    .then((communities) => {
+      if (!communities) {
+        res.status(200).json({ communities: [] });
+        return;
+      }
+      res.status(200).json({ communities });
+    })
+    .catch((err) => res.status(500).json(err));
+}
+
 async function getCommunity(req, res, next) {
   Community.find({ communityId: req.query.communityId })
     .then((community) => {
@@ -49,6 +75,8 @@ async function deleteCommunity(req, res, next) {
 
 module.exports = {
   getAllCommunities,
+  getPopularCommunities,
+  getHiddenCommunities,
   getCommunity,
   createCommunity,
   updateCommunity,
