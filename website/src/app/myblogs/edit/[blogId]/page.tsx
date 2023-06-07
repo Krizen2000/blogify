@@ -5,7 +5,29 @@ import { useRouter } from "next/navigation";
 import { useCacheContext } from "@context/cacheProvider";
 import axios from "axios";
 
-async function requestBlogUpdation(token: string, prevBlogId: string, data) {
+type Blog = {
+  blogId: string;
+  image: string;
+  description: string;
+  title: string;
+  tags: string[];
+  publisher: string;
+  communities: string[];
+  viewCount: number;
+  likedBy: string[];
+};
+
+async function requestBlogUpdation(
+  token: string,
+  prevBlogId: string,
+  data: {
+    blogId: string;
+    title: string;
+    image: string;
+    description: string;
+    tags: string[];
+  }
+) {
   console.log("requestBlogCreation", data);
   const axiosInstance = axios.create({
     headers: { Authorization: `bearer ${token}` },
@@ -32,14 +54,16 @@ async function requestBlogDetails(blogId: string) {
   return blog;
 }
 
-const EditBlog: React.FC = (props) => {
+type Props = { params: { blogId: string } };
+
+const EditBlog: React.FC<Props> = (props: Props) => {
   const cacheContext = useCacheContext();
   const { blogId: selectedBlogId } = props.params;
   const [blogId, setBlogId] = useState("");
   const [title, setTitle] = useState("");
   const [image, setImage] = useState("");
   const [description, setDescription] = useState("");
-  const [tags, setTags] = useState([]);
+  const [tags, setTags] = useState(Array<string>());
   const router = useRouter();
   const updateBlog = () =>
     requestBlogUpdation(cacheContext.cache["token"], selectedBlogId, {
