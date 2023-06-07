@@ -31,7 +31,7 @@ type UserData = {
   twitter: string;
 };
 
-export async function requestUserInfo(token: string): Promise<User | null> {
+async function requestUserInfo(token: string): Promise<User | null> {
   const axiosInstance = axios.create({
     headers: { Authorization: `bearer ${token}` },
   });
@@ -47,7 +47,7 @@ export async function requestUserInfo(token: string): Promise<User | null> {
   return user;
 }
 
-export async function requestUserInfoUpdate(token: string, data: UserData) {
+async function requestUserInfoUpdate(token: string, data: UserData) {
   const axiosInstance = axios.create({
     headers: { Authorization: `bearer ${token}` },
   });
