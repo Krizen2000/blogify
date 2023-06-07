@@ -29,17 +29,54 @@ async function requestAllBlogs(): Promise<Blog[] | null> {
   return blogs;
 }
 
-// ! SEARCH FUNCTIONS WORKS ONLY WITH STARTING LETTERS OF TITLE OF BLOGS
-// ! MORE BUTTON AND NO. OF CONTENT ADJUST NEEDS TO BE IMPLEMENTED
 const SearchField: React.FC = () => {
   const [searchText, setSearchText] = useState("");
   const [blogs, setBlogs] = useState(Array<Blog>());
+  const [filteredBlogs, setFilteredBlogs] = useState(Array<Blog>());
+  const [displayBlogs, setDisplayBlogs] = useState<number>(3);
+  const displayFilter = (blog: Blog, inx: number) => {
+    if (inx >= displayBlogs) return false;
+    return true;
+  };
+
+  const moreBtnAction = () =>
+    setDisplayBlogs((displayBlogs) => displayBlogs + 3);
+
   useEffect(() => {
     requestAllBlogs().then((requestedBlogs) => {
       if (!requestedBlogs) return;
       setBlogs(requestedBlogs);
     });
   }, []);
+  useEffect(() => {
+    const blogList = blogs
+      .filter(
+        (blog) =>
+          blog.title.toLowerCase().startsWith(searchText.toLowerCase()) ||
+          blog.publisher.toLowerCase().startsWith(searchText.toLowerCase()) ||
+          blog.communities
+            .filter((community) =>
+              community.toLowerCase().startsWith(searchText.toLowerCase())
+            )
+            .reduce(
+              (prev: boolean, curr: string) =>
+                prev || curr.toLowerCase().startsWith(searchText.toLowerCase()),
+              false
+            ) ||
+          blog.tags
+            .filter((tag) =>
+              tag.toLowerCase().startsWith(searchText.toLowerCase())
+            )
+            .reduce(
+              (prev: boolean, curr: string) =>
+                prev || curr.toLowerCase().startsWith(searchText.toLowerCase()),
+              false
+            )
+      )
+      .filter(displayFilter);
+    setFilteredBlogs(blogList);
+  }, [searchText]);
+
   return (
     <div className={styles["search-field"]}>
       <div className={styles["input-group"]}>
@@ -50,32 +87,36 @@ const SearchField: React.FC = () => {
         />
         <i className={`bi-search ${styles["icon"]}`} />
       </div>
-      {blogs && searchText ? (
+      {filteredBlogs && searchText ? (
         <ul id="blogs" className={styles["carousel-container"]}>
-          {blogs
-            .filter((blog) => blog.title.startsWith(searchText))
-            .map((blog) => (
-              <li id={blog.blogId} className={styles["carousel-item"]}>
-                <Link
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  href={`/blogs/${blog.blogId}`}
-                >
-                  <article className={styles["card"]}>
-                    <img className={styles["card-image"]} src={blog.image} />
-                    <div className={styles["author-details"]}>
-                      <header className={styles["article-title"]}>
-                        {blog.title}
-                      </header>
-                      <p className={styles["author-title"]}>Author</p>
-                      <span className={styles["article-author"]}>
-                        {blog.publisher}
-                      </span>
-                    </div>
-                  </article>
-                </Link>
-              </li>
-            ))}
+          {filteredBlogs.map((blog) => (
+            <li id={blog.blogId} className={styles["carousel-item"]}>
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                href={`/blogs/${blog.blogId}`}
+              >
+                <article className={styles["card"]}>
+                  <img className={styles["card-image"]} src={blog.image} />
+                  <div className={styles["author-details"]}>
+                    <header className={styles["article-title"]}>
+                      {blog.title}
+                    </header>
+                    <p className={styles["author-title"]}>Author</p>
+                    <span className={styles["article-author"]}>
+                      {blog.publisher}
+                    </span>
+                  </div>
+                </article>
+              </Link>
+            </li>
+          ))}
         </ul>
+      ) : null}
+      {filteredBlogs.length > displayBlogs && searchText ? (
+        <button onClick={moreBtnAction}>
+          <i className="bi-arrow-down" />
+          See more
+        </button>
       ) : null}
     </div>
   );

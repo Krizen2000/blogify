@@ -1,4 +1,5 @@
 import FeaturedBlogs from "@app/featuredBlogs";
+import PopularBlogs from "@app/popularBlogs";
 import styles from "./styles.module.css";
 import SearchField from "./searchField";
 
@@ -18,10 +19,6 @@ const Blogs: React.FC = () => {
           Look at these exciting blogs for the day
         </p>
         <FeaturedBlogs />
-        <button>
-          See More
-          <i className="bi-arrow-down" />
-        </button>
       </section>
 
       <section className={styles["popular-blogs"]}>
@@ -29,11 +26,7 @@ const Blogs: React.FC = () => {
         <p className={styles["description-text"]}>
           These are chosen based on multiple reviews by our communities.
         </p>
-        <FeaturedBlogs />
-        <button>
-          See More
-          <i className="bi-arrow-down" />
-        </button>
+        <PopularBlogs />
       </section>
 
       <section className={styles["historical-section"]}>

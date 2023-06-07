@@ -1,5 +1,6 @@
 import styles from "./pricingTable.module.css";
 
+// ! NEED TO IMPLEMENT IT TO WORK ON BOTH MOBILE AND DESKTOP
 const PricingTable: React.FC = () => {
   return (
     <table>

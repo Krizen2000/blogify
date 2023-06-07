@@ -1,5 +1,7 @@
 import styles from "./styles.module.css";
 
+// ! BILL BUTTON NEEDS TO BE IMPLEMENTED
+// ! SUBSCRIBE BUTTON NEEDS TO BE IMPLEMENTED
 const Pricing: React.FC = () => {
   return (
     <main className={styles["pricing-component"]}>

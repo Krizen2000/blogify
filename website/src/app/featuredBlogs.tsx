@@ -16,7 +16,7 @@ type Blog = {
 
 export const revalidate = 600; // Revalidate cache for every 10min
 
-async function requestRecentBlogs(): Promise<[Blog] | null> {
+async function requestRecentBlogs(): Promise<Blog[] | null> {
   const axiosInstance = axios.create({
     baseURL: process.env.NEXT_PUBLIC_API_URL,
   });
@@ -42,7 +42,11 @@ const FeaturedBlogs: React.FC = async () => {
       {topBlogs ? (
         <ul id="blogs" className={styles["carousel-container"]}>
           {topBlogs.map((blog) => (
-            <li id={blog.blogId} className={styles["carousel-item"]}>
+            <li
+              key={blog.blogId}
+              id={blog.blogId}
+              className={styles["carousel-item"]}
+            >
               <Link
                 style={{ textDecoration: "none", color: "inherit" }}
                 href={`/blogs/${blog.blogId}`}

@@ -39,6 +39,7 @@ async function requestHiddenCommunities(): Promise<Community[]> {
   return communities;
 }
 
+// ! NEED TO IMPLEMENT SITE TO DISPLAY COMMUNITIES
 //prettier-ignore
 {/* @ts-expect-error Async Server Component */}
 const Communities: React.FC = async () => {
@@ -90,10 +91,6 @@ const Communities: React.FC = async () => {
             ))}
           </ul>
         ) : null}
-        <button>
-          See More
-          <i className="bi-arrow-down" />
-        </button>
       </section>
 
       <section className={styles["hidden-section"]}>
@@ -133,10 +130,6 @@ const Communities: React.FC = async () => {
             ))}
           </ul>
         ) : null}
-        <button>
-          See More
-          <i className="bi-arrow-down" />
-        </button>
       </section>
     </main>
   );
