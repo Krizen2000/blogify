@@ -1,3 +1,4 @@
+import PricingTable from "./pricingTable";
 import styles from "./styles.module.css";
 
 // ! BILL BUTTON NEEDS TO BE IMPLEMENTED
@@ -96,8 +97,9 @@ const Pricing: React.FC = () => {
           </article>
         </div>
       </section>
-      <aside>
-        <p>Compare all the features</p>
+      <aside className={styles["table-container"]}>
+        <p className={styles["table-description"]}>Compare all the features</p>
+        <PricingTable />
       </aside>
     </main>
   );

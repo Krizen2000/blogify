@@ -1,35 +1,165 @@
 import styles from "./pricingTable.module.css";
 
-// ! NEED TO IMPLEMENT IT TO WORK ON BOTH MOBILE AND DESKTOP
 const PricingTable: React.FC = () => {
   return (
-    <table>
+    <table className={styles["pricing-table"]}>
       <thead>
-        <th>Plans</th>
-        <th>Creation of blogs and content</th>
-        <th>Access to other communities</th>
-        <th>Forum Tech Support</th>
-        <th>Email Tech Support</th>
-        <th>Call Tech Support</th>
-        <th>24/7 Live Support</th>
-        <th>Full Access to Premium</th>
-        <th>Full Access to Beta</th>
-        <th>Custom Payment Cycle</th>
+        <tr>
+          <th className={styles["plan-header"]} colSpan={5}>
+            Plans
+          </th>
+        </tr>
+        <tr>
+          <th className={styles["table-header"]}>Features</th>
+          <th className={styles["table-header"]}>Free</th>
+          <th className={styles["table-header"]}>Starter</th>
+          <th className={styles["table-header"]}>Pro</th>
+          <th className={styles["table-header"]}>Enterprise</th>
+        </tr>
       </thead>
       <tbody>
         <tr>
-          <th>Free</th>
+          <th className={styles["feature-header"]}>
+            Creation of blogs and content
+          </th>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
         </tr>
         <tr>
-          <th>Starter</th>
+          <th className={styles["feature-header"]}>
+            Access to other communities
+          </th>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
         </tr>
         <tr>
-          <th>Pro</th>
+          <th className={styles["feature-header"]}>Forum Tech Support</th>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
         </tr>
         <tr>
-          <th>Enterprise</th>
+          <th className={styles["feature-header"]}>Email Tech Support</th>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+        </tr>
+        <tr>
+          <th className={styles["feature-header"]}>Call Tech Support</th>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+        </tr>
+        <tr>
+          <th className={styles["feature-header"]}>Full Access to Premium</th>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+        </tr>
+        <tr>
+          <th className={styles["feature-header"]}>Full Access to Beta</th>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+        </tr>
+        <tr>
+          <th className={styles["feature-header"]}>24/7 Live Support</th>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
+        </tr>
+        <tr>
+          <th className={styles["feature-header"]}>Custom Payment Cycle</th>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-x ${styles["icon-x"]}`} />
+          </td>
+          <td>
+            <i className={`bi-check ${styles["icon-check"]}`} />
+          </td>
         </tr>
       </tbody>
     </table>
   );
 };
+
+export default PricingTable;

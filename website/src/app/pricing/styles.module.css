@@ -31,7 +31,8 @@ h1.header-text {
   justify-items: center;
 }
 
-p.description-text {
+p.description-text,
+p.table-description {
   font-size: 1.5rem;
   font-weight: 500;
   font-family: Cairo;
@@ -80,4 +81,10 @@ li.feature-item {
 p.feature-title {
   justify-self: start;
   text-align: start;
+}
+
+aside.table-container {
+  display: grid;
+  justify-items: center;
+  gap: 5rem;
 }

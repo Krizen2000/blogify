@@ -1,0 +1,34 @@
+table.pricing-table {
+  width: min(80rem, 70vw);
+  text-align: center;
+}
+
+th.plan-header {
+  font-size: 1.5rem;
+  padding-bottom: 2rem;
+}
+
+th.table-header,
+th.feature-header {
+  padding: auto;
+  font-size: 1.1rem;
+}
+
+th.feature-header {
+  font-weight: 300;
+}
+
+td.table-data {
+  padding: auto;
+  font-size: 1.1rem;
+}
+
+i.icon-check {
+  font-size: 2rem;
+  color: var(--clr-primary-rgb);
+}
+
+i.icon-x {
+  font-size: 2rem;
+  color: var(--clr-secondary-rgb);
+}
