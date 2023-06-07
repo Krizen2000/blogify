@@ -38,7 +38,7 @@ async function requestBlogCreation(token: string, data: Blog) {
   }
 }
 
-// ! INPUT VALIDATION ON ID
+// ? IMPLEMENT EXCEPTION FOR DUPLICATE BLOG
 export default function CreateBlog() {
   const cacheContext = useCacheContext();
   const [blogId, setBlogId] = useState("");

@@ -1,10 +1,62 @@
 "use client";
 
 import styles from "./style.module.css";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCacheContext } from "@context/cacheProvider";
-import { requestUserInfo, requestUserInfoUpdate } from "./profileHelper";
+
+type User = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  username: string;
+  phoneNumber: string;
+  profession: string;
+  discord: string;
+  facebook: string;
+  instagram: string;
+  twitter: string;
+};
+
+type UserData = {
+  firstName: string;
+  lastName: string;
+  email: string;
+  phoneNumber: string;
+  profession: string;
+  discord: string;
+  facebook: string;
+  instagram: string;
+  twitter: string;
+};
+
+export async function requestUserInfo(token: string): Promise<User | null> {
+  const axiosInstance = axios.create({
+    headers: { Authorization: `bearer ${token}` },
+  });
+  let user = null;
+  try {
+    const res = await axiosInstance.get(`/api/users/`);
+    if (!res.data) return null;
+    user = res.data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+  return user;
+}
+
+export async function requestUserInfoUpdate(token: string, data: UserData) {
+  const axiosInstance = axios.create({
+    headers: { Authorization: `bearer ${token}` },
+  });
+  try {
+    await axiosInstance.put(`/api/users/`, data);
+  } catch (err) {
+    console.error(err);
+  }
+}
 
 const initialIsDisabled = {
   firstName: true,
@@ -28,8 +80,11 @@ const initialUserInfo = {
   instagram: "",
   twitter: "",
 };
+
+// ! NEED TO IMPLEMENT SUBSCRIPTION TYPE
 export default function Profile() {
   const cacheContext = useCacheContext();
+  const token = cacheContext.cache["token"];
   const [userInfo, setUserInfo] = useState(initialUserInfo);
   const [newUserInfo, setNewUserInfo] = useState(initialUserInfo);
   const [commute, setCommute] = useState("None");
@@ -42,24 +97,23 @@ export default function Profile() {
   const router = useRouter();
 
   useEffect(() => {
-    requestUserInfo(cacheContext.cache["token"]).then((user) => {
+    requestUserInfo(token).then((user) => {
+      if (!user) return;
       const { username, ...userData } = user;
       setUserInfo(userData);
       setNewUserInfo(userData);
     });
-  }, []);
+  }, [token]);
 
   useEffect(() => {
     if (!updateUserInfo) return;
     setUpdateUserInfo(false);
 
     let userData = { ...newUserInfo };
-    // @ts-ignore
+    // @ts-ignore "Dynamic nature of the attribute"
     if (shareCommute) userData["commute"] = commute;
 
-    requestUserInfoUpdate(cacheContext.cache["token"], userData).then(() =>
-      setUserInfo(newUserInfo)
-    );
+    requestUserInfoUpdate(token, userData).then(() => setUserInfo(newUserInfo));
   }, [updateUserInfo]);
 
   return (
@@ -75,7 +129,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.firstName}
+              defaultValue={newUserInfo.firstName}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, firstName: e.target.value })
               }
@@ -102,7 +156,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.lastName}
+              defaultValue={newUserInfo.lastName}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, lastName: e.target.value })
               }
@@ -129,7 +183,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.profession}
+              defaultValue={newUserInfo.profession}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, profession: e.target.value })
               }
@@ -156,7 +210,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.phoneNumber}
+              defaultValue={newUserInfo.phoneNumber}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, phoneNumber: e.target.value })
               }
@@ -183,7 +237,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.email}
+              defaultValue={newUserInfo.email}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, email: e.target.value })
               }
@@ -215,7 +269,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.discord}
+              defaultValue={newUserInfo.discord}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, discord: e.target.value })
               }
@@ -239,7 +293,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.instagram}
+              defaultValue={newUserInfo.instagram}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, instagram: e.target.value })
               }
@@ -266,7 +320,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.facebook}
+              defaultValue={newUserInfo.facebook}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, facebook: e.target.value })
               }
@@ -293,7 +347,7 @@ export default function Profile() {
           <div>
             <input
               type="text"
-              value={newUserInfo.twitter}
+              defaultValue={newUserInfo.twitter}
               onChange={(e) =>
                 setNewUserInfo({ ...newUserInfo, twitter: e.target.value })
               }
@@ -322,7 +376,7 @@ export default function Profile() {
             <p>{"Communicate via:"}</p>
             <select
               disabled={!shareCommute}
-              value={commute}
+              defaultValue={commute}
               onChange={(e) => setCommute(e.target.value)}
             >
               {[
@@ -340,7 +394,7 @@ export default function Profile() {
           <div>
             <input
               type="checkbox"
-              value={shareCommute}
+              checked={shareCommute}
               onChange={(e) => setShareCommute(!shareCommute)}
             />
             <p>{"Share commmute details with Blog readers"}</p>
