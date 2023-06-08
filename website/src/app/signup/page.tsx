@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./style.module.css";
 import axios from "axios";
 import { MouseEvent, useState } from "react";
 import Link from "next/link";
@@ -61,6 +62,16 @@ export default function SignUp() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
+  const resetAction = (e: MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    setUsername("");
+    setFirstName("");
+    setLastName("");
+    setPhoneNumber("");
+    setEmail("");
+    setPassword("");
+    setConfirmPassword("");
+  };
   const submitAction = async (e: MouseEvent<HTMLButtonElement>) => {
     if (password !== confirmPassword) return;
     const value = await requestUserSignup(
@@ -92,14 +103,9 @@ export default function SignUp() {
 
   const router = useRouter();
   return (
-    <main>
-      <div>
-        <button onClick={() => router.back()}>
-          <i className="bi-arrow-left" />
-        </button>
-        <h1>Sign Up</h1>
-      </div>
-      <form style={{ display: "grid" }}>
+    <main className={styles["signup-container"]}>
+      <h1>Sign Up</h1>
+      <form className={styles["form"]}>
         <label>UserName</label>
         <input
           type="text"
@@ -143,25 +149,27 @@ export default function SignUp() {
           onChange={(e) => setConfirmPassword(e.target.value)}
         />
         {password !== confirmPassword ? (
-          <p>Password is not matching with Confirm Password</p>
+          <p className={styles["password-check"]}>
+            Password is not matching with Confirm Password
+          </p>
         ) : null}
       </form>
-      <Link style={{ justifySelf: "center" }} href="/login">
+      <Link className={styles["link"]} href="/login">
         Already a user? Login
       </Link>
-      <div>
+      <div className={styles["button-group"]}>
         <button
+          className={styles["secondary-btn"]}
           type="reset"
-          onClick={() => {
-            setFirstName("");
-            setLastName("");
-            setPhoneNumber("");
-            setEmail("");
-          }}
+          onClick={resetAction}
         >
           Clear
         </button>
-        <button type="submit" onClick={submitAction}>
+        <button
+          className={styles["primary-btn"]}
+          type="submit"
+          onClick={submitAction}
+        >
           Create an account
         </button>
       </div>

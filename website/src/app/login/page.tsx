@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./style.module.css";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import axios from "axios";
@@ -85,12 +86,9 @@ export default function Login() {
     router.back();
   };
   return (
-    <main>
-      <button onClick={() => router.back()}>
-        <i className="bi-arrow-left" />
-      </button>
+    <main className={styles["login-container"]}>
       <h1>Login</h1>
-      <form style={{ display: "grid" }}>
+      <form className={styles["form"]}>
         <label>Username / Email / PhoneNumber</label>
         <input
           type="text"
@@ -104,14 +102,22 @@ export default function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
       </form>
-      <Link style={{ justifySelf: "center" }} href="/signup">
+      <Link className={styles["link"]} href="/signup">
         Don't have an account? SignUpfirst
       </Link>
-      <div>
-        <button type="reset" onClick={resetAction}>
+      <div className={styles["button-group"]}>
+        <button
+          className={styles["secondary-btn"]}
+          type="reset"
+          onClick={resetAction}
+        >
           Clear
         </button>
-        <button type="submit" onClick={submitAction}>
+        <button
+          className={styles["primary-btn"]}
+          type="submit"
+          onClick={submitAction}
+        >
           Login
         </button>
       </div>

@@ -1,0 +1,52 @@
+main.signup-container {
+  margin-inline: var(--size-1600);
+  margin-bottom: var(--size-2200);
+  display: grid;
+  justify-items: center;
+}
+
+form.form {
+  display: grid;
+  gap: 0.5rem;
+  width: min(30rem, 70vw);
+  padding: 2rem;
+  margin: 2rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+p.password-check {
+  color: red;
+  justify-self: center;
+}
+
+a.link {
+  margin: 1rem;
+  text-decoration: none;
+  color: var(--clr-txt-rgb);
+  transition: 250ms color;
+}
+a.link:hover {
+  color: var(--clr-primary-rgb);
+}
+
+div.button-group {
+  display: flex;
+  gap: 2rem;
+}
+
+button.primary-btn {
+  padding: 1rem 2rem;
+  background-color: var(--clr-primary-rgb);
+  border-color: var(--clr-primary-rgb);
+}
+
+button.secondary-btn {
+  padding: 1rem 2rem;
+  background-color: transparent;
+  border-color: var(--clr-txt-rgb);
+  transition: 250ms background-color;
+}
+button.secondary-btn:hover {
+  background-color: var(--clr-secondary-rgb);
+}

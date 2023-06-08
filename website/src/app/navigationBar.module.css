@@ -77,10 +77,9 @@ li.navigation-item {
 }
 
 a.link {
-  all: unset;
-  cursor: pointer;
+  text-decoration: none;
   color: var(--clr-txt-rgb);
-  transition: color 1s ease;
+  transition: 250ms color;
 }
 a.link:hover {
   color: var(--clr-primary-rgb);
