@@ -60,8 +60,3 @@
   --border-1500: 0.9375rem;
   --border-1600: 1rem;
 }
-
-body {
-  color: var(--clr-txt-rgb);
-  background-color: var(--clr-bg-rgb);
-}

@@ -1,6 +1,7 @@
 import "bootstrap/dist/css/bootstrap.css";
 // import "bootstrap/dist/js/bootstrap";
 import "./globals.css";
+import styles from "./layout.module.css";
 import CacheProvider from "@context/cacheProvider";
 import NavigationBar from "./navigationBar";
 import Footer from "./footer";
@@ -20,7 +21,7 @@ export default function RootLayout({
       <head>
         <meta name="color-scheme" content="dark" />
       </head>
-      <body>
+      <body className={styles["body"]}>
         <CacheProvider>
           <NavigationBar />
           {children}
