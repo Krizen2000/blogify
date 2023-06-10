@@ -4,7 +4,9 @@ import NewsLetterForm from "./newLetterForm";
 const Footer: React.FC = () => {
   return (
     <footer className={styles["footer"]}>
-      <h2 className={styles["website-name"]}>BLOGIFY</h2>
+      <a href="/" className={styles["website-name"]}>
+        BLOGIFY
+      </a>
       <div className={styles["footer-container"]}>
         <div className={styles["page-navigation"]}>
           <p className={styles["footer-element-title"]}>Blogify</p>
@@ -29,16 +31,16 @@ const Footer: React.FC = () => {
         <div className={styles["contacts-container"]}>
           <p className={styles["footer-element-title"]}>Contact</p>
           <address className={styles["contact-links"]}>
-            <a href="" className={styles["link"]}>
+            <a href="http://www.gmail.com" className={styles["link"]}>
               Email
             </a>
-            <a href="" className={styles["link"]}>
+            <a href="http://www.linkedin.com" className={styles["link"]}>
               LinkedIn
             </a>
-            <a href="" className={styles["link"]}>
+            <a href="http://www.instagram.com" className={styles["link"]}>
               Instagram
             </a>
-            <a href="" className={styles["link"]}>
+            <a href="http://www.facebook.com" className={styles["link"]}>
               Facebook
             </a>
           </address>

@@ -79,7 +79,9 @@ const Home: React.FC = () => {
 
       <section className={styles["cta-section"]}>
         <p className={styles["cta-text"]}>START WRITING NOW!</p>
-        <button className={styles["cta-btn"]}>SignUp</button>
+        <a role="button" href="/signup" className={styles["cta-btn"]}>
+          SignUp
+        </a>
       </section>
     </main>
   );

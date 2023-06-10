@@ -7,7 +7,9 @@ footer.footer {
   justify-content: space-between;
 }
 
-h2.website-name {
+a.website-name {
+  cursor: pointer;
+  text-decoration: none;
   font-size: 2rem;
   font-weight: 500;
 }
@@ -32,6 +34,8 @@ p.newsletter-text {
 
 nav.secondary-navigation,
 address.contact-links {
+  font-style: normal;
+  text-decoration: none;
   margin: 0;
   display: grid;
   gap: 0.5rem;

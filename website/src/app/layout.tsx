@@ -1,8 +1,10 @@
+import "bootstrap-icons/font/bootstrap-icons.css";
 import "./globals.css";
 import styles from "./layout.module.css";
 import CacheProvider from "@context/cacheProvider";
 import NavigationBar from "./navigationBar";
 import Footer from "./footer";
+import Head from "next/head";
 
 export const metadata = {
   title: "Next.js",
@@ -16,9 +18,20 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <head>
+      <Head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" />
+        <link
+          href="https://fonts.googleapis.com/css?family=Maitree"
+          ref="stylesheet"
+        />
+        <link
+          href="https://fonts.googleapis.com/css?family=Cairo"
+          ref="stylesheet"
+        />
+        <link rel="preconnect" href="https://cdn.jsdelivr.net" />
         <meta name="color-scheme" content="dark" />
-      </head>
+      </Head>
       <body className={styles["body"]}>
         <CacheProvider>
           <NavigationBar />

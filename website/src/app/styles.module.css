@@ -111,7 +111,9 @@ p.feature-text {
   text-align: center;
 }
 
-button.cta-btn {
+a.cta-btn {
+  color: inherit;
+  text-decoration: none;
   font-family: inherit;
   font-size: 1.25rem;
   padding: 2rem 4rem;
