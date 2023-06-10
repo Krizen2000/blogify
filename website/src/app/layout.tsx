@@ -1,5 +1,3 @@
-import "bootstrap/dist/css/bootstrap.css";
-// import "bootstrap/dist/js/bootstrap";
 import "./globals.css";
 import styles from "./layout.module.css";
 import CacheProvider from "@context/cacheProvider";

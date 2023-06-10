@@ -7,6 +7,8 @@ type Community = {
   communityId: string;
   creator: string;
   image: string;
+  description: string;
+  createdAt: string;
 };
 
 export const revalidate = 600; // Revalidate cache for every 10min
@@ -69,7 +71,7 @@ const Communities: React.FC = async () => {
               >
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
-                  href={`/blogs/${community.communityId}`}
+                  href={`/communities/${community.communityId}`}
                 >
                   <article className={styles["card"]}>
                     <img
@@ -107,7 +109,7 @@ const Communities: React.FC = async () => {
               >
                 <Link
                   style={{ textDecoration: "none", color: "inherit" }}
-                  href={`/blogs/${community.communityId}`}
+                  href={`/communities/${community.communityId}`}
                 >
                   <article className={styles["card"]}>
                     <img

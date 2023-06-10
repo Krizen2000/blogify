@@ -1,0 +1,51 @@
+main.community-editing {
+  display: flex;
+  gap: 5rem;
+  margin: var(--size-1600);
+  justify-content: center;
+  align-items: center;
+}
+
+div.community-details {
+  display: grid;
+  gap: 0.5rem;
+}
+
+img.image {
+  --size: min(20rem, 60vw);
+  object-fit: cover;
+  width: var(--size);
+  height: var(--size);
+  border-radius: 1rem;
+  backdrop-filter: 50%;
+}
+
+input.input {
+  padding: 0.3rem;
+  background-color: var(--clr-secondary-rgb);
+  border-color: var(--clr-secondary-rgb);
+}
+
+div.button-group {
+  margin: 0.5rem auto;
+  display: flex;
+  gap: 1rem;
+}
+
+button.primary-btn {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  background-color: var(--clr-primary-rgb);
+  border-color: var(--clr-primary-rgb);
+}
+
+button.secondary-btn {
+  cursor: pointer;
+  padding: 1rem 2rem;
+  background-color: transparent;
+  border-color: var(--clr-txt-rgb);
+  transition: 250ms background-color;
+}
+button.secondary-btn:hover {
+  background-color: var(--clr-secondary-rgb);
+}

@@ -9,6 +9,8 @@ type Community = {
   communityId: string;
   creator: string;
   image: string;
+  description: string;
+  createdAt: string;
 };
 
 async function requestAllCommunities(): Promise<Community[] | null> {
@@ -68,23 +70,23 @@ const SearchField: React.FC = () => {
         <ul id="blogs" className={styles["carousel-container"]}>
           {filteredCommunities.map((community) => (
             <li id={community.communityId} className={styles["carousel-item"]}>
-              {/* <Link
-                  style={{ textDecoration: "none", color: "inherit" }}
-                  href={`/communities/${community.communityId}`}
-                > */}
-              <article className={styles["card"]}>
-                <img className={styles["card-image"]} src={community.image} />
-                <div className={styles["author-details"]}>
-                  <header className={styles["article-title"]}>
-                    {community.communityId}
-                  </header>
-                  <p className={styles["author-title"]}>Creator</p>
-                  <span className={styles["article-author"]}>
-                    {community.creator}
-                  </span>
-                </div>
-              </article>
-              {/* </Link> */}
+              <Link
+                style={{ textDecoration: "none", color: "inherit" }}
+                href={`/communities/${community.communityId}`}
+              >
+                <article className={styles["card"]}>
+                  <img className={styles["card-image"]} src={community.image} />
+                  <div className={styles["author-details"]}>
+                    <header className={styles["article-title"]}>
+                      {community.communityId}
+                    </header>
+                    <p className={styles["author-title"]}>Creator</p>
+                    <span className={styles["article-author"]}>
+                      {community.creator}
+                    </span>
+                  </div>
+                </article>
+              </Link>
             </li>
           ))}
         </ul>

@@ -42,12 +42,12 @@ async function getHiddenCommunities(req, res, next) {
 
 async function getCommunity(req, res, next) {
   Community.find({ communityId: req.query.communityId })
-    .then((community) => {
+    .then(([community]) => {
       if (!community) {
         res.status(200).json();
         return;
       }
-      res.status(200).json(community);
+      res.status(200).json(community.toObject());
     })
     .catch((err) => res.status(500).json(err));
 }
@@ -62,14 +62,17 @@ async function createCommunity(req, res, next) {
 }
 
 async function updateCommunity(req, res, next) {
-  Community.findOneAndUpdate({ communityId: req.params.communityId }, req.body)
-    .then(() => res.status(200))
+  Community.findOneAndUpdate(
+    { communityId: req.params.communityId, creator: req.user.username },
+    req.body
+  )
+    .then(() => res.status(200).json())
     .catch((err) => res.status(500).json(err));
 }
 
 async function deleteCommunity(req, res, next) {
   Community.findOneAndDelete({ communityId: req.params.communityId })
-    .then(() => res.status(200))
+    .then(() => res.status(200).json())
     .catch((err) => res.status(500).json(err));
 }
 

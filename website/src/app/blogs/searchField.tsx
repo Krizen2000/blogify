@@ -75,7 +75,7 @@ const SearchField: React.FC = () => {
       )
       .filter(displayFilter);
     setFilteredBlogs(blogList);
-  }, [searchText]);
+  }, [searchText, displayBlogs]);
 
   return (
     <div className={styles["search-field"]}>
