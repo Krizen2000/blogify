@@ -15,6 +15,12 @@ form.form {
   padding-bottom: 0;
 }
 
+input.input {
+  padding: 0.3rem;
+  background-color: var(--clr-secondary-rgb);
+  border-color: var(--clr-secondary-rgb);
+}
+
 a.link {
   margin: 1rem;
   text-decoration: none;
@@ -31,12 +37,16 @@ div.button-group {
 }
 
 button.primary-btn {
+  cursor: pointer;
+  font-size: 1.1rem;
   padding: 1rem 2rem;
   background-color: var(--clr-primary-rgb);
   border-color: var(--clr-primary-rgb);
 }
 
 button.secondary-btn {
+  cursor: pointer;
+  font-size: 1.1rem;
   padding: 1rem 2rem;
   background-color: transparent;
   border-color: var(--clr-txt-rgb);

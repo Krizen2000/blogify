@@ -128,6 +128,7 @@ export default function Profile() {
           <label>First Name</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.firstName}
               onChange={(e) =>
@@ -155,6 +156,7 @@ export default function Profile() {
           <label>Last Name</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.lastName}
               onChange={(e) =>
@@ -182,6 +184,7 @@ export default function Profile() {
           <label>Profession</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.profession}
               onChange={(e) =>
@@ -209,6 +212,7 @@ export default function Profile() {
           <label>Phone Number</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.phoneNumber}
               onChange={(e) =>
@@ -236,6 +240,7 @@ export default function Profile() {
           <label>Email</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.email}
               onChange={(e) =>
@@ -268,6 +273,7 @@ export default function Profile() {
           <label>Discord</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.discord}
               onChange={(e) =>
@@ -292,6 +298,7 @@ export default function Profile() {
           <label>Instagram</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.instagram}
               onChange={(e) =>
@@ -319,6 +326,7 @@ export default function Profile() {
           <label>Facebook</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.facebook}
               onChange={(e) =>
@@ -346,6 +354,7 @@ export default function Profile() {
           <label>Twitter</label>
           <div>
             <input
+              className={styles["input"]}
               type="text"
               defaultValue={newUserInfo.twitter}
               onChange={(e) =>
@@ -393,6 +402,7 @@ export default function Profile() {
           </div>
           <div>
             <input
+              className={styles["input"]}
               type="checkbox"
               checked={shareCommute}
               onChange={(e) => setShareCommute(!shareCommute)}

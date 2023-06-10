@@ -137,14 +137,14 @@ const Page: React.FC<Props> = ({ params: { communityId } }) => {
   }, [displayBlogs]);
   return (
     <main className={styles["community-detailing"]}>
-      <section className={styles["community-details"]}>
+      <section className={styles["community-wrapper"]}>
         <img className={styles["image"]} src={community?.image} />
-        <div>
-          <h1>Community Details</h1>
+        <div className={styles["community-details"]}>
+          <h1 className={styles["community-header"]}>Community Details</h1>
           <p>Name: {community?.communityId}</p>
           <p>Creator: {community?.creator}</p>
           <p>
-            Date Created:
+            Date Created:{" "}
             {community?.createdAt &&
               new Date(community.createdAt).toLocaleString()}
           </p>

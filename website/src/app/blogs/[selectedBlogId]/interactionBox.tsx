@@ -53,7 +53,7 @@ function useCheckUserLoggedIn() {
     let username = cacheContext.cache["username"];
     if (!username) return;
     setLoggedIn(true);
-  }, []);
+  }, [cacheContext]);
   return loggedIn;
 }
 
@@ -111,7 +111,7 @@ const InteractionBox: React.FC<props> = ({ blog }) => {
   const [message, setMessage] = useState("");
   return (
     <>
-      {!userLoggedIn ? (
+      {userLoggedIn ? (
         <div className={styles["interaction-box"]}>
           <div>
             <span>{blog.likedBy.length}</span>

@@ -104,46 +104,53 @@ export default function SignUp() {
   const router = useRouter();
   return (
     <main className={styles["signup-container"]}>
-      <h1>Sign Up</h1>
+      <h1 className={styles["header-text"]}>Sign Up</h1>
       <form className={styles["form"]}>
         <label>UserName</label>
         <input
+          className={styles["input"]}
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
         />
         <label>First Name</label>
         <input
+          className={styles["input"]}
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
         />
         <label>Last Name</label>
         <input
+          className={styles["input"]}
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
         />
         <label>Phone Number</label>
         <input
+          className={styles["input"]}
           type="text"
           value={phoneNumber}
           onChange={(e) => setPhoneNumber(e.target.value)}
         />
         <label>Email</label>
         <input
+          className={styles["input"]}
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <label>Password</label>
         <input
+          className={styles["input"]}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
         <label>Confirm Password</label>
         <input
+          className={styles["input"]}
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}

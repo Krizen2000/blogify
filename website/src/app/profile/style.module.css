@@ -1,6 +1,7 @@
 main.profile-container {
   display: grid;
   gap: 1rem;
+  margin: var(--size-1600);
 }
 
 i.person-icon {
@@ -19,4 +20,11 @@ form.credentials {
   background-color: var(--clr-secondary-rgb);
   border: 0.00625rem solid var(--bs-gray-500);
   border-radius: 0.5rem;
+}
+
+input.input {
+  color: var(--clr-txt-rgb);
+  padding: 0.3rem;
+  background-color: var(--clr-bg-rgb);
+  border-color: var(--clr-bg-rgb);
 }

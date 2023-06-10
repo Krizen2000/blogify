@@ -91,19 +91,21 @@ export default function Login() {
       <form className={styles["form"]}>
         <label>Username / Email / PhoneNumber</label>
         <input
+          className={styles["input"]}
           type="text"
           value={loginId}
           onChange={(e) => setLoginId(e.target.value)}
         />
         <label>Password</label>
         <input
+          className={styles["input"]}
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
       </form>
       <Link className={styles["link"]} href="/signup">
-        Don't have an account? SignUpfirst
+        Don't have an account? SignUp first
       </Link>
       <div className={styles["button-group"]}>
         <button

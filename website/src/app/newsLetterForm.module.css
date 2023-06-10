@@ -15,7 +15,7 @@ input.newsletter-box:focus {
 }
 
 button.cta-btn {
-  /* color: inherit; */
+  color: inherit;
   cursor: pointer;
   font-size: 0.85rem;
   padding: 0.25rem 0.5rem;
