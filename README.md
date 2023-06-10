@@ -1,7 +1,7 @@
 # Blogify
 
 - This project helps users to create their own blogs for fun.
-- The site is built with react, bootstrap, webpack
+- The site is built with react, nextjs, typescript
 - The api is built with node, express, mongodb with JWT Auth
 
 #### Minimum Requirements
