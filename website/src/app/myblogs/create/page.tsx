@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./style.module.css";
 import axios from "axios";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/navigation";
@@ -81,29 +82,54 @@ export default function CreateBlog() {
     router.back();
   };
   return (
-    <main>
-      <div>
-        <button onClick={() => router.back()}>
-          <i className="bi-arrow-left" />
-        </button>
-        <h1>Create Blog</h1>
-      </div>
-      <article>
+    <main className={styles["blog-container"]}>
+      <h1 className={styles["header-text"]}>Create Blog</h1>
+      <article className={styles["blog-details"]}>
         <label>BlogId</label>
-        <input type="text" onChange={(e) => setBlogId(e.target.value)} />
+        <input
+          className={styles["input"]}
+          type="text"
+          onChange={(e) => setBlogId(e.target.value)}
+        />
         <label>Title</label>
-        <input type="text" onChange={(e) => setTitle(e.target.value)} />
+        <input
+          className={styles["input"]}
+          type="text"
+          onChange={(e) => setTitle(e.target.value)}
+        />
         <label>Image</label>
-        <input type="text" onChange={(e) => setImage(e.target.value)} />
+        <input
+          className={styles["input"]}
+          type="text"
+          onChange={(e) => setImage(e.target.value)}
+        />
         <label>Description</label>
-        <input type="text" onChange={(e) => setDescription(e.target.value)} />
+        <input
+          className={styles["input"]}
+          type="text"
+          onChange={(e) => setDescription(e.target.value)}
+        />
         <label>Tags</label>
-        <input type="text" onChange={tagsListener} />
+        <input
+          className={styles["input"]}
+          type="text"
+          onChange={tagsListener}
+        />
         <label>Communities</label>
-        <input type="text" onChange={communitiesListener} />
-        <div>
-          <button type="reset">Clear</button>
-          <button type="button" onClick={makeNewBlog}>
+        <input
+          className={styles["input"]}
+          type="text"
+          onChange={communitiesListener}
+        />
+        <div className={styles["button-group"]}>
+          <button className={styles["secondary-btn"]} type="reset">
+            Clear
+          </button>
+          <button
+            className={styles["primary-btn"]}
+            type="button"
+            onClick={makeNewBlog}
+          >
             Create
           </button>
         </div>
