@@ -1,23 +1,27 @@
-main.blog-container {
+main.signup-container {
   margin-inline: var(--size-1600);
   margin-bottom: var(--size-2200);
   display: grid;
-  justify-items: center;
+  justify-content: center;
+  gap: 1rem;
 }
 
 h1.header-text {
+  text-align: center;
   font-size: 3rem;
-  font-weight: 400;
+  font-weight: 500;
+  margin-bottom: 3rem;
 }
 
 form.form {
   display: grid;
+  /* justify-content: center; */
   gap: 0.5rem;
   width: min(30rem, 70vw);
-  padding: 2rem;
-  margin: 2rem;
-  margin-bottom: 0;
-  padding-bottom: 0;
+  /* padding: 2rem; */
+  /* margin: 2rem; */
+  /* margin-bottom: 0; */
+  /* padding-bottom: 0; */
 }
 
 input.input {
@@ -32,7 +36,7 @@ p.password-check {
 }
 
 a.link {
-  margin: 1rem;
+  text-align: center;
   text-decoration: none;
   color: var(--clr-txt-rgb);
   transition: 250ms color;
@@ -43,10 +47,12 @@ a.link:hover {
 
 div.button-group {
   display: flex;
+  margin: auto;
   gap: 2rem;
 }
 
 button.primary-btn {
+  color: var(--clr-txt-rgb);
   cursor: pointer;
   font-size: 1.1rem;
   padding: 1rem 2rem;
@@ -55,6 +61,7 @@ button.primary-btn {
 }
 
 button.secondary-btn {
+  color: var(--clr-txt-rgb);
   cursor: pointer;
   font-size: 1.1rem;
   padding: 1rem 2rem;

@@ -13,16 +13,6 @@ section.pricing-card-section {
   justify-items: center;
 }
 
-/* h1.main-header-text {
-  font-size: 5rem;
-  font-weight: 900;
-  font-family: Maitree;
-  display: grid;
-  justify-items: center;
-  text-align: center;
-  letter-spacing: 0.15rem;
-} */
-
 h1.header-text {
   font-size: 3rem;
   font-weight: 700;

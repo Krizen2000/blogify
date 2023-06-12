@@ -87,7 +87,7 @@ export default function Login() {
   };
   return (
     <main className={styles["login-container"]}>
-      <h1>Login</h1>
+      <h1 className={styles["header-text"]}>Login</h1>
       <form className={styles["form"]}>
         <label>Username / Email / PhoneNumber</label>
         <input
