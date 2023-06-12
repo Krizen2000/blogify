@@ -61,8 +61,7 @@ const loginHandler = async (req, res, next) => {
         userId: user._id,
         username: user.username,
       },
-      JWT_KEY,
-      { expiresIn: "1d" }
+      JWT_KEY
     );
 
     const { password, ...userInfo } = user.toObject();
