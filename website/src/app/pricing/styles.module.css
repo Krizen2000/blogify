@@ -36,6 +36,13 @@ p.title-text {
   text-align: center;
 }
 
+button.btn {
+  color: var(--clr-secondary-rgb);
+}
+div.txt {
+  color: var(--clr-secondary-rgb);
+}
+
 div.card-holder {
   display: grid;
   grid-template-columns: repeat(4, 1fr);

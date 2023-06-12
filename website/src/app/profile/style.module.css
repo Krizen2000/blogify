@@ -40,6 +40,7 @@ h3.sub-header-text {
 
 i.icon {
   font-size: 1.5rem;
+  /* color: var(--clr-primary-rgb); */
 }
 
 form.credentials {
@@ -72,10 +73,9 @@ button.btn {
   align-items: center;
   margin: 0;
   aspect-ratio: 1;
-  border-color: var(--clr-primary-rgb);
-  background-color: transparent;
+  border-color: transparent;
+  background-color: var(--clr-bg-rgb);
   cursor: pointer;
-  color: var(--clr-primary-rgb);
 }
 
 select.select {

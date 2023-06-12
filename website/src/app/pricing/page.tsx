@@ -14,9 +14,9 @@ const Pricing: React.FC = () => {
         <p className={styles["description-text"]}>
           Try The Free Plan And Get Access To Our Products
         </p>
-        <button>
-          <div>Bill Yearly</div>
-          <div>Bill Monthly</div>
+        <button className={styles["btn"]}>
+          <div className={styles["txt"]}>Bill Yearly</div>
+          <div className={styles["txt"]}>Bill Monthly</div>
         </button>
         <div className={styles["card-holder"]}>
           <article className={styles["card"]}>
@@ -33,7 +33,7 @@ const Pricing: React.FC = () => {
               </li>
               <li className={styles["feature-item"]}>Forum Tech Support</li>
             </ul>
-            <button>Try for Free</button>
+            <button className={styles["btn"]}>Try for Free</button>
           </article>
           <article className={styles["card"]}>
             <header className={styles["header"]}>
@@ -53,7 +53,7 @@ const Pricing: React.FC = () => {
                 Limited Access to Premium
               </li>
             </ul>
-            <button>Subscribe</button>
+            <button className={styles["btn"]}>Subscribe</button>
           </article>
           <article className={styles["card"]}>
             <header className={styles["header"]}>
@@ -72,7 +72,7 @@ const Pricing: React.FC = () => {
               <li className={styles["feature-item"]}>Full Access to Premium</li>
               <li className={styles["feature-item"]}>Full Access to Beta</li>
             </ul>
-            <button>Subscribe</button>
+            <button className={styles["btn"]}>Subscribe</button>
           </article>
           <article className={styles["card"]}>
             <header className={styles["header"]}>
@@ -93,7 +93,7 @@ const Pricing: React.FC = () => {
               <li className={styles["feature-item"]}>Full Access to Beta</li>
               <li className={styles["feature-item"]}>Custom Payment Cycle</li>
             </ul>
-            <button>Subscribe</button>
+            <button className={styles["btn"]}>Subscribe</button>
           </article>
         </div>
       </section>
