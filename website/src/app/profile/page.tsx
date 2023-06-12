@@ -118,15 +118,15 @@ export default function Profile() {
 
   return (
     <main className={styles["profile-container"]}>
-      <h1>Profile</h1>
-      <section>
-        <div>
-          <i className={`bi-person-circle ${styles["person-icon"]}`} />
-          <h3>Personal Information:</h3>
+      <h1 className={styles["header-text"]}>Profile</h1>
+      <section className={styles["personal-info"]}>
+        <div className={styles["block-wrapper"]}>
+          <i className={`bi-person-circle ${styles["header-icon"]}`} />
+          <h3 className={styles["sub-header-text"]}>Personal Information:</h3>
         </div>
         <form className={styles["credentials"]}>
           <label>First Name</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -137,6 +137,7 @@ export default function Profile() {
               disabled={isDisabled.firstName}
             />
             <button
+              className={styles["btn"]}
               type="button"
               onClick={(e) => {
                 setIsDisabled({
@@ -147,14 +148,14 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.firstName ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Last Name</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -165,6 +166,7 @@ export default function Profile() {
               disabled={isDisabled.lastName}
             />
             <button
+              className={styles["btn"]}
               type="button"
               onClick={(e) => {
                 setIsDisabled({
@@ -175,14 +177,14 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.lastName ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Profession</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -193,6 +195,7 @@ export default function Profile() {
               disabled={isDisabled.profession}
             />
             <button
+              className={styles["btn"]}
               type="button"
               onClick={(e) => {
                 setIsDisabled({
@@ -203,14 +206,14 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.profession ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Phone Number</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -221,6 +224,7 @@ export default function Profile() {
               disabled={isDisabled.phoneNumber}
             />
             <button
+              className={styles["btn"]}
               type="button"
               onClick={(e) => {
                 setIsDisabled({
@@ -231,14 +235,14 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.phoneNumber ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Email</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -249,6 +253,7 @@ export default function Profile() {
               disabled={isDisabled.email}
             />
             <button
+              className={styles["btn"]}
               type="button"
               onClick={(e) => {
                 setIsDisabled({ ...isDisabled, email: !isDisabled.email });
@@ -256,7 +261,7 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.email ? "bi-pencil-square" : "bi-save"
                 }`}
               />
@@ -264,14 +269,14 @@ export default function Profile() {
           </div>
         </form>
       </section>
-      <section>
-        <div className="d-flex align-items-center gap-3">
-          <i className={`bi-telephone-fill ${styles["icon"]}`} />
-          <h3>Communication Channel:</h3>
+      <section className={styles["com-channel"]}>
+        <div className={styles["block-wrapper"]}>
+          <i className={`bi-telephone-fill ${styles["header-icon"]}`} />
+          <h3 className={styles["sub-header-text"]}>Communication Channel:</h3>
         </div>
         <form className={styles["credentials"]}>
           <label>Discord</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -283,20 +288,21 @@ export default function Profile() {
             />
             <button
               type="button"
+              className={styles["btn"]}
               onClick={(e) => {
                 setIsDisabled({ ...isDisabled, discord: !isDisabled.discord });
                 if (isUserInfoChanged("discord")) setUpdateUserInfo(true);
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.discord ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Instagram</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -308,6 +314,7 @@ export default function Profile() {
             />
             <button
               type="button"
+              className={styles["btn"]}
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -317,14 +324,14 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.instagram ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Facebook</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -336,6 +343,7 @@ export default function Profile() {
             />
             <button
               type="button"
+              className={styles["btn"]}
               onClick={(e) => {
                 setIsDisabled({
                   ...isDisabled,
@@ -345,14 +353,14 @@ export default function Profile() {
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.facebook ? "bi-pencil-square" : "bi-save"
                 }`}
               />
             </button>
           </div>
           <label>Twitter</label>
-          <div>
+          <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
               type="text"
@@ -364,13 +372,14 @@ export default function Profile() {
             />
             <button
               type="button"
+              className={styles["btn"]}
               onClick={(e) => {
                 setIsDisabled({ ...isDisabled, twitter: !isDisabled.twitter });
                 if (isUserInfoChanged("twitter")) setUpdateUserInfo(true);
               }}
             >
               <i
-                className={`icon ${
+                className={`${styles["icon"]} ${
                   isDisabled.twitter ? "bi-pencil-square" : "bi-save"
                 }`}
               />
@@ -378,12 +387,16 @@ export default function Profile() {
           </div>
         </form>
       </section>
-      <section>
-        <h3>Blog Peference</h3>
+      <section className={styles["blog-prefer"]}>
+        <div className={styles["block-wrapper"]}>
+          <i className={`bi-file-post ${styles["header-icon"]}`} />
+          <h3 className={styles["sub-header-text"]}>Blog Peference:</h3>
+        </div>
         <form className={styles["credentials"]}>
-          <div>
+          <div className={styles["block-wrapper"]}>
             <p>{"Communicate via:"}</p>
             <select
+              className={styles["select"]}
               disabled={!shareCommute}
               defaultValue={commute}
               onChange={(e) => setCommute(e.target.value)}
@@ -400,14 +413,14 @@ export default function Profile() {
               ))}
             </select>
           </div>
-          <div>
+          <div className={styles["block-wrapper"]}>
             <input
               className={styles["input"]}
               type="checkbox"
               checked={shareCommute}
               onChange={(e) => setShareCommute(!shareCommute)}
             />
-            <p>{"Share commmute details with Blog readers"}</p>
+            <p>{"I agree to share my social handle with my blog readers"}</p>
           </div>
         </form>
       </section>

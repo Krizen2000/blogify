@@ -1,30 +1,93 @@
 main.profile-container {
-  display: grid;
-  gap: 1rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: start;
+  gap: 2rem;
   margin: var(--size-1600);
 }
 
-i.person-icon {
+h1.header-text {
+  font-family: Maitree;
   font-size: 4rem;
+  font-weight: 800;
+  text-align: center;
+  flex-basis: 100%;
+  margin-bottom: 4rem;
+}
+
+section.personal-info,
+section.com-channel,
+section.blog-prefer {
+  width: min(30rem, 70vw);
+}
+
+div.block-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 1rem;
+}
+
+i.header-icon {
+  font-size: 2.5rem;
+}
+
+h3.sub-header-text {
+  font-size: 1.5rem;
 }
 
 i.icon {
-  font-size: 2rem;
+  font-size: 1.5rem;
 }
 
 form.credentials {
   display: grid;
   margin: 0rem 1rem;
-  padding: 2rem;
-  gap: 0.5rem;
+  padding: 3rem 4rem;
+  gap: 1rem;
   background-color: var(--clr-secondary-rgb);
   border: 0.00625rem solid var(--bs-gray-500);
   border-radius: 0.5rem;
 }
 
+div.input-group {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 input.input {
+  flex-grow: 1;
   color: var(--clr-txt-rgb);
   padding: 0.3rem;
   background-color: var(--clr-bg-rgb);
   border-color: var(--clr-bg-rgb);
+  border-radius: 0.2rem;
+}
+
+button.btn {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  aspect-ratio: 1;
+  border-color: var(--clr-primary-rgb);
+  background-color: transparent;
+  cursor: pointer;
+  color: var(--clr-primary-rgb);
+}
+
+select.select {
+  font-size: 1rem;
+  padding: 0.3rem;
+  color: inherit;
+  background-color: var(--clr-bg-rgb);
+  border: 0.25rem solid var(--clr-secondary-rgb);
+}
+
+select.select:disabled {
+  appearance: none;
+  color: var(--bs-gray-500);
+  background-color: var(--clr-secondary-rgb);
 }
