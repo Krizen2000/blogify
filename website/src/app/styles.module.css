@@ -2,6 +2,7 @@ main.home-component {
   margin-inline: var(--size-1600);
   margin-bottom: 6rem;
   display: grid;
+  justify-content: center;
   gap: 15rem;
 }
 
@@ -12,13 +13,12 @@ section.about-section,
 section.cta-section {
   display: grid;
   gap: 6rem;
-  justify-content: center;
   justify-items: center;
 }
 
 section.appeal-section {
   display: flex;
-  gap: 6rem;
+  gap: 2rem;
   justify-content: center;
 }
 
@@ -61,6 +61,7 @@ span.add-cursor-blink:after {
 div.hero-body,
 div.appeal-body,
 div.blogs-body {
+  max-width: min(35rem, 70vw);
   display: flex;
   flex-direction: column;
   gap: 2rem;
@@ -84,10 +85,12 @@ p.description-text {
 }
 
 div.card-holder {
+  justify-self: center;
   display: grid;
+  /* justify-items: center; */
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
-  gap: 4rem;
+  gap: 2rem;
 }
 
 article.card {

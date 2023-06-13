@@ -8,6 +8,7 @@ article.card {
   width: min(20rem, 60vw);
   aspect-ratio: 3/2;
   display: flex;
+  align-items: center;
   gap: 2rem;
   border: var(--border-400) solid var(--clr-secondary-rgb);
   border-radius: var(--border-1000);
@@ -42,7 +43,9 @@ p.title-header {
 
 div.author-details {
   display: grid;
+  gap: 0.5rem;
   align-items: center;
+  justify-content: center;
 }
 
 div.action-container {
