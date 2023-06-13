@@ -135,7 +135,7 @@ async function likeBlogHandler(req, res, next) {
     res.status(500).json({ msg: "BLOG CANNOT BE LIKED" });
     return;
   }
-  res.status(200);
+  res.status(200).json();
 }
 
 async function dislikeBlogHandler(req, res, next) {
@@ -149,7 +149,7 @@ async function dislikeBlogHandler(req, res, next) {
     res.status(500).json({ msg: "BLOG CANNOT BE DISLIKED" });
     return;
   }
-  res.status(200);
+  res.status(200).json();
 }
 
 async function updateBlogHandler(req, res, next) {
