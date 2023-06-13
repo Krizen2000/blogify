@@ -31,6 +31,12 @@ div.empty-blog-list {
   background-color: var(--bs-light-100);
 }
 
+h3.title {
+  font-size: 1.125rem;
+  /* font-style: unset; */
+  margin-bottom: 0.5rem;
+}
+
 i.icon {
   font-size: 5rem;
 }

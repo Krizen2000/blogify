@@ -14,9 +14,18 @@ const MyBlogs: React.FC = () => {
     setCategory("likes");
   return (
     <main className={styles["myblogs-container"]}>
-      <Link role="button" href="/myblogs/create">
-        Create Blog
-      </Link>
+      <div className={styles["button-group"]}>
+        <Link
+          className={styles["primary-btn"]}
+          role="button"
+          href="/myblogs/create"
+        >
+          Create Blog
+        </Link>
+        <Link className={styles["secondary-btn"]} role="button" href="/profile">
+          Profile
+        </Link>
+      </div>
       <section>
         <div>
           <button onClick={viewBtnAction}>Most Viewed</button>

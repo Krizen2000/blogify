@@ -50,7 +50,7 @@ const RecommendedBlogs: React.FC = async () => {
                 src={blog.image}
                 alt="blogimage"
               />
-              <h5>{blog.title}</h5>
+              <h3 className={styles["title"]}>{blog.title}</h3>
             </article>
           </Link>
         ))

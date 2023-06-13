@@ -9,6 +9,7 @@ import {
 import styles from "./interactionBox.module.css";
 import { useCacheContext } from "@context/cacheProvider";
 import axios from "axios";
+import { useRouter } from "next/navigation";
 
 type Blog = {
   blogId: string;
@@ -105,6 +106,7 @@ const InteractionBox: React.FC<props> = ({ blog }) => {
   const userLoggedIn = useCheckUserLoggedIn();
   const { userLiked, setUserLiked } = useCheckUserLiked(blog);
   const cacheContext: { cache: Cache } = useCacheContext();
+  const router = useRouter();
   const token = cacheContext.cache["token"];
 
   const [title, setTitle] = useState("");
@@ -113,40 +115,54 @@ const InteractionBox: React.FC<props> = ({ blog }) => {
     <>
       {userLoggedIn ? (
         <div className={styles["interaction-box"]}>
-          <div>
-            <span>{blog.likedBy.length}</span>
+          <div className={styles["likes-group"]}>
+            <span className={styles["no-of-likes"]}>{blog.likedBy.length}</span>
             {userLiked ? (
               <button
+                className={styles["btn"]}
                 onClick={() => {
                   if (!token) return;
                   dislikePublisherBlog(blog.blogId, token, setUserLiked);
+                  router.refresh();
                 }}
               >
-                <i className="bi-heart-fill" />
+                <i className={`bi-heart-fill ${styles["icon"]}`} />
               </button>
             ) : (
               <button
+                className={styles["btn"]}
                 onClick={() => {
                   if (!token) return;
                   likePublisherBlog(blog.blogId, token, setUserLiked);
+                  router.refresh();
                 }}
               >
-                <i className="bi-heart" />
+                <i className={`bi-heart ${styles["icon"]}`} />
               </button>
             )}
           </div>
-          <div>
-            <div style={{ display: "grid" }}>
-              <input onChange={(e) => setTitle(e.target.value)} />
-              <textarea onChange={(e) => setMessage(e.target.value)} />
+          <div className={styles["input-grp"]}>
+            <div className={styles["comment-box"]}>
+              <p>Title:</p>
+              <input
+                className={styles["input"]}
+                onChange={(e) => setTitle(e.target.value)}
+              />
+              <p>Comment:</p>
+              <textarea
+                className={styles["textarea"]}
+                onChange={(e) => setMessage(e.target.value)}
+              />
             </div>
             <button
+              className={styles["send-btn"]}
               onClick={() => {
                 if (!token) return;
                 uploadPublisherComment(title, message, blog.blogId, token);
+                router.refresh();
               }}
             >
-              <i className="bi-send" />
+              <i className={`bi-send ${styles["icon"]}`} />
             </button>
           </div>
         </div>
