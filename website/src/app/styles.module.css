@@ -12,7 +12,7 @@ section.blogs-section,
 section.about-section,
 section.cta-section {
   display: grid;
-  gap: 6rem;
+  gap: 10rem;
   justify-items: center;
 }
 
