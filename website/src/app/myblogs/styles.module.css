@@ -33,3 +33,79 @@ a.secondary-btn {
 a.secondary-btn:hover {
   background-color: var(--clr-secondary-rgb);
 }
+
+section.blogs-container {
+  margin: 2rem;
+  display: grid;
+  gap: 2rem;
+  justify-items: center;
+}
+
+h2.header-text {
+  font-size: 3rem;
+  font-family: Maitree;
+  font-weight: 700;
+}
+
+select.select {
+  height: 3.5rem;
+  border: none;
+  overflow: hidden;
+  background-color: transparent;
+  outline: none;
+}
+
+option.option {
+  /* width: 60px; */
+  font-size: 1.2em;
+  padding: 1rem 2rem;
+  text-align: center;
+  margin-inline: 1rem;
+  display: inline-flex;
+  cursor: pointer;
+  border: 0.125rem solid var(--clr-secondary-rgb);
+  border-radius: 5px;
+  color: var(--clr-txt-rgb);
+}
+
+option.option:focus {
+  outline: none;
+  background-color: transparent;
+}
+
+div.action-group {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+a.create-btn {
+  text-decoration: none;
+  background-color: transparent;
+  border: 0.125rem solid var(--clr-txt-rgb);
+  border-radius: 100%;
+  aspect-ratio: 1;
+  cursor: pointer;
+  transition: 500ms border-color, 500ms transform;
+}
+
+i.create-icon {
+  display: flex;
+  font-size: 3rem;
+  color: var(--clr-txt-rgb);
+  transition: 500ms color;
+}
+
+a.create-btn:hover {
+  border-color: var(--clr-primary-rgb);
+  transform: rotate(90deg);
+}
+i.create-icon:hover {
+  color: var(--clr-primary-rgb);
+}
+
+option.option:checked {
+  color: var(--clr-primary-rgb);
+  background-color: var(--clr-bg-rgb);
+  border: 0.125rem solid var(--clr-primary-rgb);
+}

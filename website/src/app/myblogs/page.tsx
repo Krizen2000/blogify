@@ -8,28 +8,34 @@ import Link from "next/link";
 
 const MyBlogs: React.FC = () => {
   const [category, setCategory] = useState("views");
-  const viewBtnAction = (e: MouseEvent<HTMLButtonElement>) =>
+  const viewBtnAction = (e: MouseEvent<HTMLOptionElement>) =>
     setCategory("views");
-  const likesBtnAction = (e: MouseEvent<HTMLButtonElement>) =>
+  const likesBtnAction = (e: MouseEvent<HTMLOptionElement>) =>
     setCategory("likes");
   return (
     <main className={styles["myblogs-container"]}>
-      <div className={styles["button-group"]}>
-        <Link
-          className={styles["primary-btn"]}
-          role="button"
-          href="/myblogs/create"
-        >
-          Create Blog
-        </Link>
-        <Link className={styles["secondary-btn"]} role="button" href="/profile">
-          Profile
-        </Link>
-      </div>
-      <section>
-        <div>
-          <button onClick={viewBtnAction}>Most Viewed</button>
-          <button onClick={likesBtnAction}>Most Liked</button>
+      <section className={styles["blogs-container"]}>
+        <h2 className={styles["header-text"]}>Your Blogs</h2>
+        <div className={styles["action-group"]}>
+          <select className={styles["select"]} multiple>
+            <option
+              selected
+              className={styles["option"]}
+              onClick={viewBtnAction}
+            >
+              Most Viewed
+            </option>
+            <option className={styles["option"]} onClick={likesBtnAction}>
+              Most Liked
+            </option>
+          </select>
+          <Link
+            role="button"
+            href="/myblogs/create"
+            className={styles["create-btn"]}
+          >
+            <i className={`bi-plus ${styles["create-icon"]}`} />
+          </Link>
         </div>
         <div>{category === "views" ? <MostViewed /> : <MostLiked />}</div>
       </section>

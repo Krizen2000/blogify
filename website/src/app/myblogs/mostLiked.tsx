@@ -91,41 +91,36 @@ const MostLiked: React.FC = () => {
     }
   };
   return (
-    <section>
-      <p>Most Liked</p>
-      {blogs ? (
-        <ul id="blogs" className={styles["carousel-container"]}>
-          {blogs.map((blog) => (
-            <li id={blog.blogId} className={styles["carousel-item"]}>
-              <article className={styles["card"]}>
-                <img className={styles["card-image"]} src={blog.image} />
-                <div className={styles["author-details"]}>
-                  <p className={styles["title-header"]}>Title</p>
-                  <header className={styles["article-title"]}>
-                    {blog.title}
-                  </header>
-                  <div className={styles["action-container"]}>
-                    <select
-                      defaultValue={actionName}
-                      onChange={(e) => setActionName(e.target.value)}
-                    >
-                      <option value="view">view</option>
-                      <option value="edit">edit</option>
-                      <option value="delete">delete</option>
-                    </select>
-                    <button
-                      onClick={() => actionRunner(blog.blogId, actionName)}
-                    >
-                      <i className="bi-play-fill" />
-                    </button>
-                  </div>
-                </div>
-              </article>
-            </li>
-          ))}
-        </ul>
-      ) : null}
-    </section>
+    <ul id="blogs" className={styles["carousel-container"]}>
+      {blogs.map((blog) => (
+        <li id={blog.blogId} className={styles["carousel-item"]}>
+          <article className={styles["card"]}>
+            <img className={styles["card-image"]} src={blog.image} />
+            <div className={styles["author-details"]}>
+              <p className={styles["title-header"]}>Title</p>
+              <header className={styles["article-title"]}>{blog.title}</header>
+              <div className={styles["action-container"]}>
+                <select
+                  className={styles["select"]}
+                  defaultValue={actionName}
+                  onChange={(e) => setActionName(e.target.value)}
+                >
+                  <option value="view">view</option>
+                  <option value="edit">edit</option>
+                  <option value="delete">delete</option>
+                </select>
+                <button
+                  className={styles["action-btn"]}
+                  onClick={() => actionRunner(blog.blogId, actionName)}
+                >
+                  <i className={`bi-play-fill ${styles["icon"]}`} />
+                </button>
+              </div>
+            </div>
+          </article>
+        </li>
+      ))}
+    </ul>
   );
 };
 

@@ -1,6 +1,14 @@
 ul.carousel-container {
-  display: grid;
-  gap: 2rem;
+  list-style-type: none;
+  margin: 4rem;
+  padding: 4rem;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 3rem;
+  background-color: var(--clr-secondary-rgb);
+  border: 0.125rem solid var(--clr-secondary-rgb);
+  border-radius: 0.5rem;
 }
 
 article.card {
@@ -13,6 +21,7 @@ article.card {
   border: var(--border-400) solid var(--clr-secondary-rgb);
   border-radius: var(--border-1000);
   transition: border 1s;
+  background-color: var(--clr-bg-rgb);
 }
 
 article.card:hover {
@@ -45,12 +54,34 @@ div.author-details {
   display: grid;
   gap: 0.5rem;
   align-items: center;
-  justify-content: center;
+  justify-items: center;
 }
 
 div.action-container {
   display: flex;
   align-items: center;
+  gap: 1rem;
+}
+
+select.select {
+  color: var(--clr-txt-rgb);
+  padding: 0.25rem 0.5rem;
+  border-color: var(--clr-txt-rgb);
+  background-color: var(--clr-bg-rgb);
+}
+
+button.action-btn {
+  padding: 0.25rem;
+  color: var(--clr-primary-rgb);
+  border-color: var(--clr-primary-rgb);
+  background-color: transparent;
+  aspect-ratio: 1;
+}
+
+i.icon {
+  font-size: 1rem;
+  display: flex;
+  color: var(--clr-primary-rgb);
 }
 
 @media (max-width: 56.25rem) {
