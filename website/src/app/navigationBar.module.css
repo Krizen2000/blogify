@@ -1,5 +1,5 @@
 div.navigation-container {
-  margin: var(--size-1600);
+  padding: var(--size-1600);
   display: flex;
 
   gap: var(--size-600);
@@ -96,7 +96,11 @@ li.navigation-item:nth-child(4) {
 /* Mobile Viewport */
 @media (max-width: 56.25rem) {
   div.navigation-container {
-    margin: var(--size-600);
+    padding: var(--size-600);
+    position: sticky;
+    top: 0;
+    background-color: var(--clr-bg-rgb);
+    z-index: 10;
   }
   img.logo-icon {
     max-height: 3.5rem;

@@ -14,7 +14,6 @@ h1.header-text {
   text-align: center;
   font-size: 3rem;
   font-weight: 500;
-  margin-bottom: 3rem;
 }
 
 form.form {
@@ -86,7 +85,6 @@ button.secondary-btn:hover {
   }
   h1.header-text {
     font-size: 2rem;
-    margin: 0;
   }
   form.form {
     margin: 0;

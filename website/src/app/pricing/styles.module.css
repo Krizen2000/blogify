@@ -19,6 +19,7 @@ h1.header-text {
   font-family: Maitree;
   display: grid;
   justify-items: center;
+  text-align: center;
 }
 
 p.description-text,
@@ -83,5 +84,28 @@ p.feature-title {
 aside.table-container {
   display: grid;
   justify-items: center;
+  justify-content: center;
   gap: 5rem;
+}
+
+@media (max-width: 56.25rem) {
+  main.pricing-component {
+    margin: 1rem;
+    margin-bottom: 6rem;
+    gap: 7rem;
+  }
+  section.pricing-card-section {
+    gap: 2.5rem;
+  }
+  h1.header-text {
+    font-size: 1.5rem;
+  }
+  p.title-text,
+  p.description-text,
+  p.table-description {
+    font-size: 1rem;
+  }
+  div.card-holder {
+    grid-template-columns: 1fr;
+  }
 }

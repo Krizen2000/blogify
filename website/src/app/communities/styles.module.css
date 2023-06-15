@@ -101,6 +101,7 @@ span.article-author {
   text-align: center;
 }
 
+/* Mobile Viewport */
 @media (max-width: 56.25rem) {
   main.communities-component {
     margin: 1rem;
