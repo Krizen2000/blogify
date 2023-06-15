@@ -89,14 +89,16 @@ export default function Login() {
     <main className={styles["login-container"]}>
       <h1 className={styles["header-text"]}>Login</h1>
       <form className={styles["form"]}>
-        <label>Username / Email / PhoneNumber</label>
+        <label className={styles["label"]}>
+          Username / Email / PhoneNumber
+        </label>
         <input
           className={styles["input"]}
           type="text"
           value={loginId}
           onChange={(e) => setLoginId(e.target.value)}
         />
-        <label>Password</label>
+        <label className={styles["label"]}>Password</label>
         <input
           className={styles["input"]}
           type="password"

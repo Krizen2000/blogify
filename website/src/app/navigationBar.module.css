@@ -118,7 +118,7 @@ li.navigation-item:nth-child(4) {
     z-index: -1;
     inset: 7rem var(--size-800) auto;
     background-color: var(--clr-secondary-rgb);
-    border: var(--border-100) solid var(--clr-secondary-rgb);
+    border: var(--border-100) solid var(--clr-txt-rgb);
     border-radius: var(--border-400);
     padding-block: 2rem;
     transition: opacity 1s ease, z-index 1ms 1s ease;
