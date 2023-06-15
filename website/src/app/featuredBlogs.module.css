@@ -58,7 +58,6 @@ span.article-author {
   font-weight: 300;
   text-align: center;
 }
-/* width: min(25rem, 60vw); */
 
 @media (max-width: 56.25rem) {
   ul.carousel-container {

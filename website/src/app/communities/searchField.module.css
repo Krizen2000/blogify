@@ -32,8 +32,9 @@ ul.carousel-container {
   margin-inline: var(--size-1600);
   list-style-type: none;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  gap: 6rem;
+  gap: 4rem;
   position: relative;
 }
 
@@ -71,9 +72,9 @@ header.article-title {
 
 div.author-details {
   display: grid;
+  gap: 0.5rem;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
 }
 
 p.author-title {
@@ -87,13 +88,21 @@ span.article-author {
   font-weight: 300;
   text-align: center;
 }
-/* width: min(25rem, 60vw); */
 
+/* Mobile Viewport */
 @media (max-width: 56.25rem) {
+  input.search-bar {
+    font-size: 1rem;
+    padding: 0.5rem 1.75rem;
+  }
+  i.icon {
+    font-size: 1rem;
+  }
+  ul.carousel-container {
+    margin: 0;
+  }
   article.card {
     flex-direction: column;
-    height: min(20rem, 60vw);
-    aspect-ratio: 3/2;
   }
   img.card-image {
     align-self: center;

@@ -31,6 +31,7 @@ h2.header-text {
   font-family: Cairo;
   display: grid;
   justify-items: center;
+  text-align: center;
 }
 
 p.description-text {
@@ -54,7 +55,7 @@ p.description-text {
     gap: 2.5rem;
   }
   h1.main-header-text {
-    font-size: 2.5rem;
+    font-size: 2rem;
     letter-spacing: 0;
   }
   h2.header-text {
