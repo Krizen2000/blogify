@@ -21,6 +21,7 @@ h1.main-header-text {
   font-family: Maitree;
   display: grid;
   justify-items: center;
+  text-align: center;
   letter-spacing: 0.15rem;
 }
 
@@ -39,26 +40,27 @@ p.description-text {
   text-align: center;
 }
 
-div.input-group {
-  display: inline-flex;
-  align-items: center;
-  position: relative;
-}
-
-input.search-bar {
-  width: min(30rem, 60vw);
-  font-size: 1.25rem;
-  text-align: center;
-  padding: 1rem 2rem;
-  background-color: var(--clr-secondary-rgb);
-  border: var(--border-300) solid var(--clr-secondary-rgb);
-  border-radius: 1rem;
-}
-
-i.icon {
-  color: var(--clr-txt-rgb);
-  font-size: 1.25rem;
-  position: absolute;
-  right: 0.75rem;
-  z-index: 5;
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  main.blogs-component {
+    margin: 1rem;
+    margin-bottom: 6rem;
+    gap: 7rem;
+  }
+  section.search-section,
+  section.featured-blogs,
+  section.popular-blogs,
+  section.historical-section {
+    gap: 2.5rem;
+  }
+  h1.main-header-text {
+    font-size: 2.5rem;
+    letter-spacing: 0;
+  }
+  h2.header-text {
+    font-size: 1.5rem;
+  }
+  p.description-text {
+    font-size: 1rem;
+  }
 }
