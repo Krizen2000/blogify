@@ -1,8 +1,12 @@
 main.signup-container {
-  margin-inline: var(--size-1600);
+  margin-inline: auto;
   margin-bottom: var(--size-2200);
+  width: min(30rem, 80vw);
+  padding: 6rem 3rem;
   display: grid;
-  justify-content: center;
+  background-color: var(--clr-secondary-rgb);
+  border: 0.125rem solid var(--clr-secondary-rgb);
+  justify-items: center;
   gap: 1rem;
 }
 
@@ -17,17 +21,17 @@ form.form {
   display: grid;
   /* justify-content: center; */
   gap: 0.5rem;
-  width: min(30rem, 70vw);
-  /* padding: 2rem; */
-  /* margin: 2rem; */
-  /* margin-bottom: 0; */
-  /* padding-bottom: 0; */
+  width: min(20rem, 70vw);
+  padding: 2rem;
+  margin: 2rem;
+  margin-bottom: 0;
+  padding-bottom: 0;
 }
 
 input.input {
   padding: 0.3rem;
-  background-color: var(--clr-secondary-rgb);
-  border-color: var(--clr-secondary-rgb);
+  background-color: var(--clr-bg-rgb);
+  border-color: var(--clr-bg-rgb);
 }
 
 p.password-check {
@@ -71,4 +75,36 @@ button.secondary-btn {
 }
 button.secondary-btn:hover {
   background-color: var(--clr-secondary-rgb);
+}
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  main.signup-container {
+    margin: 1rem;
+    padding: 1rem;
+    margin-bottom: var(--size-2200);
+  }
+  h1.header-text {
+    font-size: 2rem;
+    margin: 0;
+  }
+  form.form {
+    margin: 0;
+    margin-top: 1rem;
+    padding: 0;
+    gap: 1rem;
+  }
+  label.label {
+    font-size: 0.9rem;
+  }
+  a.link {
+    font-size: 0.9rem;
+    text-decoration: underline;
+    color: var(--clr-primary-rgb);
+  }
+  button.primary-btn,
+  button.secondary-btn {
+    font-size: 1rem;
+    padding: 0.5rem 1rem;
+  }
 }
