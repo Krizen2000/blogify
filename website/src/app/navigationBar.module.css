@@ -32,7 +32,7 @@ button.nav-toggle {
   display: none;
   justify-content: center;
   align-items: center;
-  height: 3rem;
+  height: 2.5rem;
   aspect-ratio: 1;
   padding: var(--size-200);
   background-color: transparent;
@@ -40,7 +40,7 @@ button.nav-toggle {
 }
 
 i.icon-hamburger {
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: var(--clr-txt-rgb);
 }
 
@@ -96,7 +96,14 @@ li.navigation-item:nth-child(4) {
 /* Mobile Viewport */
 @media (max-width: 56.25rem) {
   div.navigation-container {
-    margin: var(--size-800);
+    margin: var(--size-600);
+  }
+  img.logo-icon {
+    max-height: 3.5rem;
+    max-width: 3.5rem;
+  }
+  p.logo-name {
+    font-size: 1rem;
   }
 
   button.nav-toggle {

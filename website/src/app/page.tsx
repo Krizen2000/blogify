@@ -20,11 +20,19 @@ const Home: React.FC = () => {
           <p className={styles["description-text"]}>
             Write the content you always wanted the internet to watch!
           </p>
-          <Image src={BlogWindowImage} alt="blog window image" />
+          <Image
+            className={styles["image"]}
+            src={BlogWindowImage}
+            alt="blog window image"
+          />
         </div>
       </section>
       <section className={styles["appeal-section"]}>
-        <Image src={EditWindowImage} alt="edit window image" />
+        <Image
+          className={styles["image"]}
+          src={EditWindowImage}
+          alt="edit window image"
+        />
         <div className={styles["appeal-body"]}>
           <h2 className={styles["header-text"]}>Create Content</h2>
           <p className={styles["description-text"]}>

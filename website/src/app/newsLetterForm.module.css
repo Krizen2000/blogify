@@ -3,6 +3,7 @@ form.form {
   gap: 0.5rem;
 }
 input.newsletter-box {
+  width: min(12.5rem, 50vw);
   padding-inline: 1rem;
   background-color: var(--clr-secondary-rgb);
   border: var(--border-200) solid var(--clr-secondary-rgb);

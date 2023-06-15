@@ -12,12 +12,13 @@ section.blogs-section,
 section.about-section,
 section.cta-section {
   display: grid;
-  gap: 10rem;
+  gap: 8rem;
   justify-items: center;
 }
 
 section.appeal-section {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   justify-content: center;
 }
@@ -29,6 +30,7 @@ p.cta-text {
   font-family: Maitree;
   display: grid;
   justify-items: center;
+  text-align: center;
   letter-spacing: 0.15rem;
 }
 p.cta-text {
@@ -85,13 +87,20 @@ p.description-text {
   text-align: center;
 }
 
+img.image {
+  --size: min(30rem, 70vw);
+  width: var(--size);
+  height: calc(var(--size) * 2 / 3);
+  object-fit: cover;
+}
+
 div.card-holder {
   justify-self: center;
   display: grid;
-  /* justify-items: center; */
   grid-template-columns: repeat(3, 1fr);
   grid-auto-rows: 1fr;
   gap: 2rem;
+  margin: 2rem;
 }
 
 article.card {
@@ -129,6 +138,43 @@ a.cta-btn {
 /* Mobile Viewport */
 @media (max-width: 56.25rem) {
   main.home-component {
-    margin-inline: var(--size-800);
+    margin: 0;
+    margin-bottom: 6rem;
+    gap: 7rem;
+  }
+
+  section.hero-section,
+  section.blogs-section,
+  section.about-section,
+  section.cta-section {
+    gap: 4rem;
+  }
+
+  h1.hero-text,
+  p.cta-text {
+    font-size: 2.5rem;
+    text-align: center;
+    letter-spacing: 0;
+  }
+  span.add-cursor-blink:after {
+    height: 2.5rem;
+  }
+  h2.header-text {
+    font-size: 1.5rem;
+  }
+  p.description-text,
+  p.feature-text {
+    font-size: 1rem;
+  }
+  header.feature-title {
+    font-size: 1.25rem;
+  }
+  div.card-holder {
+    margin: 0;
+    grid-template-columns: 1fr;
+  }
+  article.card {
+    padding: 1rem 2rem;
+    margin-inline: 1.5rem;
   }
 }

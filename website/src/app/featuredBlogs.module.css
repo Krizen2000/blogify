@@ -2,7 +2,9 @@ ul.carousel-container {
   margin-inline: var(--size-1600);
   list-style-type: none;
   display: flex;
-  gap: 6rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 4rem;
   position: relative;
 }
 
@@ -59,6 +61,9 @@ span.article-author {
 /* width: min(25rem, 60vw); */
 
 @media (max-width: 56.25rem) {
+  ul.carousel-container {
+    margin: 0;
+  }
   article.card {
     flex-direction: column;
     height: min(20rem, 60vw);

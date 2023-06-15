@@ -8,6 +8,12 @@
   color: var(--clr-txt-rgb);
 }
 
+* {
+  outline: 1px solid red !important;
+  /* opacity: 1 !important; */
+  visibility: visible !important;
+}
+
 :root {
   --clr-txt: 233, 223, 224;
   --clr-bg: 14, 10, 24;
