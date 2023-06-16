@@ -34,3 +34,21 @@ cite.attribution {
   display: grid;
   justify-self: end;
 }
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  section.blog-group {
+    justify-items: center;
+    margin: 2rem 1rem;
+  }
+  article.blog {
+    margin: 1rem;
+    gap: 1.5rem;
+  }
+  h1.title {
+    font-size: 1.5rem;
+  }
+  cite.attribution {
+    margin: 1.25rem;
+  }
+}

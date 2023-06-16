@@ -45,3 +45,10 @@ a.no-link {
   text-decoration: none;
   color: inherit;
 }
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  section.recommended-blogs {
+    margin-inline: 1rem;
+  }
+}

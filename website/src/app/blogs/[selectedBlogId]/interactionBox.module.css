@@ -1,5 +1,6 @@
 div.interaction-box {
   display: flex;
+  flex-wrap: wrap;
   gap: 2rem;
   padding: 2rem 4rem;
   justify-content: center;
@@ -78,4 +79,11 @@ input.input {
 
 textarea.textarea {
   background-color: var(--clr-secondary-rgb);
+}
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  div.interaction-box {
+    padding: 1.5rem 1rem;
+  }
 }

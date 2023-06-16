@@ -2,7 +2,7 @@ div.comment-section {
   display: grid;
   gap: 3rem;
   padding: 2.5rem 4rem;
-  /* justify-items: center; */
+  justify-items: left;
   background-color: var(--clr-secondary-rgb);
 }
 
@@ -23,6 +23,7 @@ div.comment-list {
 
 div.comment {
   display: grid;
+  gap: 0.5rem;
 }
 
 p.username {
@@ -32,7 +33,8 @@ p.username {
 p.title {
   font-size: 1.5rem;
 }
-p.message {
+span.message {
+  font-size: 1rem;
 }
 
 hr.seperator {
@@ -40,4 +42,23 @@ hr.seperator {
   display: grid;
   justify-self: center;
   width: min(12rem, 30vw);
+}
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  div.comment-section {
+    padding: 1.5rem 1rem;
+  }
+  h3.comment-title {
+    font-size: 1.5rem;
+  }
+  div.comment-list {
+    padding: 0;
+  }
+  p.title {
+    font-size: 1.25rem;
+  }
+  span.message {
+    font-size: 0.9rem;
+  }
 }

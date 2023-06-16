@@ -74,7 +74,7 @@ async function uploadPublisherComment(
     .catch((err) => console.error(err));
 }
 
-function likePublisherBlog(
+async function likePublisherBlog(
   blogId: string,
   token: string,
   setUserLiked: Dispatch<SetStateAction<boolean>>
@@ -88,7 +88,7 @@ function likePublisherBlog(
     .catch((err) => console.log(err));
 }
 
-function dislikePublisherBlog(
+async function dislikePublisherBlog(
   blogId: string,
   token: string,
   setUserLiked: Dispatch<SetStateAction<boolean>>
@@ -133,8 +133,9 @@ const InteractionBox: React.FC<props> = ({ blog }) => {
                 className={styles["btn"]}
                 onClick={() => {
                   if (!token) return;
-                  likePublisherBlog(blog.blogId, token, setUserLiked);
-                  router.refresh();
+                  likePublisherBlog(blog.blogId, token, setUserLiked).then(() =>
+                    router.refresh()
+                  );
                 }}
               >
                 <i className={`bi-heart ${styles["icon"]}`} />
@@ -158,8 +159,9 @@ const InteractionBox: React.FC<props> = ({ blog }) => {
               className={styles["send-btn"]}
               onClick={() => {
                 if (!token) return;
-                uploadPublisherComment(title, message, blog.blogId, token);
-                router.refresh();
+                uploadPublisherComment(title, message, blog.blogId, token).then(
+                  () => router.refresh()
+                );
               }}
             >
               <i className={`bi-send ${styles["icon"]}`} />

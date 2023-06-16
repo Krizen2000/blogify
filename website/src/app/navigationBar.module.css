@@ -120,17 +120,20 @@ li.navigation-item:nth-child(4) {
     opacity: 0;
     position: fixed;
     z-index: -1;
+    inset: 1px 1px;
+    height: 1px;
+    width: 1px;
     inset: 7rem var(--size-800) auto;
     background-color: var(--clr-secondary-rgb);
     border: var(--border-100) solid var(--clr-txt-rgb);
     border-radius: var(--border-400);
     padding-block: 2rem;
-    transition: opacity 1s ease, z-index 1ms 1s ease;
   }
   nav.navigation-wrapper[data-visible] {
     opacity: 1;
+    width: auto;
+    height: auto;
     z-index: 10;
-    transition: opacity 1s 1ms ease, z-index 1ms ease;
   }
   nav.navigation-wrapper[data-visible]::before {
     transform: scale(10);
