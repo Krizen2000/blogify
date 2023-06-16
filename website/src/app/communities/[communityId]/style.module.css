@@ -1,11 +1,14 @@
 main.community-detailing {
   display: grid;
+  justify-items: center;
+  justify-content: center;
   gap: 5rem;
   margin: var(--size-1600);
 }
 
 section.community-wrapper {
   display: flex;
+  flex-wrap: wrap;
   gap: 5rem;
   justify-content: center;
 }
@@ -33,6 +36,7 @@ img.image {
 div.button-group {
   display: flex;
   gap: 1rem;
+  margin: auto;
 }
 
 button.primary-btn {
@@ -111,12 +115,31 @@ span.article-author {
   font-weight: 300;
   text-align: center;
 }
-/* width: min(25rem, 60vw); */
 
+/* Mobile Viewport */
 @media (max-width: 56.25rem) {
+  main.community-detailing {
+    margin: 0;
+    margin-block: 3rem;
+  }
+  section.community-wrapper {
+    gap: 3rem;
+  }
+  h1.community-header {
+    font-size: 1.75rem;
+  }
+  button.primary-btn,
+  button.secondary-btn {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+  }
+  ul.carousel-container {
+    margin: 0;
+    /* margin-bottom: 3rem; */
+  }
   article.card {
     flex-direction: column;
-    height: min(20rem, 60vw);
+    /* height: min(20rem, 60vw); */
     aspect-ratio: 3/2;
   }
   img.card-image {

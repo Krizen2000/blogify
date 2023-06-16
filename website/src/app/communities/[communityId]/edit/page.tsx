@@ -123,7 +123,7 @@ const Page: React.FC<Props> = ({ params: { communityId } }) => {
     <main className={styles["community-editing"]}>
       <img className={styles["image"]} src={community?.image} />
       <div className={styles["community-details"]}>
-        <h1>Community Details</h1>
+        <h1 className={styles["community-header"]}>Community Details</h1>
         <p>Name:</p>
         <input
           className={styles["input"]}
