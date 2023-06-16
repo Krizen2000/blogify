@@ -1,5 +1,6 @@
 "use client";
 
+import styles from "./style.module.css";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCacheContext } from "@context/cacheProvider";
@@ -85,40 +86,40 @@ const EditBlog: React.FC<Props> = (props: Props) => {
   }, []);
 
   return (
-    <main>
-      <div>
-        <div onClick={() => router.back()}>
-          <i className="bi-arrow-left" />
-        </div>
-        <h1>Edit Blog</h1>
-      </div>
-      <article>
+    <main className={styles["blog-container"]}>
+      <h1 className={styles["header-text"]}>Edit Blog</h1>
+      <article className={styles["blog-details"]}>
         <label>BlogId</label>
         <input
+          className={styles["input"]}
           type="text"
           value={blogId}
           onChange={(e) => setBlogId(e.target.value)}
         />
         <label>Title</label>
         <input
+          className={styles["input"]}
           type="text"
           value={title}
           onChange={(e) => setTitle(e.target.value)}
         />
         <label>Image</label>
         <input
+          className={styles["input"]}
           type="text"
           value={image}
           onChange={(e) => setImage(e.target.value)}
         />
         <label>Description</label>
         <input
+          className={styles["input"]}
           type="text"
           value={description}
           onChange={(e) => setDescription(e.target.value)}
         />
         <label>Tags</label>
         <input
+          className={styles["input"]}
           type="text"
           defaultValue={tags}
           onChange={(e) => {
@@ -127,9 +128,15 @@ const EditBlog: React.FC<Props> = (props: Props) => {
             setTags(inputedTags);
           }}
         />
-        <div>
-          <button type="reset">Clear</button>
-          <button type="button" onClick={updateBlog}>
+        <div className={styles["button-group"]}>
+          <button className={styles["secondary-btn"]} type="reset">
+            Clear
+          </button>
+          <button
+            className={styles["primary-btn"]}
+            type="button"
+            onClick={updateBlog}
+          >
             Save
           </button>
         </div>

@@ -16,6 +16,13 @@ const MyBlogs: React.FC = () => {
     <main className={styles["myblogs-container"]}>
       <section className={styles["blogs-container"]}>
         <h2 className={styles["header-text"]}>Your Blogs</h2>
+        <a
+          role="button"
+          href="/myblogs/create"
+          className={styles["create-btn-mob"]}
+        >
+          Create Blog
+        </a>
         <div className={styles["action-group"]}>
           <select className={styles["select"]} multiple>
             <option
@@ -37,7 +44,8 @@ const MyBlogs: React.FC = () => {
             <i className={`bi-plus ${styles["create-icon"]}`} />
           </Link>
         </div>
-        <div>{category === "views" ? <MostViewed /> : <MostLiked />}</div>
+        {/* <div>{category === "views" ? <MostViewed /> : <MostLiked />}</div> */}
+        {category === "views" ? <MostViewed /> : <MostLiked />}
       </section>
     </main>
   );

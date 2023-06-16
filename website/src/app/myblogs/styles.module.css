@@ -2,6 +2,7 @@ main.myblogs-container {
   margin-inline: var(--size-1600);
   display: grid;
   justify-content: center;
+  justify-items: center;
   gap: 1rem;
 }
 
@@ -45,6 +46,18 @@ h2.header-text {
   font-size: 3rem;
   font-family: Maitree;
   font-weight: 700;
+}
+
+a.create-btn-mob {
+  text-decoration: unset;
+  display: none;
+  font-size: 1.2rem;
+  padding: 0.75rem 1.5rem;
+  cursor: pointer;
+  border: 0.125rem solid var(--clr-secondary-rgb);
+  border-radius: 5px;
+  color: var(--clr-txt-rgb);
+  background-color: var(--clr-primary-rgb);
 }
 
 select.select {
@@ -108,4 +121,32 @@ option.option:checked {
   color: var(--clr-primary-rgb);
   background-color: var(--clr-bg-rgb);
   border: 0.125rem solid var(--clr-primary-rgb);
+}
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  main.myblogs-container {
+    margin: 0;
+    margin-block: 3rem;
+  }
+  section.blogs-container {
+    margin: 0;
+  }
+  h2.header-text {
+    font-size: 2.5rem;
+  }
+  option.option {
+    margin-inline: 0.25rem;
+  }
+  a.create-btn-mob,
+  option.option {
+    font-size: 1rem;
+    padding: 0.75rem 1.5rem;
+  }
+  a.create-btn-mob {
+    display: block;
+  }
+  a.create-btn {
+    display: none;
+  }
 }

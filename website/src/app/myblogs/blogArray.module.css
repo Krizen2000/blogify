@@ -5,7 +5,8 @@ ul.carousel-container {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 3rem;
+  justify-items: center;
+  gap: 4rem;
   background-color: var(--clr-secondary-rgb);
   border: 0.125rem solid var(--clr-secondary-rgb);
   border-radius: 0.5rem;
@@ -64,6 +65,7 @@ div.action-container {
 }
 
 select.select {
+  cursor: pointer;
   color: var(--clr-txt-rgb);
   padding: 0.25rem 0.5rem;
   border-color: var(--clr-txt-rgb);
@@ -71,6 +73,7 @@ select.select {
 }
 
 button.action-btn {
+  cursor: pointer;
   padding: 0.25rem;
   color: var(--clr-primary-rgb);
   border-color: var(--clr-primary-rgb);
@@ -84,10 +87,17 @@ i.icon {
   color: var(--clr-primary-rgb);
 }
 
+/* Mobile Viewport */
 @media (max-width: 56.25rem) {
+  ul.carousel-container {
+    margin: 1rem;
+    padding: 2.5rem 0.25rem;
+  }
   article.card {
+    padding: 1.5rem 0.5rem;
+    gap: 1rem;
     flex-direction: column;
-    height: min(20rem, 60vw);
+    width: min(20rem, 60vw);
     aspect-ratio: 3/2;
   }
   img.card-image {
