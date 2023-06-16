@@ -19,7 +19,7 @@ h1.header-text {
 section.personal-info,
 section.com-channel,
 section.blog-prefer {
-  width: min(30rem, 70vw);
+  width: min(30rem, 90vw);
 }
 
 div.block-wrapper {
@@ -40,7 +40,6 @@ h3.sub-header-text {
 
 i.icon {
   font-size: 1.5rem;
-  /* color: var(--clr-primary-rgb); */
 }
 
 form.credentials {
@@ -55,6 +54,7 @@ form.credentials {
 
 div.input-group {
   display: flex;
+
   gap: 0.5rem;
   align-items: center;
 }
@@ -90,4 +90,31 @@ select.select:disabled {
   appearance: none;
   color: var(--bs-gray-500);
   background-color: var(--clr-secondary-rgb);
+}
+
+/* Mobile Viewport */
+@media (max-width: 56.25rem) {
+  main.profile-container {
+    margin: 0;
+    margin-block: 3rem;
+  }
+  h1.header-text {
+    font-size: 3rem;
+    margin: 0;
+  }
+  div.block-wrapper {
+    margin: 0;
+  }
+  i.header-icon {
+    font-size: 2rem;
+  }
+  h3.sub-header-text,
+  i.icon {
+    font-size: 1.25rem;
+  }
+  form.credentials {
+    justify-content: center;
+    margin: 0;
+    padding: 1.5rem 1rem;
+  }
 }
