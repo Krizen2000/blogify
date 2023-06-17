@@ -33,7 +33,6 @@ div.empty-blog-list {
 
 h3.title {
   font-size: 1.125rem;
-  /* font-style: unset; */
   margin-bottom: 0.5rem;
 }
 
@@ -49,6 +48,9 @@ a.no-link {
 /* Mobile Viewport */
 @media (max-width: 56.25rem) {
   section.recommended-blogs {
+    margin-inline: 1rem;
+  }
+  article.blog {
     margin-inline: 1rem;
   }
 }

@@ -116,31 +116,36 @@ const InteractionBox: React.FC<props> = ({ blog }) => {
       {userLoggedIn ? (
         <div className={styles["interaction-box"]}>
           <div className={styles["likes-group"]}>
-            <span className={styles["no-of-likes"]}>{blog.likedBy.length}</span>
-            {userLiked ? (
-              <button
-                className={styles["btn"]}
-                onClick={() => {
-                  if (!token) return;
-                  dislikePublisherBlog(blog.blogId, token, setUserLiked);
-                  router.refresh();
-                }}
-              >
+            <span className={styles["no-of-likes"]}>
+              {blog?.likedBy.length ?? 0}
+            </span>
+
+            <button
+              className={styles["btn"]}
+              onClick={
+                userLiked
+                  ? () => {
+                      if (!token) return;
+                      dislikePublisherBlog(
+                        blog.blogId,
+                        token,
+                        setUserLiked
+                      ).then(() => router.refresh());
+                    }
+                  : () => {
+                      if (!token) return;
+                      likePublisherBlog(blog.blogId, token, setUserLiked).then(
+                        () => router.refresh()
+                      );
+                    }
+              }
+            >
+              {userLiked ? (
                 <i className={`bi-heart-fill ${styles["icon"]}`} />
-              </button>
-            ) : (
-              <button
-                className={styles["btn"]}
-                onClick={() => {
-                  if (!token) return;
-                  likePublisherBlog(blog.blogId, token, setUserLiked).then(() =>
-                    router.refresh()
-                  );
-                }}
-              >
+              ) : (
                 <i className={`bi-heart ${styles["icon"]}`} />
-              </button>
-            )}
+              )}
+            </button>
           </div>
           <div className={styles["input-grp"]}>
             <div className={styles["comment-box"]}>
