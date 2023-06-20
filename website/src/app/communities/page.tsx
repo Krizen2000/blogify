@@ -41,7 +41,6 @@ async function requestHiddenCommunities(): Promise<Community[]> {
   return communities;
 }
 
-// ! NEED TO IMPLEMENT SITE TO DISPLAY COMMUNITIES
 //prettier-ignore
 {/* @ts-expect-error Async Server Component */}
 const Communities: React.FC = async () => {

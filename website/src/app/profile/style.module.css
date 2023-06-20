@@ -18,7 +18,8 @@ h1.header-text {
 
 section.personal-info,
 section.com-channel,
-section.blog-prefer {
+section.blog-prefer,
+section.sub-section {
   width: min(30rem, 90vw);
 }
 
@@ -59,13 +60,17 @@ div.input-group {
   align-items: center;
 }
 
-input.input {
+input.input,
+input.subscription-box {
   flex-grow: 1;
   color: var(--clr-txt-rgb);
   padding: 0.3rem;
   background-color: var(--clr-bg-rgb);
   border-color: var(--clr-bg-rgb);
   border-radius: 0.2rem;
+}
+input.subscription-box {
+  text-align: center;
 }
 
 button.btn {
@@ -76,6 +81,19 @@ button.btn {
   border-color: transparent;
   background-color: var(--clr-bg-rgb);
   cursor: pointer;
+}
+
+a.primary-btn {
+  text-decoration: none;
+  text-align: center;
+  margin: auto;
+  margin-top: 1rem;
+  color: var(--clr-txt-rgb);
+  cursor: pointer;
+  font-size: 1rem;
+  padding: 0.8rem 1.75rem;
+  background-color: var(--clr-primary-rgb);
+  border-color: var(--clr-primary-rgb);
 }
 
 select.select {
@@ -116,5 +134,14 @@ select.select:disabled {
     justify-content: center;
     margin: 0;
     padding: 1.5rem 1rem;
+  }
+  label.label,
+  select.select,
+  p.txt {
+    font-size: 0.85rem;
+  }
+  a.primary-btn {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
   }
 }

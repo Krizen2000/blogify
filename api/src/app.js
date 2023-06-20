@@ -1,6 +1,7 @@
 const express = require("express");
 const cors = require("cors");
 const userRouter = require("./routes/userRoute");
+const planRouter = require("./routes/planRoute");
 const authRouter = require("./routes/authRoute");
 const blogRouter = require("./routes/blogRoute");
 const communitiesRouter = require("./routes/communityRoute");
@@ -14,6 +15,7 @@ app.use(cors());
 app.use(express.json());
 app.use("/api", authRouter);
 app.use("/api/users", userRouter);
+app.use("/api/plans", planRouter);
 app.use("/api/blogs", blogRouter);
 app.use("/api/communities", communitiesRouter);
 app.use("/api/comments", commentRouter);

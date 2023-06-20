@@ -5,6 +5,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 import { useCacheContext } from "@context/cacheProvider";
+import Link from "next/link";
 
 type User = {
   firstName: string;
@@ -17,6 +18,12 @@ type User = {
   facebook: string;
   instagram: string;
   twitter: string;
+  subscription: {
+    planName: string;
+    razorpayOrderId: string | null;
+    razorpayPaymentId: string | null;
+    razorpaySignature: string | null;
+  } | null;
 };
 
 type UserData = {
@@ -70,6 +77,7 @@ const initialIsDisabled = {
   twitter: true,
 };
 const initialUserInfo = {
+  username: "",
   firstName: "",
   lastName: "",
   email: "",
@@ -79,14 +87,16 @@ const initialUserInfo = {
   facebook: "",
   instagram: "",
   twitter: "",
+  subscription: null,
 };
 
 // ! NEED TO IMPLEMENT SUBSCRIPTION TYPE
 export default function Profile() {
   const cacheContext = useCacheContext();
   const token = cacheContext.cache["token"];
-  const [userInfo, setUserInfo] = useState(initialUserInfo);
-  const [newUserInfo, setNewUserInfo] = useState(initialUserInfo);
+  const [userInfo, setUserInfo] = useState<User>(initialUserInfo);
+  const [subscription, setSubscription] = useState("free");
+  const [newUserInfo, setNewUserInfo] = useState<User>(initialUserInfo);
   const [commute, setCommute] = useState("None");
   const [shareCommute, setShareCommute] = useState(false);
   const [updateUserInfo, setUpdateUserInfo] = useState(false);
@@ -99,9 +109,9 @@ export default function Profile() {
   useEffect(() => {
     requestUserInfo(token).then((user) => {
       if (!user) return;
-      const { username, ...userData } = user;
-      setUserInfo(userData);
-      setNewUserInfo(userData);
+      setUserInfo(user);
+      setSubscription(user?.subscription?.planName.toUpperCase() ?? "FREE");
+      setNewUserInfo(user);
     });
   }, [token]);
 
@@ -125,7 +135,7 @@ export default function Profile() {
           <h3 className={styles["sub-header-text"]}>Personal Information:</h3>
         </div>
         <form className={styles["credentials"]}>
-          <label>First Name</label>
+          <label className={styles["label"]}>First Name</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -154,7 +164,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Last Name</label>
+          <label className={styles["label"]}>Last Name</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -183,7 +193,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Profession</label>
+          <label className={styles["label"]}>Profession</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -212,7 +222,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Phone Number</label>
+          <label className={styles["label"]}>Phone Number</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -241,7 +251,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Email</label>
+          <label className={styles["label"]}>Email</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -275,7 +285,7 @@ export default function Profile() {
           <h3 className={styles["sub-header-text"]}>Communication Channel:</h3>
         </div>
         <form className={styles["credentials"]}>
-          <label>Discord</label>
+          <label className={styles["label"]}>Discord</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -301,7 +311,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Instagram</label>
+          <label className={styles["label"]}>Instagram</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -330,7 +340,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Facebook</label>
+          <label className={styles["label"]}>Facebook</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -359,7 +369,7 @@ export default function Profile() {
               />
             </button>
           </div>
-          <label>Twitter</label>
+          <label className={styles["label"]}>Twitter</label>
           <div className={styles["input-group"]}>
             <input
               className={styles["input"]}
@@ -394,7 +404,7 @@ export default function Profile() {
         </div>
         <form className={styles["credentials"]}>
           <div className={styles["block-wrapper"]}>
-            <p>{"Communicate via:"}</p>
+            <p className={styles["txt"]}>{"Communicate via:"}</p>
             <select
               className={styles["select"]}
               disabled={!shareCommute}
@@ -420,8 +430,58 @@ export default function Profile() {
               checked={shareCommute}
               onChange={(e) => setShareCommute(!shareCommute)}
             />
-            <p>{"I agree to share my social handle with my blog readers"}</p>
+            <p className={styles["txt"]}>
+              {"I agree to share my social handle with my blog readers"}
+            </p>
           </div>
+        </form>
+      </section>
+      <section className={styles["sub-section"]}>
+        <div className={styles["block-wrapper"]}>
+          <i className={`bi-patch-check-fill ${styles["header-icon"]}`} />
+          <h3 className={styles["sub-header-text"]}>Subscription:</h3>
+        </div>
+        <form className={styles["credentials"]}>
+          <label className={styles["label"]}>Current Subscription</label>
+          <input
+            className={styles["subscription-box"]}
+            value={subscription}
+            disabled
+          />
+          {subscription !== "FREE" ? (
+            <>
+              <label className={styles["label"]}>Subscription ID</label>
+              <input
+                className={styles["input"]}
+                value={
+                  userInfo.subscription?.razorpayOrderId ??
+                  "ERROR INVALID STATE"
+                }
+                disabled
+              />
+              <label className={styles["label"]}>Payment ID</label>
+              <input
+                className={styles["input"]}
+                value={
+                  userInfo.subscription?.razorpayPaymentId ??
+                  "ERROR INVALID STATE"
+                }
+                disabled
+              />
+              <label className={styles["label"]}>Payment Signature</label>
+              <input
+                className={styles["input"]}
+                value={
+                  userInfo.subscription?.razorpaySignature ??
+                  "ERROR INVALID STATE"
+                }
+                disabled
+              />
+            </>
+          ) : null}
+          <Link href="/pricing" className={styles["primary-btn"]}>
+            Upgrade
+          </Link>
         </form>
       </section>
     </main>
