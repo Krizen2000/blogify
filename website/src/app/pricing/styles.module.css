@@ -6,6 +6,57 @@ main.pricing-component {
   gap: 15rem;
 }
 
+dialog.modal {
+  /* font-size: 1rem; */
+  z-index: 5;
+  max-width: 100vw;
+  max-height: 100vh;
+  margin: auto;
+  padding: 2em 4em;
+  background-color: var(--clr-secondary-rgb);
+}
+i.success-icon {
+  display: block;
+  padding: 0;
+  font-size: 7em;
+  color: var(--clr-primary-rgb);
+}
+h2.modal-header {
+  font-size: 2em;
+}
+p.modal-task {
+  font-size: 1.5em;
+}
+
+i.success-icon,
+h2.modal-header,
+p.modal-task,
+div.modal-action-group {
+  margin-block: 1.5rem;
+  text-align: center;
+}
+p.order-detail {
+  margin: 1em 0;
+}
+div.modal-action-group {
+  display: flex;
+  gap: 2em;
+}
+a.profile-btn {
+  text-decoration: none;
+  display: grid;
+  align-content: center;
+  padding: 1em 2em;
+  background-color: transparent;
+  border: 0.0625rem solid var(--clr-txt-rgb);
+  color: var(--clr-txt-rgb);
+}
+button.done-btn {
+  padding: 1em 2em;
+  background-color: var(--clr-primary-rgb);
+  color: var(--clr-txt-rgb);
+}
+
 section.pricing-card-section {
   display: grid;
   gap: 3.5rem;
@@ -38,72 +89,54 @@ p.title-text {
 }
 
 label.switch {
+  font-size: 1.2em;
+  width: 16em;
+  height: 4em;
   position: relative;
-  display: inline-block;
-  width: 90px;
-  height: 34px;
-}
-label.switch > input {
-  display: none;
-}
-.slider {
-  position: absolute;
+  display: flex;
+  border: 0.0625em solid var(--clr-txt-rgb);
+  border-radius: 2em;
   cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ca2222;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
 }
 
-.slider:before {
+label.switch input {
+  appearance: none;
+}
+label.switch input:focus {
+  outline: none;
+}
+input:focus + div.slider {
+  outline-color: Highlight;
+  outline-color: -webkit-focus-ring-color;
+  outline-style: auto;
+  outline-width: 5px;
+  border-radius: 2em;
+}
+
+div.slider {
+  display: flex;
+  gap: 3em;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+}
+
+div.slider::before {
+  z-index: -1;
   position: absolute;
   content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: 0.4s;
-  transition: 0.4s;
+  height: 3em;
+  width: 7em;
+  top: 0.5em;
+  left: 0.5em;
+  background-color: var(--clr-primary-rgb);
+  border-radius: 2em;
+  transition: 500ms transform;
 }
-
-input:checked + .slider {
-  background-color: #2ab934;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196f3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(55px);
-  -ms-transform: translateX(55px);
-  transform: translateX(55px);
-}
-.on {
-  display: none;
-}
-
-.on,
-.off {
-  color: white;
-  position: absolute;
-  transform: translate(-50%, -50%);
-  top: 50%;
-  left: 50%;
-  font-size: 10px;
-  font-family: Verdana, sans-serif;
-}
-
-input:checked + .slider .on {
-  display: block;
-}
-
-input:checked + .slider .off {
-  display: none;
+input:checked + div.slider::before {
+  transform: translateX(8em);
 }
 
 a.btn {
@@ -185,6 +218,10 @@ aside.table-container {
     margin-bottom: 6rem;
     gap: 7rem;
   }
+  dialog.modal {
+    font-size: 0.6rem;
+    padding: 0.5rem 1rem;
+  }
   section.pricing-card-section {
     gap: 2.5rem;
   }
@@ -195,6 +232,9 @@ aside.table-container {
   p.description-text,
   p.table-description {
     font-size: 1rem;
+  }
+  label.switch {
+    font-size: 0.8rem;
   }
   div.card-holder {
     grid-template-columns: 1fr;

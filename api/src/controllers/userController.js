@@ -70,6 +70,8 @@ async function userPlanUpgradeHandler(req, res, next) {
   });
   const { planName, pricingSchedule } = req.body;
   const plan = await Plan.findOne({ name: planName });
+  console.log("plandetails:", plan);
+  console.log(`pricingSchedule:${pricingSchedule}`);
 
   let amount = 0;
   switch (pricingSchedule) {
@@ -104,7 +106,7 @@ async function userPlanVerifyHandler(req, res, next) {
     razorpay_payment_id,
     razorpay_signature,
   } = req.body;
-  if (!["monthly", "annually"].indexOf(pricingSchedule)) {
+  if (["monthly", "annually"].indexOf(pricingSchedule) < 0) {
     res.status(400).json({ msg: "PRICING SCHEDULE IS NOT VALID!" });
     return;
   }

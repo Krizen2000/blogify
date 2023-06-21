@@ -1,6 +1,14 @@
 "use client";
 
-import { ChangeEvent, useEffect, useState } from "react";
+import {
+  ChangeEvent,
+  Dispatch,
+  RefObject,
+  SetStateAction,
+  useEffect,
+  useRef,
+  useState,
+} from "react";
 import PricingTable from "./pricingTable";
 
 import styles from "./styles.module.css";
@@ -37,7 +45,9 @@ type RazorpayResponse = {
 async function requestUserPlanUpgrade(
   token: string,
   plan: string,
-  pricingSchedule: string
+  pricingSchedule: string,
+  dialogRef: RefObject<HTMLDialogElement>,
+  setOrderData: Dispatch<SetStateAction<OrderData | null>>
 ) {
   const axiosInstance = axios.create({
     headers: { Authorization: `bearer ${token}` },
@@ -56,8 +66,6 @@ async function requestUserPlanUpgrade(
   }
   let order = res.data;
 
-  alert(`Data: \n${JSON.stringify(order, null, 3)}`);
-
   const options = {
     key: process.env.RAZORPAY_KEY_ID,
     amount: order.amount,
@@ -67,17 +75,17 @@ async function requestUserPlanUpgrade(
     order_id: order.id,
     handler: async (response: RazorpayResponse) => {
       try {
-        alert(`Handler Response:\n${JSON.stringify(response, null, 3)}`);
         const { data } = await axiosInstance.put("/api/users/planVerify", {
           ...response,
           pricingSchedule: pricingSchedule.toLowerCase(),
           planName: plan,
         });
-        alert(`Plan Verify Response:\n${JSON.stringify(data, null, 3)}`);
       } catch (err) {
         console.log(err);
         return;
       }
+      setOrderData({ ...response, planName: plan });
+      dialogRef.current?.showModal();
     },
   };
   // @ts-ignore "Razorpay is dynamically loaded from script tag"
@@ -85,20 +93,29 @@ async function requestUserPlanUpgrade(
   razorInstance.open();
 }
 
+type OrderData = {
+  planName: string;
+  razorpay_payment_id: string;
+  razorpay_order_id: string;
+  razorpay_signature: string;
+};
 const Pricing: React.FC = () => {
   const isLoggedIn = useCheckLoggedIn();
   const cacheContext = useCacheContext();
   const [token, setToken] = useState("");
   const router = useRouter();
   const [pricingSchedule, setPricingSchedule] = useState("ANNUALLY");
+  const dialogRef = useRef<HTMLDialogElement>(null);
+  const [subData, setSubData] = useState<OrderData | null>(null);
   const checkAction = (e: ChangeEvent<HTMLInputElement>) =>
     setPricingSchedule(e.target.checked ? "MONTHLY" : "ANNUALLY");
   const planSubscribeAction = (plan: string) => {
     if (!isLoggedIn) {
-      alert("Please signup before applying for subscription!");
+      const condition = confirm("Need to create an account. Visit Signup?");
+      if (!condition) return;
       router.push("/signup");
     }
-    requestUserPlanUpgrade(token, plan, pricingSchedule);
+    requestUserPlanUpgrade(token, plan, pricingSchedule, dialogRef, setSubData);
   };
 
   useEffect(() => {
@@ -114,7 +131,34 @@ const Pricing: React.FC = () => {
 
   return (
     <main id="pricing-component" className={styles["pricing-component"]}>
-      {/* <script src="https://checkout.razorpay.com/v1/checkout.js" /> */}
+      <dialog ref={dialogRef} className={`${styles["modal"]}`} id="modal">
+        <i className={`bi-check-circle-fill ${styles["success-icon"]}`} />
+        <h2 className={styles["modal-header"]}>PAYMENT DONE</h2>
+        <p className={styles["modal-task"]}>
+          Upgrade to {subData?.planName ?? ""} Plan
+        </p>
+        <p className={styles["order-detail"]}>
+          OrderId: {subData?.razorpay_order_id ?? ""}
+        </p>
+        <p className={styles["order-detail"]}>
+          PaymentId: {subData?.razorpay_payment_id ?? ""}
+        </p>
+        <p className={styles["order-detail"]}>
+          Digital Signature:{" "}
+          {subData?.razorpay_signature.slice(0, 10).concat("...") ?? ""}
+        </p>
+        <div className={styles["modal-action-group"]}>
+          <a href="/profile" role="button" className={styles["profile-btn"]}>
+            Go to Profile
+          </a>
+          <button
+            className={styles["done-btn"]}
+            onClick={() => dialogRef.current?.close()}
+          >
+            Done
+          </button>
+        </div>
+      </dialog>
 
       <section className={styles["pricing-card-section"]}>
         <p className={styles["title-text"]}>PRICING</p>
@@ -126,16 +170,20 @@ const Pricing: React.FC = () => {
         </p>
         <label className={styles["switch"]}>
           <input type="checkbox" onChange={checkAction} />
-          <div className={`${styles["slider"]} ${styles["round"]}`}>
-            <span className={styles["on"]}>MONTHLY</span>
+          <div className={styles["slider"]}>
             <span className={styles["off"]}>ANNUALLY</span>
+            <span className={styles["on"]}>MONTHLY</span>
           </div>
         </label>
+
         <div className={styles["card-holder"]}>
           <article className={styles["card"]}>
             <header className={styles["header"]}>
               <p className={styles["feature-title"]}>Free</p>
-              <p className={styles["feature-text"]}>₹ 0 per annum</p>
+              <p className={styles["feature-text"]}>
+                ₹{" "}
+                {pricingSchedule === "ANNUALLY" ? "0 per annum" : "0 per month"}
+              </p>
             </header>
             <ul>
               <li className={styles["feature-item"]}>
@@ -154,7 +202,10 @@ const Pricing: React.FC = () => {
             <header className={styles["header"]}>
               <p className={styles["feature-title"]}>Starter</p>
               <p className={styles["feature-text"]}>
-                ₹ {pricingSchedule === "ANNUALLY" ? 1000 : 100} per annum
+                ₹{" "}
+                {pricingSchedule === "ANNUALLY"
+                  ? "1000 per annum"
+                  : "100 per month"}
               </p>
             </header>
             <ul>
@@ -181,7 +232,10 @@ const Pricing: React.FC = () => {
             <header className={styles["header"]}>
               <p className={styles["feature-title"]}>Pro</p>
               <p className={styles["feature-text"]}>
-                ₹ {pricingSchedule === "ANNUALLY" ? 8500 : 1000} per annum
+                ₹{" "}
+                {pricingSchedule === "ANNUALLY"
+                  ? "8500 per annum"
+                  : "1000 per month"}
               </p>
             </header>
             <ul>
