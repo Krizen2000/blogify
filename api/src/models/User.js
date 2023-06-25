@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
   subscription: {
     _id: false,
     planName: { type: String, required: true, default: "free" },
-    razorpayOrderId: { type: String, required: true },
+    razorpayOrderId: { type: String },
     razorpayPaymentId: { type: String },
     razorpaySignature: { type: String },
   },
