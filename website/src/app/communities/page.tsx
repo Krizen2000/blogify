@@ -24,7 +24,7 @@ async function requestPopularCommunities(): Promise<Community[]> {
   } catch (err) {
     console.log(err);
   }
-  return communities;
+  return communities.slice(0, 3);
 }
 
 async function requestHiddenCommunities(): Promise<Community[]> {
@@ -38,7 +38,7 @@ async function requestHiddenCommunities(): Promise<Community[]> {
   } catch (err) {
     console.log(err);
   }
-  return communities;
+  return communities.slice(0, 3);
 }
 
 //prettier-ignore

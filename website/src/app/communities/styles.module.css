@@ -46,7 +46,7 @@ ul.carousel-container {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 6rem;
+  gap: 4rem;
   position: relative;
 }
 
